@@ -47,14 +47,14 @@ elif 'cygwin' in sys.platform:
     _UserBin = os.sep.join(['', 'usr', 'local', 'bin'])
     _SystemBin = os.sep.join(['', 'usr', 'local', 'bin'])
     _ExtBasePath = os.sep + 'cygdrive'
-elif 'Windows' in sys.platform:
+elif 'win' in sys.platform:
     _SystemApps = os.sep + 'Applications'
     _CygwinHome = os.sep.join(['', 'cygdrive', 'home'])
     _Desktop = os.sep.join(['C:', 'Users', getpass.getuser(), 'Desktop'])
     _Documents = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Documents'])
     _Downloads = os.sep.join(['C:', 'Users', getpass.getuser(), 'Downloads'])
     _Dropbox = os.sep.join(['C:', 'Users', getpass.getuser(), 'Dropbox'])
-    _GDrive = os.sep.join(['C:', 'Users', getpass.getuser(), 'Google Drive'])
+    _GDrive = os.sep.join(['C:', 'Users', getpass.getuser(), 'Google_Drive'])
     _HD = 'C:' + os.sep
     _Home = os.sep.join(['C:', 'Users', getpass.getuser()])
     _Movies = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Videos'])

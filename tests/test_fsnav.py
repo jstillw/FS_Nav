@@ -48,7 +48,7 @@ elif 'cygwin' in sys.platform:
     _UserApps = os.sep.join(['', 'cygdrive', 'c', 'Program Files'])
     _UserBin = os.sep.join(['', 'usr', 'local', 'bin'])
     _SystemBin = os.sep.join(['', 'usr', 'local', 'bin'])
-elif 'Windows' in sys.platform:
+elif 'win' in sys.platform:
     _NormalizedPlatform = 'windows'
     _SystemApps = os.sep + 'Applications'
     _CygwinHome = os.sep.join(['', 'cygdrive', 'home'])
@@ -175,6 +175,7 @@ class TestNavigationFunctions(unittest.TestCase):
         self.assertEqual(_Home, os.getcwd())
 
     def test_movies(self):
+        print _Movies
         # Test return mode with an extant directory
         self.assertEqual(_Movies, fsnav.movies(mode='return'))
         # Test cd mode with an extant directory
