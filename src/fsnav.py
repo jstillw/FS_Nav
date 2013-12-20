@@ -27,6 +27,7 @@ if ('darwin' or 'nix') in sys.platform:
     _Public = os.path.expanduser('~') + os.sep + 'Public'
     _UserApps = os.path.expanduser('~') + os.sep + 'Applications'
     _UserBin = os.path.expanduser('~') + os.sep + 'bin'
+    _SystemBin = os.sep.join(['', 'usr', 'local', 'bin'])
     _ExtBasePath = os.sep + 'Volumes'
 elif 'cygwin' in sys.platform:
     _SystemApps = os.sep + 'Applications'
@@ -44,6 +45,7 @@ elif 'cygwin' in sys.platform:
     _Public = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Public'])
     _UserApps = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Applications'])
     _UserBin = os.sep.join(['', 'cygdrive', 'c', 'Users', 'bin'])
+    _SystemBin = os.sep.join(['', 'usr', 'local', 'bin'])
     _ExtBasePath = os.sep + 'cygdrive'
 elif 'Windows' in sys.platform:
     _SystemApps = os.sep + 'Applications'
@@ -61,17 +63,36 @@ elif 'Windows' in sys.platform:
     _Public = os.sep.join(['C:', 'Users', getpass.getuser(), 'Public'])
     _UserApps = os.sep.join(['C:', 'Users', getpass.getuser(), 'Applications'])
     _UserBin = os.sep.join(['C:', 'Users', getpass.getuser(), 'Bin'])
+    _SystemBin = os.sep.join(['C:', 'Program Files'])
     _ExtBasePath = ''
 else:
     print("FS Nav WARNING: Unsupported platform: %s" % sys.platform)
+    # Assume platform is a linux distribution
+    _SystemApps = os.sep + 'Applications'
+    _CygwinHome = None
+    _Desktop = os.path.expanduser('~') + os.sep + 'Desktop'
+    _Documents = os.path.expanduser('~') + os.sep + 'Documents'
+    _Downloads = os.path.expanduser('~') + os.sep + 'Downloads'
+    _Dropbox = os.path.expanduser('~') + os.sep + 'Dropbox'
+    _GDrive = os.path.expanduser('~') + os.sep + 'Google_Drive'
+    _HD = os.sep
+    _Home = os.path.expanduser('~')
+    _Movies = os.path.expanduser('~') + os.sep + 'Movies'
+    _Music = os.path.expanduser('~') + os.sep + 'Music'
+    _Pictures = os.path.expanduser('~') + os.sep + 'Pictures'
+    _Public = os.path.expanduser('~') + os.sep + 'Public'
+    _UserApps = os.path.expanduser('~') + os.sep + 'Applications'
+    _UserBin = os.path.expanduser('~') + os.sep + 'bin'
+    _SystemBin = os.sep.join(['', 'usr', 'local', 'bin'])
+    _ExtBasePath = os.sep + 'Volumes'
 
 
 # Defined as a function to increase readability within each function
 def _try_chdir(dir_path):
     try:
-        os.chdir(dir_path)
+        os.chdir(str(dir_path))
         return True
-    except IOError:
+    except OSError:
         return False
 
 
@@ -229,6 +250,16 @@ def public(mode='return'):
         return _Public
     elif mode == 'cd':
         return _try_chdir(_Public)
+    else:
+        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
+        return False
+
+
+def systembin(mode='return'):
+    if mode == 'return':
+        return _SystemBin
+    elif mode == 'cd':
+        return _try_chdir(_SystemBin)
     else:
         print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
         return False
