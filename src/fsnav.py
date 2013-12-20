@@ -30,37 +30,37 @@ if ('darwin' or 'nix') in sys.platform:
     _SystemBin = os.sep.join(['', 'usr', 'local', 'bin'])
     _ExtBasePath = os.sep + 'Volumes'
 elif 'cygwin' in sys.platform:
-    _SystemApps = os.sep + 'Applications'
-    _CygwinHome = os.sep.join(['', 'cygdrive', 'home', getpass.getuser()])
+    _SystemApps = os.sep.join(['', 'cygdrive', 'c', 'Program Files'])
+    _CygwinHome = os.sep.join(['', 'cygdrive', 'c', 'home', getpass.getuser()])
     _Desktop = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Desktop'])
     _Documents = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Documents'])
     _Downloads = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Downloads'])
     _Dropbox = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Dropbox'])
     _GDrive = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Google_Drive'])
-    _HD = 'C:' + os.sep
+    _HD = os.sep.join(['', 'cygdrive', 'c'])
     _Home = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Desktop'])
-    _Movies = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Movies'])
+    _Movies = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Videos'])
     _Music = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Music'])
     _Pictures = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Pictures'])
-    _Public = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Public'])
-    _UserApps = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Applications'])
-    _UserBin = os.sep.join(['', 'cygdrive', 'c', 'Users', 'bin'])
+    _Public = os.sep.join(['', 'cygdrive', 'c', 'Users', 'Public'])
+    _UserApps = os.sep.join(['', 'cygdrive', 'c', 'Program Files'])
+    _UserBin = os.sep.join(['', 'usr', 'local', 'bin'])
     _SystemBin = os.sep.join(['', 'usr', 'local', 'bin'])
     _ExtBasePath = os.sep + 'cygdrive'
 elif 'Windows' in sys.platform:
     _SystemApps = os.sep + 'Applications'
     _CygwinHome = os.sep.join(['', 'cygdrive', 'home'])
     _Desktop = os.sep.join(['C:', 'Users', getpass.getuser(), 'Desktop'])
-    _Documents = os.sep.join(['C:', 'Users', getpass.getuser(), 'Documents'])
+    _Documents = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Documents'])
     _Downloads = os.sep.join(['C:', 'Users', getpass.getuser(), 'Downloads'])
     _Dropbox = os.sep.join(['C:', 'Users', getpass.getuser(), 'Dropbox'])
-    _GDrive = os.sep.join(['C:', 'Users', getpass.getuser(), 'Google_Drive'])
+    _GDrive = os.sep.join(['C:', 'Users', getpass.getuser(), 'Google Drive'])
     _HD = 'C:' + os.sep
     _Home = os.sep.join(['C:', 'Users', getpass.getuser()])
-    _Movies = os.sep.join(['C:', 'Users', getpass.getuser(), 'Movies'])
-    _Music = os.sep.join(['C:', 'Users', getpass.getuser(), 'Music'])
-    _Pictures = os.sep.join(['C:', 'Users', getpass.getuser(), 'Pictures'])
-    _Public = os.sep.join(['C:', 'Users', getpass.getuser(), 'Public'])
+    _Movies = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Videos'])
+    _Music = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Music'])
+    _Pictures = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Pictures'])
+    _Public = os.sep.join(['C:', 'Users', 'Public'])
     _UserApps = os.sep.join(['C:', 'Users', getpass.getuser(), 'Applications'])
     _UserBin = os.sep.join(['C:', 'Users', getpass.getuser(), 'Bin'])
     _SystemBin = os.sep.join(['C:', 'Program Files'])
@@ -283,3 +283,20 @@ def userbin(mode='return'):
     else:
         print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
         return False
+
+
+# Allow for cross platform nomenclature
+def videos(mode='return'):
+    return movies(mode=mode)
+
+def myvideos(mode='return'):
+    return movies(mode=mode)
+
+def mydocuments(mode='return'):
+    return documents(mode=mode)
+
+def mypictures(mode='return'):
+    return pictures(mode=mode)
+
+def mymusic(mode='return'):
+    return music(mode=mode)

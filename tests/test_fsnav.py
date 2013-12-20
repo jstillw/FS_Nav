@@ -32,37 +32,37 @@ if ('darwin' or 'nix') in sys.platform:
     _SystemBin = os.sep.join(['', 'usr', 'local', 'bin'])
 elif 'cygwin' in sys.platform:
     _NormalizedPlatform = 'cygwin'
-    _SystemApps = os.sep + 'Applications'
-    _CygwinHome = os.sep.join(['', 'cygdrive', 'home', getpass.getuser()])
+    _SystemApps = os.sep.join(['', 'cygdrive', 'c', 'Program Files'])
+    _CygwinHome = os.sep.join(['', 'cygdrive', 'c', 'home', getpass.getuser()])
     _Desktop = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Desktop'])
     _Documents = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Documents'])
     _Downloads = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Downloads'])
     _Dropbox = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Dropbox'])
     _GDrive = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Google_Drive'])
-    _HD = 'C:' + os.sep
+    _HD = os.sep.join(['', 'cygdrive', 'c'])
     _Home = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Desktop'])
-    _Movies = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Movies'])
+    _Movies = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Videos'])
     _Music = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Music'])
     _Pictures = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Pictures'])
-    _Public = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Public'])
-    _UserApps = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Applications'])
-    _UserBin = os.sep.join(['', 'cygdrive', 'c', 'Users', 'bin'])
+    _Public = os.sep.join(['', 'cygdrive', 'c', 'Users', 'Public'])
+    _UserApps = os.sep.join(['', 'cygdrive', 'c', 'Program Files'])
+    _UserBin = os.sep.join(['', 'usr', 'local', 'bin'])
     _SystemBin = os.sep.join(['', 'usr', 'local', 'bin'])
 elif 'Windows' in sys.platform:
     _NormalizedPlatform = 'windows'
     _SystemApps = os.sep + 'Applications'
     _CygwinHome = os.sep.join(['', 'cygdrive', 'home'])
     _Desktop = os.sep.join(['C:', 'Users', getpass.getuser(), 'Desktop'])
-    _Documents = os.sep.join(['C:', 'Users', getpass.getuser(), 'Documents'])
+    _Documents = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Documents'])
     _Downloads = os.sep.join(['C:', 'Users', getpass.getuser(), 'Downloads'])
     _Dropbox = os.sep.join(['C:', 'Users', getpass.getuser(), 'Dropbox'])
     _GDrive = os.sep.join(['C:', 'Users', getpass.getuser(), 'Google_Drive'])
     _HD = 'C:' + os.sep
     _Home = os.sep.join(['C:', 'Users', getpass.getuser()])
-    _Movies = os.sep.join(['C:', 'Users', getpass.getuser(), 'Movies'])
-    _Music = os.sep.join(['C:', 'Users', getpass.getuser(), 'Music'])
-    _Pictures = os.sep.join(['C:', 'Users', getpass.getuser(), 'Pictures'])
-    _Public = os.sep.join(['C:', 'Users', getpass.getuser(), 'Public'])
+    _Movies = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Videos'])
+    _Music = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Music'])
+    _Pictures = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Pictures'])
+    _Public = os.sep.join(['C:', 'Users', 'Public'])
     _UserApps = os.sep.join(['C:', 'Users', getpass.getuser(), 'Applications'])
     _UserBin = os.sep.join(['C:', 'Users', getpass.getuser(), 'Bin'])
     _SystemBin = os.sep.join(['C:', 'Program Files'])
@@ -222,6 +222,41 @@ class TestNavigationFunctions(unittest.TestCase):
         # Test cd mode with an extant directory
         self.assertTrue(fsnav.userbin(mode='cd'))
         self.assertEqual(_UserBin, os.getcwd())
+
+    def test_videos(self):
+        # Test return mode with an extant directory
+        self.assertEqual(_Movies, fsnav.videos(mode='return'))
+        # Test cd mode with an extant directory
+        self.assertTrue(fsnav.videos(mode='cd'))
+        self.assertEqual(_Movies, os.getcwd())
+
+    def test_myvideos(self):
+        # Test return mode with an extant directory
+        self.assertEqual(_Movies, fsnav.myvideos(mode='return'))
+        # Test cd mode with an extant directory
+        self.assertTrue(fsnav.myvideos(mode='cd'))
+        self.assertEqual(_Movies, os.getcwd())
+
+    def mydocuments(self):
+        # Test return mode with an extant directory
+        self.assertEqual(_Documents, fsnav.mydocuments(mode='return'))
+        # Test cd mode with an extant directory
+        self.assertTrue(fsnav.mydocuments(mode='cd'))
+        self.assertEqual(_Documents, os.getcwd())
+
+    def mypictures(self):
+        # Test return mode with an extant directory
+        self.assertEqual(_Pictures, fsnav.mypictures(mode='return'))
+        # Test cd mode with an extant directory
+        self.assertTrue(fsnav.mypictures(mode='cd'))
+        self.assertEqual(_Pictures, os.getcwd())
+
+    def mymusic(self):
+        # Test return mode with an extant directory
+        self.assertEqual(_Music, fsnav.mymusic(mode='return'))
+        # Test cd mode with an extant directory
+        self.assertTrue(fsnav.mymusic(mode='cd'))
+        self.assertEqual(_Music, os.getcwd())
 
     def tearDown(self):
         os.chdir(self.starting_dir)
