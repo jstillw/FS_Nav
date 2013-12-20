@@ -1,3 +1,10 @@
+13/12/20 - Added fsnav.mymusic() for cross-platform nomenclature
+13/12/20 - Added fsnav.mypictures() for cross-platform nomenclature
+13/12/20 - Added fsnav.mydocuments() for cross-platform nomenclature
+13/12/20 - Added fsnav.myvideos() for cross-platform nomenclature
+13/12/20 - Added fsnav.videos() for cross-platform nomenclature
+13/12/20 - Windows tests are semi-passing.  Anything using os.chdir() is failing
+13/12/20 - All Mac and Cygwin tests are passing
 13/12/19 - Tests to accompany basic features
 13/12/19 - Basic features in place
 13/12/19 - Project setup
