@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+i!/usr/bin/env python
 
 import os
 import sys
@@ -175,7 +175,6 @@ class TestNavigationFunctions(unittest.TestCase):
         self.assertEqual(_Home, os.getcwd())
 
     def test_movies(self):
-        print _Movies
         # Test return mode with an extant directory
         self.assertEqual(_Movies, fsnav.movies(mode='return'))
         # Test cd mode with an extant directory
