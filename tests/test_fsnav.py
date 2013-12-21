@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 
+
 import os
 import sys
 import getpass
 import unittest
 from os import sep
 from glob import glob
-
 
 # Make sure fsnav.py is being imported from the python package, and not from some site-packages directory
 sys.path.insert(0, '..' + sep)
