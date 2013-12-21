@@ -1,6 +1,8 @@
 import os
 import sys
 import getpass
+from glob import glob
+from os import sep
 
 
 # Build information
@@ -12,83 +14,83 @@ __license__ = 'See LICENSE.txt'
 
 # Define platform specific information
 if ('darwin' or 'nix') in sys.platform:
-    _SystemApps = os.sep + 'Applications'
+    _SystemApps = sep + 'Applications'
     _CygwinHome = None
-    _Desktop = os.path.expanduser('~') + os.sep + 'Desktop'
-    _Documents = os.path.expanduser('~') + os.sep + 'Documents'
-    _Downloads = os.path.expanduser('~') + os.sep + 'Downloads'
-    _Dropbox = os.path.expanduser('~') + os.sep + 'Dropbox'
-    _GDrive = os.path.expanduser('~') + os.sep + 'Google_Drive'
-    _GitHub = os.path.expanduser('~') + os.sep + 'GitHub'
-    _HD = os.sep
+    _Desktop = os.path.expanduser('~') + sep + 'Desktop'
+    _Documents = os.path.expanduser('~') + sep + 'Documents'
+    _Downloads = os.path.expanduser('~') + sep + 'Downloads'
+    _Dropbox = os.path.expanduser('~') + sep + 'Dropbox'
+    _GDrive = os.path.expanduser('~') + sep + 'Google_Drive'
+    _GitHub = os.path.expanduser('~') + sep + 'GitHub'
+    _HD = sep
     _Home = os.path.expanduser('~')
-    _Movies = os.path.expanduser('~') + os.sep + 'Movies'
-    _Music = os.path.expanduser('~') + os.sep + 'Music'
-    _Pictures = os.path.expanduser('~') + os.sep + 'Pictures'
-    _Public = os.path.expanduser('~') + os.sep + 'Public'
-    _UserApps = os.path.expanduser('~') + os.sep + 'Applications'
-    _UserBin = os.path.expanduser('~') + os.sep + 'bin'
-    _SystemBin = os.sep.join(['', 'usr', 'local', 'bin'])
-    _ExtBasePath = os.sep + 'Volumes'
+    _Movies = os.path.expanduser('~') + sep + 'Movies'
+    _Music = os.path.expanduser('~') + sep + 'Music'
+    _Pictures = os.path.expanduser('~') + sep + 'Pictures'
+    _Public = os.path.expanduser('~') + sep + 'Public'
+    _UserApps = os.path.expanduser('~') + sep + 'Applications'
+    _UserBin = os.path.expanduser('~') + sep + 'bin'
+    _SystemBin = sep.join(['', 'usr', 'local', 'bin'])
+    _ExtBasePath = sep + 'Volumes'
 elif 'cygwin' in sys.platform:
-    _SystemApps = os.sep.join(['', 'cygdrive', 'c', 'Program Files'])
-    _CygwinHome = os.sep.join(['', 'cygdrive', 'c', 'home', getpass.getuser()])
-    _Desktop = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Desktop'])
-    _Documents = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Documents'])
-    _Downloads = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Downloads'])
-    _Dropbox = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Dropbox'])
-    _GDrive = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Google_Drive'])
-    _GitHub = os.path.expanduser('~') + os.sep + 'GitHub'
-    _HD = os.sep.join(['', 'cygdrive', 'c'])
-    _Home = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Desktop'])
-    _Movies = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Videos'])
-    _Music = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Music'])
-    _Pictures = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Pictures'])
-    _Public = os.sep.join(['', 'cygdrive', 'c', 'Users', 'Public'])
-    _UserApps = os.sep.join(['', 'cygdrive', 'c', 'Program Files'])
-    _UserBin = os.sep.join(['', 'usr', 'local', 'bin'])
-    _SystemBin = os.sep.join(['', 'usr', 'local', 'bin'])
-    _ExtBasePath = os.sep + 'cygdrive'
+    _SystemApps = sep.join(['', 'cygdrive', 'c', 'Program Files'])
+    _CygwinHome = sep.join(['', 'cygdrive', 'c', 'home', getpass.getuser()])
+    _Desktop = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Desktop'])
+    _Documents = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Documents'])
+    _Downloads = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Downloads'])
+    _Dropbox = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Dropbox'])
+    _GDrive = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Google_Drive'])
+    _GitHub = os.path.expanduser('~') + sep + 'GitHub'
+    _HD = sep.join(['', 'cygdrive', 'c'])
+    _Home = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Desktop'])
+    _Movies = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Videos'])
+    _Music = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Music'])
+    _Pictures = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Pictures'])
+    _Public = sep.join(['', 'cygdrive', 'c', 'Users', 'Public'])
+    _UserApps = sep.join(['', 'cygdrive', 'c', 'Program Files'])
+    _UserBin = sep.join(['', 'usr', 'local', 'bin'])
+    _SystemBin = sep.join(['', 'usr', 'local', 'bin'])
+    _ExtBasePath = sep + 'cygdrive'
 elif 'win' in sys.platform:
-    _SystemApps = os.sep + 'Applications'
-    _CygwinHome = os.sep.join(['', 'cygdrive', 'home'])
-    _Desktop = os.sep.join(['C:', 'Users', getpass.getuser(), 'Desktop'])
-    _Documents = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Documents'])
-    _Downloads = os.sep.join(['C:', 'Users', getpass.getuser(), 'Downloads'])
-    _Dropbox = os.sep.join(['C:', 'Users', getpass.getuser(), 'Dropbox'])
-    _GDrive = os.sep.join(['C:', 'Users', getpass.getuser(), 'Google_Drive'])
-    _GitHub = os.path.expanduser('~') + os.sep + 'GitHub'
-    _HD = 'C:' + os.sep
-    _Home = os.sep.join(['C:', 'Users', getpass.getuser()])
-    _Movies = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Videos'])
-    _Music = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Music'])
-    _Pictures = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Pictures'])
-    _Public = os.sep.join(['C:', 'Users', 'Public'])
-    _UserApps = os.sep.join(['C:', 'Users', getpass.getuser(), 'Applications'])
-    _UserBin = os.sep.join(['C:', 'Users', getpass.getuser(), 'Bin'])
-    _SystemBin = os.sep.join(['C:', 'Program Files'])
+    _SystemApps = sep + 'Applications'
+    _CygwinHome = sep.join(['', 'cygdrive', 'home'])
+    _Desktop = sep.join(['C:', 'Users', getpass.getuser(), 'Desktop'])
+    _Documents = sep.join(['C:', 'Users', getpass.getuser(), 'My Documents'])
+    _Downloads = sep.join(['C:', 'Users', getpass.getuser(), 'Downloads'])
+    _Dropbox = sep.join(['C:', 'Users', getpass.getuser(), 'Dropbox'])
+    _GDrive = sep.join(['C:', 'Users', getpass.getuser(), 'Google_Drive'])
+    _GitHub = os.path.expanduser('~') + sep + 'GitHub'
+    _HD = 'C:' + sep
+    _Home = sep.join(['C:', 'Users', getpass.getuser()])
+    _Movies = sep.join(['C:', 'Users', getpass.getuser(), 'My Videos'])
+    _Music = sep.join(['C:', 'Users', getpass.getuser(), 'My Music'])
+    _Pictures = sep.join(['C:', 'Users', getpass.getuser(), 'My Pictures'])
+    _Public = sep.join(['C:', 'Users', 'Public'])
+    _UserApps = sep.join(['C:', 'Users', getpass.getuser(), 'Applications'])
+    _UserBin = sep.join(['C:', 'Users', getpass.getuser(), 'Bin'])
+    _SystemBin = sep.join(['C:', 'Program Files'])
     _ExtBasePath = ''
 else:
     print("FS Nav WARNING: Unsupported platform: %s" % sys.platform)
     # Assume platform is a linux distribution
-    _SystemApps = os.sep + 'Applications'
+    _SystemApps = sep + 'Applications'
     _CygwinHome = None
-    _Desktop = os.path.expanduser('~') + os.sep + 'Desktop'
-    _Documents = os.path.expanduser('~') + os.sep + 'Documents'
-    _Downloads = os.path.expanduser('~') + os.sep + 'Downloads'
-    _Dropbox = os.path.expanduser('~') + os.sep + 'Dropbox'
-    _GDrive = os.path.expanduser('~') + os.sep + 'Google_Drive'
-    _GitHub = os.path.expanduser('~') + os.sep + 'GitHub'
-    _HD = os.sep
+    _Desktop = os.path.expanduser('~') + sep + 'Desktop'
+    _Documents = os.path.expanduser('~') + sep + 'Documents'
+    _Downloads = os.path.expanduser('~') + sep + 'Downloads'
+    _Dropbox = os.path.expanduser('~') + sep + 'Dropbox'
+    _GDrive = os.path.expanduser('~') + sep + 'Google_Drive'
+    _GitHub = os.path.expanduser('~') + sep + 'GitHub'
+    _HD = sep
     _Home = os.path.expanduser('~')
-    _Movies = os.path.expanduser('~') + os.sep + 'Movies'
-    _Music = os.path.expanduser('~') + os.sep + 'Music'
-    _Pictures = os.path.expanduser('~') + os.sep + 'Pictures'
-    _Public = os.path.expanduser('~') + os.sep + 'Public'
-    _UserApps = os.path.expanduser('~') + os.sep + 'Applications'
-    _UserBin = os.path.expanduser('~') + os.sep + 'bin'
-    _SystemBin = os.sep.join(['', 'usr', 'local', 'bin'])
-    _ExtBasePath = os.sep + 'Volumes'
+    _Movies = os.path.expanduser('~') + sep + 'Movies'
+    _Music = os.path.expanduser('~') + sep + 'Music'
+    _Pictures = os.path.expanduser('~') + sep + 'Pictures'
+    _Public = os.path.expanduser('~') + sep + 'Public'
+    _UserApps = os.path.expanduser('~') + sep + 'Applications'
+    _UserBin = os.path.expanduser('~') + sep + 'bin'
+    _SystemBin = sep.join(['', 'usr', 'local', 'bin'])
+    _ExtBasePath = sep + 'Volumes'
 
 
 # Defined as a function to increase readability within each function
@@ -101,8 +103,16 @@ def _try_chdir(dir_path):
 
 
 # Utility functions
-def count():
-    pass
+def count(*args):
+    item_list = []
+    for arg in args:
+        if os.path.isdir(arg):
+            item_list += glob(arg + sep + '*')
+        elif '*' in arg:
+            item_list += glob(arg)
+        else:
+            item_list.append(arg)
+    return len(item_list)
 
 
 # Functions to navigate around the file system
@@ -171,11 +181,11 @@ def extdrive(drive_name, mode='return'):
         return _SystemApps
     elif mode == 'cd':
         if ('darwin' or 'nix') in sys.platform:
-            function_return = _try_chdir(_ExtBasePath + os.sep + drive_name)
+            function_return = _try_chdir(_ExtBasePath + sep + drive_name)
         elif 'cygwin' in sys.platform:
-            function_return = _try_chdir(_ExtBasePath + os.sep + drive_name.lower())
+            function_return = _try_chdir(_ExtBasePath + sep + drive_name.lower())
         elif 'Windows' in sys.platform:
-            function_return = _try_chdir(drive_name.upper() + ':' + os.sep)
+            function_return = _try_chdir(drive_name.upper() + ':' + sep)
         else:
             function_return = False
             print("%s.%s ERROR: Platform not supported." % (__name__, apps.__name__))
