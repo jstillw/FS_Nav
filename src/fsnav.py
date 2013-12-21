@@ -19,6 +19,7 @@ if ('darwin' or 'nix') in sys.platform:
     _Downloads = os.path.expanduser('~') + os.sep + 'Downloads'
     _Dropbox = os.path.expanduser('~') + os.sep + 'Dropbox'
     _GDrive = os.path.expanduser('~') + os.sep + 'Google_Drive'
+    _GitHub = os.path.expanduser('~') + os.sep + 'GitHub'
     _HD = os.sep
     _Home = os.path.expanduser('~')
     _Movies = os.path.expanduser('~') + os.sep + 'Movies'
@@ -37,6 +38,7 @@ elif 'cygwin' in sys.platform:
     _Downloads = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Downloads'])
     _Dropbox = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Dropbox'])
     _GDrive = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Google_Drive'])
+    _GitHub = os.path.expanduser('~') + os.sep + 'GitHub'
     _HD = os.sep.join(['', 'cygdrive', 'c'])
     _Home = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Desktop'])
     _Movies = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Videos'])
@@ -55,6 +57,7 @@ elif 'win' in sys.platform:
     _Downloads = os.sep.join(['C:', 'Users', getpass.getuser(), 'Downloads'])
     _Dropbox = os.sep.join(['C:', 'Users', getpass.getuser(), 'Dropbox'])
     _GDrive = os.sep.join(['C:', 'Users', getpass.getuser(), 'Google_Drive'])
+    _GitHub = os.path.expanduser('~') + os.sep + 'GitHub'
     _HD = 'C:' + os.sep
     _Home = os.sep.join(['C:', 'Users', getpass.getuser()])
     _Movies = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Videos'])
@@ -75,6 +78,7 @@ else:
     _Downloads = os.path.expanduser('~') + os.sep + 'Downloads'
     _Dropbox = os.path.expanduser('~') + os.sep + 'Dropbox'
     _GDrive = os.path.expanduser('~') + os.sep + 'Google_Drive'
+    _GitHub = os.path.expanduser('~') + os.sep + 'GitHub'
     _HD = os.sep
     _Home = os.path.expanduser('~')
     _Movies = os.path.expanduser('~') + os.sep + 'Movies'
@@ -195,6 +199,16 @@ def gdrive(mode='return'):
         return False
 
 
+def github(mode='return'):
+    if mode == 'return':
+        return _GitHub
+    elif mode == 'cd':
+        return _try_chdir(_GitHub)
+    else:
+        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
+        return False
+
+
 def hd(mode='return'):
     if mode == 'return':
         return _HD
@@ -285,18 +299,22 @@ def userbin(mode='return'):
         return False
 
 
-# Allow for cross platform nomenclature
-def videos(mode='return'):
-    return movies(mode=mode)
-
-def myvideos(mode='return'):
-    return movies(mode=mode)
-
+# Allow for cross platform nomenclature and other increased uability
 def mydocuments(mode='return'):
     return documents(mode=mode)
+
+
+def mymusic(mode='return'):
+    return music(mode=mode)
+
 
 def mypictures(mode='return'):
     return pictures(mode=mode)
 
-def mymusic(mode='return'):
-    return music(mode=mode)
+
+def myvideos(mode='return'):
+    return movies(mode=mode)
+
+
+def videos(mode='return'):
+    return movies(mode=mode)
