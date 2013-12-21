@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7da5b23f-e80f-4d2b-872e-ae548b60e3f3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/FS_Nav.iml" afterPath="$PROJECT_DIR$/.idea/FS_Nav.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fsnav.py" afterPath="$PROJECT_DIR$/src/fsnav.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_fsnav.py" afterPath="$PROJECT_DIR$/tests/test_fsnav.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/wursterk.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/wursterk.xml" />
     </list>
     <ignored path="FS_Nav.iws" />
@@ -32,10 +29,10 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="fsnav.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="fsnav.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/fsnav.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="195" column="33" selection-start="7672" selection-end="7672" vertical-scroll-proportion="0.6304348" vertical-offset="2548" max-vertical-offset="4875">
+                <state line="302" column="0" selection-start="10331" selection-end="10553" vertical-scroll-proportion="0.5986622" vertical-offset="4172" max-vertical-offset="4770">
                   <folding>
                     <element signature="e#0#9#0" expanded="true" />
                   </folding>
@@ -47,10 +44,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="test_fsnav.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="test_fsnav.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/tests/test_fsnav.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="77" column="46" selection-start="4117" selection-end="4117" vertical-scroll-proportion="0.66964287" vertical-offset="735" max-vertical-offset="4215">
+                <state line="240" column="21" selection-start="10876" selection-end="10876" vertical-scroll-proportion="0.4107143" vertical-offset="3325" max-vertical-offset="3885">
                   <folding />
                 </state>
               </provider>
@@ -76,8 +73,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/tests/test_fsnav.py" />
         <option value="$PROJECT_DIR$/src/fsnav.py" />
+        <option value="$PROJECT_DIR$/tests/test_fsnav.py" />
       </list>
     </option>
   </component>
@@ -396,19 +393,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_fsnav.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="46" selection-start="4117" selection-end="4117" vertical-scroll-proportion="0.66964287" vertical-offset="735" max-vertical-offset="4215">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fsnav.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="195" column="33" selection-start="7672" selection-end="7672" vertical-scroll-proportion="0.6304348" vertical-offset="2548" max-vertical-offset="4875">
+        <state line="302" column="0" selection-start="10331" selection-end="10553" vertical-scroll-proportion="0.5986622" vertical-offset="4172" max-vertical-offset="4770">
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_fsnav.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="240" column="21" selection-start="10876" selection-end="10876" vertical-scroll-proportion="0.4107143" vertical-offset="3325" max-vertical-offset="3885">
+          <folding />
         </state>
       </provider>
     </entry>
