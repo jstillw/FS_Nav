@@ -234,40 +234,18 @@ class TestNavigationFunctions(unittest.TestCase):
         self.assertTrue(fsnav.userbin(mode='cd'))
         self.assertEqual(_UserBin, os.getcwd())
 
-    def test_videos(self):
-        # Test return mode with an extant directory
-        self.assertEqual(_Movies, fsnav.videos(mode='return'))
-        # Test cd mode with an extant directory
-        self.assertTrue(fsnav.videos(mode='cd'))
-        self.assertEqual(_Movies, os.getcwd())
-
-    def test_myvideos(self):
-        # Test return mode with an extant directory
-        self.assertEqual(_Movies, fsnav.myvideos(mode='return'))
-        # Test cd mode with an extant directory
-        self.assertTrue(fsnav.myvideos(mode='cd'))
-        self.assertEqual(_Movies, os.getcwd())
-
-    def mydocuments(self):
-        # Test return mode with an extant directory
-        self.assertEqual(_Documents, fsnav.mydocuments(mode='return'))
-        # Test cd mode with an extant directory
-        self.assertTrue(fsnav.mydocuments(mode='cd'))
-        self.assertEqual(_Documents, os.getcwd())
-
-    def mypictures(self):
-        # Test return mode with an extant directory
-        self.assertEqual(_Pictures, fsnav.mypictures(mode='return'))
-        # Test cd mode with an extant directory
-        self.assertTrue(fsnav.mypictures(mode='cd'))
-        self.assertEqual(_Pictures, os.getcwd())
-
-    def mymusic(self):
-        # Test return mode with an extant directory
-        self.assertEqual(_Music, fsnav.mymusic(mode='return'))
-        # Test cd mode with an extant directory
-        self.assertTrue(fsnav.mymusic(mode='cd'))
-        self.assertEqual(_Music, os.getcwd())
+    # Test cross platform nomenclature and other increased usability functions
+    test_googledrive = test_gdrive
+    test_google_drive = test_gdrive
+    test_mydocuments = test_documents
+    test_my_documents = test_documents
+    test_mymusic = test_music
+    test_my_music = test_music
+    test_mypictures = test_pictures
+    test_my_pictures = test_pictures
+    test_myvideos = test_movies
+    test_my_videos = test_movies
+    test_videos = test_movies
 
     def tearDown(self):
         os.chdir(self.starting_dir)
