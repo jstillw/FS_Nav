@@ -299,22 +299,15 @@ def userbin(mode='return'):
         return False
 
 
-# Allow for cross platform nomenclature and other increased uability
-def mydocuments(mode='return'):
-    return documents(mode=mode)
-
-
-def mymusic(mode='return'):
-    return music(mode=mode)
-
-
-def mypictures(mode='return'):
-    return pictures(mode=mode)
-
-
-def myvideos(mode='return'):
-    return movies(mode=mode)
-
-
-def videos(mode='return'):
-    return movies(mode=mode)
+# Allow for cross platform nomenclature and other increased usability
+googledrive = gdrive
+google_drive = gdrive
+mydocuments = documents
+my_documents = documents
+mymusic = music
+my_music = music
+mypictures = pictures
+my_pictures = pictures
+myvideos = movies
+my_videos = movies
+videos = movies
