@@ -21,6 +21,7 @@ if ('darwin' or 'nix') in sys.platform:
     _Downloads = os.path.expanduser('~') + os.sep + 'Downloads'
     _Dropbox = os.path.expanduser('~') + os.sep + 'Dropbox'
     _GDrive = os.path.expanduser('~') + os.sep + 'Google_Drive'
+    _GitHub = os.path.expanduser('~') + os.sep + 'GitHub'
     _HD = os.sep
     _Home = os.path.expanduser('~')
     _Movies = os.path.expanduser('~') + os.sep + 'Movies'
@@ -39,6 +40,7 @@ elif 'cygwin' in sys.platform:
     _Downloads = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Downloads'])
     _Dropbox = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Dropbox'])
     _GDrive = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Google_Drive'])
+    _GitHub = os.path.expanduser('~') + os.sep + 'GitHub'
     _HD = os.sep.join(['', 'cygdrive', 'c'])
     _Home = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Desktop'])
     _Movies = os.sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Videos'])
@@ -57,6 +59,7 @@ elif 'win' in sys.platform:
     _Downloads = os.sep.join(['C:', 'Users', getpass.getuser(), 'Downloads'])
     _Dropbox = os.sep.join(['C:', 'Users', getpass.getuser(), 'Dropbox'])
     _GDrive = os.sep.join(['C:', 'Users', getpass.getuser(), 'Google_Drive'])
+    _GitHub = os.path.expanduser('~') + os.sep + 'GitHub'
     _HD = 'C:' + os.sep
     _Home = os.sep.join(['C:', 'Users', getpass.getuser()])
     _Movies = os.sep.join(['C:', 'Users', getpass.getuser(), 'My Videos'])
@@ -77,6 +80,7 @@ else:
     _Downloads = os.path.expanduser('~') + os.sep + 'Downloads'
     _Dropbox = os.path.expanduser('~') + os.sep + 'Dropbox'
     _GDrive = os.path.expanduser('~') + os.sep + 'Google_Drive'
+    _GitHub = os.path.expanduser('~') + os.sep + 'GitHub'
     _HD = os.sep
     _Home = os.path.expanduser('~')
     _Movies = os.path.expanduser('~') + os.sep + 'Movies'
@@ -159,6 +163,13 @@ class TestNavigationFunctions(unittest.TestCase):
         # Test cd mode with an extant directory
         self.assertTrue(fsnav.gdrive(mode='cd'))
         self.assertEqual(_GDrive, os.getcwd())
+
+    def test_github(self):
+        # Test return mode with an extant directory
+        self.assertEqual(_GitHub, fsnav.github(mode='return'))
+        # Test cd mode with an extant directory
+        self.assertTrue(fsnav.github(mode='cd'))
+        self.assertEqual(_GitHub, os.getcwd())
 
     def test_hd(self):
         # Test return mode with an extant directory
