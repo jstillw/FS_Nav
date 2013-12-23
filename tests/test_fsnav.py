@@ -7,6 +7,8 @@ import getpass
 import unittest
 from os import sep
 from glob import glob
+import time
+
 
 # Make sure fsnav.py is being imported from the python package, and not from some site-packages directory
 sys.path.insert(0, '..' + sep)
@@ -117,17 +119,29 @@ class TestNavigationFunctions(unittest.TestCase):
         self.non_extant_dir = '__NON_EXTANT_DIRECTORY__'
 
     def test_count(self):
-        # Get some files to test with
-        all_test_files = glob('*')
-        test_files_and_src = glob('..' + sep + 'src' + sep + '*') + all_test_files
-        limited_test_files = glob('*d')
-        # Test with all files in test directory
-        self.assertEqual(len(all_test_files), fsnav.count('*'))
-        # Test with all test files and the src directory
-        # Don't glob src when running fsnav.count(), allow the function to do it internally so it becomes testable
-        self.assertEqual(len(test_files_and_src), fsnav.count('*', '..' + sep + 'src'))
-        # Test with a limited set of test files
-        self.assertEqual(len(limited_test_files), fsnav.count('*d'))
+        # Test with just a path to a directory
+        directory = '..' + sep + 'bin'
+        expected = len(glob(directory + sep + '*'))
+        actual = fsnav.count([directory])
+        self.assertEqual(expected, actual)
+        # Test with just a path to a directory and random files
+        directory = '..' + sep + 'bin'
+        file_list = glob('*')
+        submission_list = [i for i in file_list]
+        submission_list.append(directory)
+        actual = fsnav.count(submission_list)
+        expected = len(glob(directory + sep + '*') + file_list)
+        self.assertEqual(expected, actual)
+        # Test with just a path to a directory, random files, and a string containing a wildcard
+        directory = '..' + sep + 'bin'
+        file_list = glob('*')
+        wildcard_string = '..' + sep + 'src' + sep + '*'
+        submission_list = [i for i in file_list]
+        submission_list.append(directory)
+        submission_list.append(wildcard_string)
+        expected = len(glob(directory + sep + '*') + file_list + glob(wildcard_string))
+        actual = fsnav.count(submission_list)
+        self.assertEqual(expected, actual)
 
     def test_apps(self):
         # Test return mode with an extant directory
