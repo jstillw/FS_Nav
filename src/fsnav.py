@@ -40,7 +40,7 @@ elif 'cygwin' in sys.platform:
     _Downloads = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Downloads'])
     _Dropbox = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Dropbox'])
     _GDrive = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Google_Drive'])
-    _GitHub = os.path.expanduser('~') + sep + 'GitHub'
+    _GitHub = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'GitHub'])
     _HD = sep.join(['', 'cygdrive', 'c'])
     _Home = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Desktop'])
     _Movies = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Videos'])
