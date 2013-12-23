@@ -1,3 +1,5 @@
+13/12/22 - Improved TestNavigationFunctions.test_count()
+13/12/21 - Added fsnav.count() for use in count.py and appropriate tests
 13/12/20 - Added fsnav.mymusic() for cross-platform nomenclature
 13/12/20 - Added fsnav.mypictures() for cross-platform nomenclature
 13/12/20 - Added fsnav.mydocuments() for cross-platform nomenclature
