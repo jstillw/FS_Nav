@@ -103,15 +103,15 @@ def _try_chdir(dir_path):
 
 
 # Utility functions
-def count(*args):
+def count(count_items):
     item_list = []
-    for arg in args:
-        if os.path.isdir(arg):
-            item_list += glob(arg + sep + '*')
-        elif '*' in arg:
-            item_list += glob(arg)
+    for item in count_items:
+        if os.path.isdir(item):
+            item_list += glob(item + sep + '*')
+        elif '*' in item:
+            item_list += glob(item)
         else:
-            item_list.append(arg)
+            item_list.append(item)
     return len(item_list)
 
 
