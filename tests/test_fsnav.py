@@ -7,7 +7,6 @@ import getpass
 import unittest
 from os import sep
 from glob import glob
-import time
 
 
 # Make sure fsnav.py is being imported from the python package, and not from some site-packages directory
@@ -121,7 +120,7 @@ class TestNavigationFunctions(unittest.TestCase):
     def test_count(self):
         # Test with just a path to a directory
         directory = '..' + sep + 'bin'
-        expected = len(glob(directory + sep + '*'))
+        expected = len(list(set(glob(directory + sep + '*'))))
         actual = fsnav.count([directory])
         self.assertEqual(expected, actual)
         # Test with just a path to a directory and random files
@@ -130,7 +129,7 @@ class TestNavigationFunctions(unittest.TestCase):
         submission_list = [i for i in file_list]
         submission_list.append(directory)
         actual = fsnav.count(submission_list)
-        expected = len(glob(directory + sep + '*') + file_list)
+        expected = len(list(set(glob(directory + sep + '*') + file_list)))
         self.assertEqual(expected, actual)
         # Test with just a path to a directory, random files, and a string containing a wildcard
         directory = '..' + sep + 'bin'
@@ -139,7 +138,7 @@ class TestNavigationFunctions(unittest.TestCase):
         submission_list = [i for i in file_list]
         submission_list.append(directory)
         submission_list.append(wildcard_string)
-        expected = len(glob(directory + sep + '*') + file_list + glob(wildcard_string))
+        expected = len(list(set(glob(directory + sep + '*') + file_list + glob(wildcard_string))))
         actual = fsnav.count(submission_list)
         self.assertEqual(expected, actual)
 
