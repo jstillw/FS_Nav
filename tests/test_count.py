@@ -30,7 +30,6 @@ class TestMain(unittest.TestCase):
         self.assertEqual(len(glob(directory + sep + '*') + file_list), fsnav.count(submission_list))
         # Test with just a path to a directory, random files, and a string containing a wildcard
 
-
     def tearDown(self):
         os.chdir(self.current_dir)
 
