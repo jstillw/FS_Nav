@@ -9,7 +9,7 @@ from sys import exit
 # Build information
 __author__ = fsnav.__author__
 __version__ = '0.1'
-__email__ = fsnav.__author__
+__email__ = fsnav.__email__
 __license___ = fsnav.__license__
 
 
