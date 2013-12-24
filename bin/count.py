@@ -37,12 +37,8 @@ def print_license():
 # Actually do stuff
 def main(args):
 
-    # Define constraints
-    allowed_modes = ['print', 'return']
-
     # Define defaults
     item_list = []
-    mode = 'print'
 
     # Loop through arguments and configure
     for arg in args:
@@ -61,23 +57,8 @@ def main(args):
         else:
             item_list.append(arg)
 
-    # Validate
-    bail = False
-    if mode not in allowed_modes:
-        print("count.py ERROR: Invalid mode: %s" % mode)
-        print("  Allowed modes = %s" % ' '.join(allowed_modes))
-    if bail:
-        exit()
-
     # Call function
-    function_result = fsnav.count(item_list)
-    if mode == 'print':
-        print(function_result)
-    elif mode == 'return':
-        return function_result
-    else:
-        print("count.py ERROR: Bad mode that should have been caught by the validation step.  Oops...")
-        exit()
+    print(fsnav.count(item_list))
 
 
 # Execute
