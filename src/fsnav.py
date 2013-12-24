@@ -103,7 +103,7 @@ def _try_chdir(dir_path):
 
 
 # Utility functions
-def count(count_items):
+def count(count_items, return_list=False):
     item_list = []
     for item in count_items:
         if os.path.isdir(item):
@@ -112,7 +112,10 @@ def count(count_items):
             item_list += glob(item)
         else:
             item_list.append(item)
-    return len(item_list)
+    if return_list:
+        return list(set(item_list))
+    else:
+        return len(list(set(item_list)))
 
 
 # Functions to navigate around the file system
