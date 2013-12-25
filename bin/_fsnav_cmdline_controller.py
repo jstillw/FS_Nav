@@ -2,8 +2,10 @@
 
 
 import sys
-import fsnav
 from sys import exit
+
+sys.path.insert(0, '../')
+from src import fsnav
 
 
 # Build information
