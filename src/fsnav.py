@@ -1,15 +1,16 @@
 import os
 import sys
 import getpass
-from glob import glob
+import subprocess
 from os import sep
+from glob import glob
 
 
 # Build information
 __author__ = 'Kevin Wurster'
 __version__ = '0.1'
 __email__ = 'wursterk@gmail.com'
-__license__ = 'See LICENSE.txt'
+__license__ = 'See LICENSE.txt from original package.'
 
 
 # Define platform specific information
@@ -97,6 +98,7 @@ else:
 def _try_chdir(dir_path):
     try:
         os.chdir(str(dir_path))
+        print os.getcwd()
         return True
     except OSError:
         return False
@@ -324,3 +326,111 @@ my_pictures = pictures
 myvideos = movies
 my_videos = movies
 videos = movies
+
+
+# Since almost all of the utilities operate in a similar manner, they can all use the framework below
+class UtilFramework(object):
+
+    def __init__(self, util_args=None, util_name=None, util_version=None, util_function=None):
+
+        # Validate required arguments
+        bail = False
+        if util_args is None:
+            print("fsnav.UtilFramework() ERROR: Need util_args")
+            bail = True
+        if not isinstance(util_args, list):
+            print("fsnav.UtilFramework() ERROR: util_args value is invalid - need a list: %s" % str(util_args))
+            bail = True
+        if util_name is None:
+            print("fsnav.UtilFramework() ERROR: Need a util_name")
+            bail = True
+        if not isinstance(util_name, str):
+            print("fsnav.UtilFramework() ERROR: util_name value is invalid - need a str: %s" % str(util_name))
+            bail = True
+        if util_version is None:
+            print("fsnav.UtilFramework() ERROR: Need util_version")
+            bail = True
+        if not isinstance(util_version,  str):
+            print("fsnav.UtilFramework() ERROR: util_version is invalid - need a str: %s" % str(util_version))
+            bail = True
+        if util_function is None:
+            print("fsnav.UtilFramework() ERROR: Need a util_function")
+            bail = True
+        if not hasattr(util_function, '__call__'):
+            print("fsnav.UtilFramework() ERROR: util_function is invalid - need a function: %s" % util_function)
+            bail = True
+        if bail:
+            raise ValueError("Did not get required arguments")
+
+        # Push information class-wide
+        self.util_args = util_args
+        self.util_name = util_name
+        self.util_version = util_version
+        self.util_function = util_function
+
+    def print_usage(self):
+        print("%s.print_usage()" % self.__name__)
+        exit()
+
+    def print_help(self):
+        print("%s.print_help()" % self.__name__)
+        exit()
+
+    def print_license(self):
+        print("%s.print_license()" % self.__name__)
+        exit()
+
+    def print_version(self):
+        print("%s.print_version()" % self.__name__)
+        exit()
+
+    def run(self):
+
+        # Set constraints
+        allowed_modes = ['cd', 'print', 'return']
+
+        # Set defaults
+        mode = 'print'
+
+        # Loop through arguments and configure
+        for arg in self.util_args:
+
+            # Help arguments
+            if arg == ('--help' or '-help'):
+                self.print_help()
+            elif arg == ('--usage' or '-usage'):
+                self.print_usage()
+            elif arg == ('--version' or '-version'):
+                self.print_version()
+            elif arg == ('--license' or '-license'):
+                self.print_license()
+
+            # Additional parameters
+            elif arg == ('--script' or '-script'):
+                mode = 'print'
+
+            # Catch errors
+            elif arg[0] != '-':
+                print("An arg before %s has invalid parameters" % arg)
+                exit()
+            else:
+                print("Invalid arg: %s" % arg)
+                exit()
+
+        # Validate
+        bail = False
+        if mode not in allowed_modes:
+            print("ERROR: Invalid mode: %s" % mode)
+            print("  Allowed modes: %s" % str(allowed_modes))
+        if bail:
+            exit()
+
+        # Call function and handle information appropriately
+        if mode == 'cd':
+            return self.util_function(mode='cd')
+        elif mode == 'print':
+            print self.util_function(mode='return')
+        elif mode == 'return':
+            return self.util_function(mode='return')
+        else:
+            raise ValueError("Mode '%s' is invalid but should have been caught by the validation step" % mode)
