@@ -1,3 +1,5 @@
+13/12/25 - Added _fsnav_cmdline_controller.py to communicate between the front end utilities and fsnav.UtilFramework()
+13/12/24 - Added fsnav.UtilFramework() as a platform for command line utilities
 13/12/23 - Fixed a problem where dirs in fsnav.count() could offset final count
 13/12/22 - Improved TestNavigationFunctions.test_count()
 13/12/21 - Added fsnav.count() for use in count.py and appropriate tests
