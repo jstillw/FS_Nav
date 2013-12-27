@@ -74,7 +74,7 @@ def main(args):
 
     # Set defaults
     allowed_utils = ['apps', 'cyghome', 'desktop', 'documents', 'downloads',
-                     'dropbox', 'gdrive', 'hd', 'home', 'movies',
+                     'dropbox', 'extdrive', 'gdrive', 'hd', 'home', 'movies',
                      'music', 'pictures', 'public', 'systembin', 'userapps', 'userbin',
                      'googledrive', 'google_drive', 'mydocuments', 'my_documents',
                      'mymusic', 'my_music', 'mypictures', 'my_pictures', 'myvideos',
