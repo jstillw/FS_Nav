@@ -50,24 +50,60 @@ if __name__ == '__main__':
     exit()'''
 
 
+def print_help():
+    print("Help")
+    exit()
+
+
+def print_usage():
+    print("Usage")
+    exit()
+
+
+def print_license():
+    print("License")
+    exit()
+
+
+def print_version():
+    print("Version")
+    exit()
+
+
 def main(args):
 
     # Set defaults
-    utils_to_build = ['apps', 'cyghome', 'desktop', 'documents', 'downloads',
-                      'dropbox', 'extdrive', 'gdrive', 'hd', 'home', 'movies',
-                      'music', 'pictures', 'public', 'systembin', 'userapps', 'userbin']
+    allowed_utils = ['apps', 'cyghome', 'desktop', 'documents', 'downloads',
+                     'dropbox', 'gdrive', 'hd', 'home', 'movies',
+                     'music', 'pictures', 'public', 'systembin', 'userapps', 'userbin',
+                     'googledrive', 'google_drive', 'mydocuments', 'my_documents',
+                     'mymusic', 'my_music', 'mypictures', 'my_pictures', 'myvideos',
+                     'my_videos', 'videos']
+    utils_to_build = allowed_utils
     keep_utils = []
     drop_utils = []
     build_dir = '..' + sep + 'bin'
     with_extensions = True
     extension = '.py'
     permissions = 0777
+    remove_utilities = False
+    force_build = False
 
     # Loop through arguments and configure
     for arg in args:
 
+        # Help arguments
+        if arg == '--help':
+            print_help()
+        elif arg == '--usage':
+            print_usage()
+        elif arg == '--version':
+            print_version()
+        elif arg == '--license':
+            print_license()
+
         # Filter utilities to build
-        if ('--skip-util=' or '--drop-util=') in arg:
+        elif ('--skip-util=' or '--drop-util=') in arg:
             drop_utils.append(arg.split('=')[1])
         elif '--keep-util=' in arg:
             keep_utils.append(arg.split('=')[1])
@@ -79,10 +115,14 @@ def main(args):
         # Additional configurations
         elif ('--no-extensions' or '--no-ext') in arg:
             with_extensions = False
-        elif '--extension=' in arg:
+        elif ('--extension=' or '-ext=') in arg:
             extension = arg.split('=')[1]
         elif ('--permissions=' or '--perm=') in arg:
                 permissions = arg.split('=')[1]
+        elif arg == '--clean' or '--remove':
+            remove_utilities = True
+        elif arg == '--force':
+            force_build = True
 
         # Catch errors
         elif arg[0] != '-':
@@ -116,6 +156,10 @@ def main(args):
     except ValueError:
         print("build_utilities.py ERROR: Invalid permissions - must be an int: %s" % str(permissions))
         bail = True
+    for util in utils_to_build:
+        if util not in allowed_utils:
+            print("build_utilities.py ERROR: Invalid utility code: %s" % util)
+            bail = True
     if bail:
         exit()
 
@@ -127,10 +171,22 @@ def main(args):
         else:
             util_name = util + extension
             util_path = build_dir + sep + util_name
-        print("Building %s" % util_name)
-        with open(util_path, 'w') as f:
-            f.write(_UtilCode % (util_name, util_name.split('.')[0]))
-            os.chmod(util_path, permissions)
+
+        # Remove or build
+        if remove_utilities:
+            if os.path.isfile(util_path):
+                print("Removing " + util_path)
+                os.remove(util_path)
+            else:
+                print("Can't find or remove: %s" % util_path)
+        else:
+            if os.path.isfile(util_path) and not force_build:
+                print("File exists - can't build: %s" % util_path)
+            else:
+                print("Building " + util_path)
+                with open(util_path, 'w') as f:
+                    f.write(_UtilCode % (util_name, util_name.split('.')[0]))
+                    os.chmod(util_path, permissions)
 
 
 if __name__ == '__main__':
