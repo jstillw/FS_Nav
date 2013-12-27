@@ -39,7 +39,7 @@ def main(args):
 
     # Instantiate instance of fsnav and configure
     framework = fsnav.UtilFramework(util_args=args, util_name=_UtilName, util_version=__version__,
-                                    util_function=fsnav.apps)
+                                    util_function=fsnav.%s)
 
     # Execute
     framework.run()
@@ -55,12 +55,13 @@ def main(args):
     # Set defaults
     utils_to_build = ['apps', 'cyghome', 'desktop', 'documents', 'downloads',
                       'dropbox', 'extdrive', 'gdrive', 'hd', 'home', 'movies',
-                      'music', 'nav', 'pictures', 'public', 'systembin', 'userapps', 'userbin']
+                      'music', 'pictures', 'public', 'systembin', 'userapps', 'userbin']
     keep_utils = []
     drop_utils = []
     build_dir = '..' + sep + 'bin'
     with_extensions = True
     extension = '.py'
+    permissions = 0777
 
     # Loop through arguments and configure
     for arg in args:
@@ -80,6 +81,8 @@ def main(args):
             with_extensions = False
         elif '--extension=' in arg:
             extension = arg.split('=')[1]
+        elif ('--permissions=' or '--perm=') in arg:
+                permissions = arg.split('=')[1]
 
         # Catch errors
         elif arg[0] != '-':
@@ -92,38 +95,42 @@ def main(args):
     # Configure utilities to build
     # If user is explicitly specifying which utilities to build, ONLY build those
     # Otherwise, remove utilities if necessary
-    if keep_utils is not []:
+    if len(keep_utils) is not 0:
         utils_to_build = keep_utils
-    elif drop_utils is not []:
+    elif len(drop_utils) is not 0:
         for item in drop_utils:
             try:
                 del_index = drop_utils.index(item)
+                del utils_to_build[del_index]
             except ValueError:
                 print("build_utilities.py ERROR: Can't drop utility: %s" % item)
                 exit()
-            else:
-                del utils_to_build[0]
 
     # Validate
     bail = False
     if not os.path.isdir(build_dir):
         print("build_utilities.py ERROR: Can't find build directory: %s" % build_dir)
         exit()
+    try:
+        permissions = int(permissions)
+    except ValueError:
+        print("build_utilities.py ERROR: Invalid permissions - must be an int: %s" % str(permissions))
+        bail = True
     if bail:
         exit()
 
     # Loop through utilities and build
-    print utils_to_build
     for util in utils_to_build:
-        print("Building %s" % util)
         if with_extensions:
             util_name = util + extension
             util_path = build_dir + sep + util_name
         else:
             util_name = util + extension
             util_path = build_dir + sep + util_name
-        with open(util_path) as f:
-            f.write(_UtilCode % util_name)
+        print("Building %s" % util_name)
+        with open(util_path, 'w') as f:
+            f.write(_UtilCode % (util_name, util_name.split('.')[0]))
+            os.chmod(util_path, permissions)
 
 
 if __name__ == '__main__':
