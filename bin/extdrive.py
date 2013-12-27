@@ -1,24 +1,31 @@
-import sys
-import fsnav
+#!/usr/bin/env python
 
+
+import sys
+from sys import exit
+
+sys.path.insert(0, '..')
+from src import fsnav
 
 # Build information
 __author__ = 'Kevin Wurster'
 __version__ = '0.1'
 __email__ = 'wursterk@gmail.com'
-__license__ = 'See LICENSE.txt'
+__license__ = 'See LICENSE.txt from original package.'
 
 
-# Global variables
-_ScriptName = sys.argv[0]
+# Utility specific information
+_UtilName = 'extdrive.py'
 
 
 def main(args):
 
-    if len(args) is not 1:
-        print("%s ERROR: N")
-    if fsnav.extdrive(mode='cd') is not True:
-        print("%s ERROR: Could not cd to: %s" % (_ScriptName, str(fsnav.extdrive(mode='return'))))
+    # Instantiate instance of fsnav and configure
+    framework = fsnav.UtilFramework(util_args=args, util_name=_UtilName, util_version=__version__,
+                                    util_function=fsnav.extdrive)
+
+    # Execute
+    framework.run()
 
 
 if __name__ == '__main__':
