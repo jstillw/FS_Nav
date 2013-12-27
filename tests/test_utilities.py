@@ -27,6 +27,8 @@ class TestUtilities(unittest.TestCase):
         # Get utility output information
         util_output = subprocess.Popen(util_path, stdout=subprocess.PIPE)
         util_output = util_output.stdout.readlines()[0].replace(linesep, '')
+        if util_output == 'None':
+            util_output = None
         self.assertEqual(util_output, fsnav.cyghome(mode='return'))
 
     def test_desktop(self):
