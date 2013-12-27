@@ -1,7 +1,6 @@
 import os
 import sys
 import getpass
-import subprocess
 from os import sep
 from glob import glob
 
@@ -98,7 +97,6 @@ else:
 def _try_chdir(dir_path):
     try:
         os.chdir(str(dir_path))
-        print os.getcwd()
         return True
     except OSError:
         return False
@@ -406,6 +404,8 @@ class UtilFramework(object):
                 self.print_license()
 
             # Additional parameters
+            elif arg == ('--utility=' or '-utility'):
+                self.util_name = arg.split('=')[0]
             elif arg == ('--script' or '-script'):
                 mode = 'print'
 
