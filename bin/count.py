@@ -10,27 +10,54 @@ from sys import exit
 __author__ = 'Kevin Wurster'
 __version__ = '0.1'
 __email__ = 'wursterk@gmail.com'
-__license___ = 'See LICENSE.txt from original distribution'
+__license__ = 'See LICENSE.txt from original distribution'
 
 
 # Define help functions
 def print_usage():
-    print('usage')
+    print("""
+Usage: %s --help-info dir|file|wildcard
+          """)
     exit()
 
 
 def print_help():
-    print('help')
+    print("""
+=== Help ===
+Simple utility for counting files and directories
+Running without any arguments counts everything in the current directory
+Giving a directory will count the contents within that directory
+Directories, files, and wildcards can be mixed and matched
+
+Example:
+count.py /path/to/directory /path/to/individual/file.ext /path/to/something/*
+          """)
     exit()
 
 
 def print_version():
-    print('version')
+    print("""
+%s version %s
+
+By %s - %s
+          """ % (sys.argv[0], __version__, __author__, __email__))
     exit()
 
 
 def print_license():
-    print('license')
+    print('\n' + __license__ + '\n')
+    exit()
+
+
+def print_help_info():
+    print("""
+=== Help Flags ===
+  --help
+  --help-info
+  --usage
+  --version
+  --license
+          """)
     exit()
 
 
@@ -44,7 +71,9 @@ def main(args):
     for arg in args:
 
         # Help arguments
-        if arg == ('--help' or '-help'):
+        if arg == ('--help-info' or '-helpinfo' or '-help-info' or '--helpinfo'):
+            print_help_info()
+        elif arg == ('--help' or '-help'):
             print_help()
         elif arg == ('--usage' or '-usage'):
             print_usage()
