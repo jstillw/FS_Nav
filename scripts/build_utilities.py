@@ -83,51 +83,63 @@ if __name__ == '__main__':
 
 
 def print_help():
-    print("Help")
+    print("""
+=== Help Information ===
+FS_Nav comes with a set of command line tools, each of which are very similar.
+This script builds each from a common bit of code.
+
+By default, all utilities are built, but the user can 
+          """)
     exit()
 
 
 def print_usage():
-    print(""
-          "Usage: build_utilities.py"
-          "  --help             ->  Print help information"
-          "  --codes            ->  Print a list of all utility codes"
-          "  --skip-util=code   ->  Don't build utility with given code - see help for info"
-          "  --keep-util=code   ->  Build utility with given code - see help for info"
-          "  --no-extensions    ->  Don't give executables file extension"
-          "  --build-dir=path   ->  Where to build the executables"
-          "  --permissions=int  ->  Permissions value for executables - defaults to 0777"
-          ""
-          "Advanced options:"
-          "  --remove  ->  Removes built utilities - see help for info"
-          "  --force   ->  Force a build - see help for info"
-          "")
+    print("""
+Usage: build_utilities.py
+  --help             ->  Print help information
+  --codes            ->  Print a list of all utility codes
+  --skip-util=code   ->  Don't build utility with given code - see help for info
+  --keep-util=code   ->  Build utility with given code - see help for info
+  --no-extensions    ->  Don't give executables file extension
+  --build-dir=path   ->  Where to build the executables
+  --permissions=int  ->  Permissions value for executables - defaults to 0777
+
+Advanced options:
+  --remove  ->  Removes built utilities - see help for info
+  --force   ->  Force a build - see help for info
+          """)
     exit()
 
 
 def print_license():
-    print(""
-          "See LICENSE.txt from original distribution"
-          "")
+    print("""
+See LICENSE.txt from original distribution
+          """)
     exit()
 
 
 def print_version():
-    print(""
-          "build_utilities.py version %s"
-          "By %s - %s"
-          "Used in the setup and install process for FS_Nav"
-          "%s"
-          "")
+    print("""
+build_utilities.py version %s
+By %s - %s
+
+Used in the setup and install process for FS_Nav
+Source: %s
+          """ % (__version__, __author__, __email__, __source__))
     exit()
 
 
 def print_util_codes():
-    print(""
-          "=== Utility Codes ==")
+    print("\n==== Utility Codes ===")
+    # Get the longest key
+    longest = 0
+    for key in _UtilDefs.keys():
+        if len(key) > longest:
+            longest = len(key)
     for key, val in _UtilDefs.iteritems():
-        print("%s  ->  %s" % key, val)
-    print("")
+        spaces = ''.join([' ' for i in range(0, longest - len(key))])
+        print('  %s' % key + spaces + '  ->  %s' % val)
+    print('\n')
     exit()
 
 
