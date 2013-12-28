@@ -15,6 +15,42 @@ __license__ = 'See LICENSE.txt from original package'
 __source__ = 'https://github.com/geowurster/FS_Nav'
 
 
+# Header code for the shell script that creates aliases for all built utilities
+_LinuxAliasHeader = """#!/bin/bash
+
+# Build information
+__AUTHOR__='Kevin Wurster'
+__VERSION__='0.1'
+__EMAIL__='wursterk@gmail.com'
+__SOURCE__='https://github.com/geowurster/FS_Nav'
+
+
+# Functions to print out helpful information
+PRINT_HELP_INFO() {
+    echo "Help info"
+    exit
+
+PRINT_HELP() {
+    echo "Help"
+    exit
+}
+
+PRINT_VERSION() {
+    echo "Version"
+    exit
+}
+
+PRINT_LICENSE() {
+    echo ""
+    echo ${__SOURCE__}
+    echo ""
+    exit
+}
+
+# Create aliases
+"""
+
+
 # Code for all utilities is based on the same few lines, but with a few small differences
 _UtilDefs = {'apps':          'System applications',
              'cyghome':       'User home directory for Cygwin',
@@ -176,6 +212,7 @@ def main(args):
     permissions = 0777
     remove_utilities = False
     force_build = False
+    with_aliases = True
 
     # Loop through arguments and configure
     for arg in args:
@@ -203,6 +240,8 @@ def main(args):
             build_dir = arg.split('=')[1]
 
         # Additional configurations
+        elif arg == '--no-alias':
+            with_aliases = False
         elif '--name-prefix=' in arg:
             name_prefix = arg.split('=')[1]
         elif ('--no-extensions' or '--no-extension' or '--no-ext') in arg:
