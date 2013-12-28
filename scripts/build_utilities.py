@@ -12,6 +12,7 @@ __author__ = 'Kevin Wurster'
 __version__ = '0.1'
 __email__ = 'wursterk@gmail.com'
 __license__ = 'See LICENSE.txt from original package'
+__source__ = 'https://github.com/geowurster/FS_Nav'
 
 
 # Code for all utilities is based on the same few lines, but with a few small differences
@@ -59,6 +60,7 @@ __author__ = 'Kevin Wurster'
 __version__ = '0.1'
 __email__ = 'wursterk@gmail.com'
 __license__ = 'See LICENSE.txt from original package.'
+__source__ = 'https://github.com/geowurster/FS_Nav'
 
 
 # Utility specific information
@@ -86,24 +88,46 @@ def print_help():
 
 
 def print_usage():
-    print("Usage: build_utilities.py"
-          "           --help -> Print help information"
-          "           --skip-util")
+    print(""
+          "Usage: build_utilities.py"
+          "  --help             ->  Print help information"
+          "  --codes            ->  Print a list of all utility codes"
+          "  --skip-util=code   ->  Don't build utility with given code - see help for info"
+          "  --keep-util=code   ->  Build utility with given code - see help for info"
+          "  --no-extensions    ->  Don't give executables file extension"
+          "  --build-dir=path   ->  Where to build the executables"
+          "  --permissions=int  ->  Permissions value for executables - defaults to 0777"
+          ""
+          "Advanced options:"
+          "  --remove  ->  Removes built utilities - see help for info"
+          "  --force   ->  Force a build - see help for info"
+          "")
     exit()
 
 
 def print_license():
-    print("License")
+    print(""
+          "See LICENSE.txt from original distribution"
+          "")
     exit()
 
 
 def print_version():
-    print("Version")
+    print(""
+          "build_utilities.py version %s"
+          "By %s - %s"
+          "Used in the setup and install process for FS_Nav"
+          "%s"
+          "")
     exit()
 
 
 def print_util_codes():
-    print("Util codes")
+    print(""
+          "=== Utility Codes ==")
+    for key, val in _UtilDefs.iteritems():
+        print("%s  ->  %s" % key, val)
+    print("")
     exit()
 
 
@@ -133,6 +157,8 @@ def main(args):
             print_version()
         elif arg == '--license':
             print_license()
+        elif arg == '--codes' or '--code':
+            print_util_codes()
 
         # Filter utilities to build
         elif ('--skip-util=' or '--drop-util=') in arg:
@@ -141,11 +167,11 @@ def main(args):
             keep_utils.append(arg.split('=')[1])
 
         # Change build directory
-        elif ('--prefix=' or '--bin-dir=') in arg:
+        elif ('--prefix=' or '--bin-dir=' or '--build-dir=') in arg:
             build_dir = arg.split('=')[1]
 
         # Additional configurations
-        elif ('--no-extensions' or '--no-ext') in arg:
+        elif ('--no-extensions' or '--no-extension' or '--no-ext') in arg:
             with_extensions = False
         elif ('--extension=' or '-ext=') in arg:
             extension = arg.split('=')[1]
