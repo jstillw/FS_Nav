@@ -369,20 +369,30 @@ class UtilFramework(object):
         self.util_version = util_version
         self.util_function = util_function
 
+    @staticmethod
     def print_usage(self):
         print("%s.print_usage()" % self.__name__)
         exit()
 
+    @staticmethod
     def print_help(self):
         print("%s.print_help()" % self.__name__)
         exit()
 
+    @staticmethod
     def print_license(self):
-        print("%s.print_license()" % self.__name__)
+        print(""
+              "See LICENSE.txt from original distribution"
+              "")
         exit()
 
+    @staticmethod
     def print_version(self):
-        print("%s.print_version()" % self.__name__)
+        print(""
+              "FS_Nav version %s"
+              "By %s - %s"
+              "Source: %s"
+              "" % (__version__, __author__, __email__, __source__))
         exit()
 
     def run(self):
