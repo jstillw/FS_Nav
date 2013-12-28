@@ -88,7 +88,7 @@ def print_help():
 FS_Nav comes with a set of command line tools, each of which are very similar.
 This script builds each from a common bit of code.
 
-By default, all utilities are built, but the user can 
+By default, all utilities are built, but the user can
           """)
     exit()
 
