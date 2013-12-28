@@ -57,7 +57,7 @@ def print_help():
 
 def print_usage():
     print("""
-Usage: nav.py util_code|--help [utility arguments ...]
+Usage: nav.py --help-info util_code [utility arguments ...]
           """)
     exit()
 
@@ -89,13 +89,27 @@ def print_license():
     exit()
 
 
+def print_help_info():
+    print("""
+=== Help Flags ===
+  --help
+  --help-info
+  --usage
+  --version
+  --license
+          """)
+    exit()
+
+
 # Wrap call for testing purposes
 def main(args):
 
     # Look for help arguments first
     for arg in args:
 
-        if arg == '--help':
+        if arg == ('--help-info' or '-help-info' or '--helpinfo' or '-help-info'):
+            print_help_info()
+        elif arg == '--help':
             print_help()
         elif arg == '--usage':
             print_usage()
