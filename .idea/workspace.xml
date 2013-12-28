@@ -4,6 +4,7 @@
     <list default="true" id="7da5b23f-e80f-4d2b-872e-ae548b60e3f3" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/bin/__init__.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/bin/__init__.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/_fsnav_cmdline_controller.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/bin/_fsnav_cmdline_controller.sh" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/bin/apps.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/bin/apps.sh" afterPath="" />
@@ -62,10 +63,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/tests/test_userapps.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/tests/test_userbin.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/tests/test_util_main.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bin/_fsnav_cmdline_controller.py" afterPath="$PROJECT_DIR$/bin/nav.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bin/nav.py" afterPath="$PROJECT_DIR$/bin/OLD-nav.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/wursterk.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/wursterk.xml" />
     </list>
     <ignored path="FS_Nav.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -132,6 +130,11 @@
                 <state line="52" column="13" selection-start="1905" selection-end="1905" vertical-scroll-proportion="0.94043887" vertical-offset="180" max-vertical-offset="2670">
                   <folding>
                     <element signature="e#24#34#0" expanded="true" />
+                    <marker date="1388194168000" expanded="true" signature="1891:1931" placeholder="..." />
+                    <marker date="1388194168000" expanded="true" signature="1952:2047" placeholder="..." />
+                    <marker date="1388194168000" expanded="true" signature="2070:2187" placeholder="..." />
+                    <marker date="1388194168000" expanded="true" signature="2213:2584" placeholder="..." />
+                    <marker date="1388194168000" expanded="true" signature="2607:2655" placeholder="..." />
                   </folding>
                 </state>
               </provider>
@@ -232,20 +235,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="FS_Nav" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FS_Nav" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FS_Nav" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -419,10 +408,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="22" width="1676" height="1028" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26813188" sideWeight="0.52692074" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26813188" sideWeight="0.52692074" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26813188" sideWeight="0.47307926" order="6" side_tool="false" content_ui="combo" />
@@ -539,6 +528,11 @@
         <state line="52" column="13" selection-start="1905" selection-end="1905" vertical-scroll-proportion="0.94043887" vertical-offset="180" max-vertical-offset="2670">
           <folding>
             <element signature="e#24#34#0" expanded="true" />
+            <marker date="1388194168000" expanded="true" signature="1891:1931" placeholder="..." />
+            <marker date="1388194168000" expanded="true" signature="1952:2047" placeholder="..." />
+            <marker date="1388194168000" expanded="true" signature="2070:2187" placeholder="..." />
+            <marker date="1388194168000" expanded="true" signature="2213:2584" placeholder="..." />
+            <marker date="1388194168000" expanded="true" signature="2607:2655" placeholder="..." />
           </folding>
         </state>
       </provider>
