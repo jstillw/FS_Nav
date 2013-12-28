@@ -68,8 +68,9 @@ _UtilDefs = {'apps':          'System applications',
              'public':        'User public or on Windows, general public',
              'systembin':     'System bin',
              'userapps':      'User applications',
-             'userbin':       'User bin',
-             'googledrive':   'User Google Drive',
+             'userbin':       'User bin'}
+
+_AddUDefs = {'googledrive':   'User Google Drive',
              'google_drive':  'User Google Drive',
              'mydocuments':   'User documents',
              'my_documents':  'User documents',
@@ -188,6 +189,7 @@ def print_util_codes():
     print("\n==== Utility Codes ===")
     # Get the longest key
     longest = 0
+    _UtilDefs.update(_AddUDefs)
     for key in _UtilDefs.keys():
         if len(key) > longest:
             longest = len(key)
@@ -213,6 +215,9 @@ def main(args):
     remove_utilities = False
     force_build = False
     with_aliases = True
+    alias_util_name = 'fsnav_alias_utilities'
+    alias_util_ext = ''
+    add_extra_codes = False
 
     # Loop through arguments and configure
     for arg in args:
@@ -242,6 +247,10 @@ def main(args):
         # Additional configurations
         elif arg == '--no-alias':
             with_aliases = False
+        elif '--alias-util-name=' in arg:
+            alias_util_name = arg.split('=')[1]
+        elif  '--alias-util-ext=' in arg:
+            alias_util_ext = arg.split('=')[1]
         elif '--name-prefix=' in arg:
             name_prefix = arg.split('=')[1]
         elif ('--no-extensions' or '--no-extension' or '--no-ext') in arg:
@@ -249,11 +258,13 @@ def main(args):
         elif ('--extension=' or '--ext=') in arg:
             extension = arg.split('=')[1]
         elif ('--permissions=' or '--perm=') in arg:
-                permissions = arg.split('=')[1]
+            permissions = arg.split('=')[1]
         elif arg == '--clean' or arg == '--remove':
             remove_utilities = True
         elif arg == '--force':
             force_build = True
+        elif arg == '--with-extra-codes':
+            add_extra_codes = True
 
         # Catch errors
         elif arg[0] != '-':
@@ -266,6 +277,8 @@ def main(args):
     # Configure utilities to build
     # If user is explicitly specifying which utilities to build, ONLY build those
     # Otherwise, remove utilities if necessary
+    if add_extra_codes:
+        _UtilDefs.update(_AddUDefs)
     if len(keep_utils) is not 0:
         utils_to_build = keep_utils
     elif len(drop_utils) is not 0:
@@ -294,6 +307,18 @@ def main(args):
     if bail:
         exit()
 
+    # If the alias utility will be built, create the file and write the header
+    if with_aliases:
+        alias_util_name = alias_util_name + alias_util_ext
+        alias_util_path = build_dir + sep + alias_util_name
+        if os.path.isfile(alias_util_path) and not force_build:
+            print("File exists - can't build: %s" % alias_util_path)
+        else:
+            print("Building " + alias_util_path)
+            with open(alias_util_path, 'w') as f:
+                f.write(_LinuxAliasHeader)
+                os.chmod(alias_util_path, permissions)
+
     # Loop through utilities and build
     for util in utils_to_build:
         if with_extensions:
@@ -318,6 +343,9 @@ def main(args):
                 with open(util_path, 'w') as f:
                     f.write(_UtilCode % (util_name, util_name.split('.')[0]))
                     os.chmod(util_path, permissions)
+                if with_aliases:
+                    with open(alias_util_path, 'a') as f:
+                        f.write('alias ' + util + '="%s"\n' % util_name)
 
 
 if __name__ == '__main__':
