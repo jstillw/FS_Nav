@@ -85,19 +85,6 @@ def print_help_info():
   --license
           """)
 
-def print_license():
-    print('\n' + __license__ + '\n')
-    exit()
-
-
-def print_version():
-    print("""
-%s version %s
-
-By %s - %s
-""" % (sys.argv[0], __author__, __email__)
-    exit()
-
 
 def main(args):
 
@@ -137,8 +124,8 @@ Usage: build_utilities.py
   --permissions=int  ->  Permissions value for executables - defaults to 0777
 
 Advanced options:
-  --remove  ->  Removes built utilities - see help for info
-  --force   ->  Force a build - see help for info
+  --clean  ->  Removes built utilities - see help for info
+  --force  ->  Force a build - see help for info
           """)
     exit()
 
@@ -178,6 +165,7 @@ def print_util_codes():
 def main(args):
 
     # Set defaults
+    name_prefix = 'fs'
     allowed_utils = _UtilDefs.keys()
     utils_to_build = _UtilDefs.keys()
     keep_utils = []
@@ -201,7 +189,7 @@ def main(args):
             print_version()
         elif arg == '--license':
             print_license()
-        elif arg == '--codes' or '--code':
+        elif arg == ('--codes' or '--code'):
             print_util_codes()
 
         # Filter utilities to build
@@ -215,13 +203,15 @@ def main(args):
             build_dir = arg.split('=')[1]
 
         # Additional configurations
+        elif '--name-prefix=' in arg:
+            name_prefix = arg.split('=')[1]
         elif ('--no-extensions' or '--no-extension' or '--no-ext') in arg:
             with_extensions = False
-        elif ('--extension=' or '-ext=') in arg:
+        elif ('--extension=' or '--ext=') in arg:
             extension = arg.split('=')[1]
         elif ('--permissions=' or '--perm=') in arg:
                 permissions = arg.split('=')[1]
-        elif arg == '--clean' or '--remove':
+        elif arg == '--clean' or arg == '--remove':
             remove_utilities = True
         elif arg == '--force':
             force_build = True
@@ -268,10 +258,10 @@ def main(args):
     # Loop through utilities and build
     for util in utils_to_build:
         if with_extensions:
-            util_name = util + extension
+            util_name = name_prefix + util + extension
             util_path = build_dir + sep + util_name
         else:
-            util_name = util + extension
+            util_name = name_prefix + util + extension
             util_path = build_dir + sep + util_name
 
         # Remove or build
