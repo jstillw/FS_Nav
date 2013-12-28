@@ -324,6 +324,8 @@ my_pictures = pictures
 myvideos = movies
 my_videos = movies
 videos = movies
+extvol = extdrive
+extvolume = extdrive
 
 
 # Since almost all of the utilities operate in a similar manner, they can all use the framework below
