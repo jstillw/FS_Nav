@@ -67,6 +67,38 @@ __source__ = 'https://github.com/geowurster/FS_Nav'
 _UtilName = '%s'
 
 
+def print_help()
+    print("""
+=== Help ===
+Part of the FS_Nav distribution
+Executing this utility will print out a path to a directory
+          """)
+    exit()
+
+
+def print_help_info():
+    print("""
+=== Help Flags ===
+  --help
+  --help-info
+  --version
+  --license
+          """)
+
+def print_license():
+    print('\n' + __license__ + '\n')
+    exit()
+
+
+def print_version():
+    print("""
+%s version %s
+
+By %s - %s
+""" % (sys.argv[0], __author__, __email__)
+    exit()
+
+
 def main(args):
 
     # Instantiate instance of fsnav and configure
