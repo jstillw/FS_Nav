@@ -51,14 +51,21 @@ _UtilDefs = {'apps':          'System applications',
 
 def print_help():
     print("""
+=== Help ===
+Packages functionality from all command line utilities into one single tool
+First argument must be the utility code assigned to the requested function
+All subsequent arguments are funneled into the chosen utility
+Use --codes to view a list
+
+Note that the count utility is not accessible via this package
           """)
     exit()
 
 
 def print_usage():
     print("""
-Usage: nav.py --help-info util_code [utility arguments ...]
-          """)
+Usage: %s --help-info util_code [utility arguments ...]
+          """ % sys.argv[0])
     exit()
 
 
@@ -94,6 +101,7 @@ def print_help_info():
 === Help Flags ===
   --help
   --help-info
+  --codes
   --usage
   --version
   --license
