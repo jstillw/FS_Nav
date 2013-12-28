@@ -15,6 +15,36 @@ __license__ = 'See LICENSE.txt from original package'
 
 
 # Code for all utilities is based on the same few lines, but with a few small differences
+_UtilDefs = {'apps':          'System applications',
+             'cyghome':       'User home directory for Cygwin',
+             'desktop':       'User desktop',
+             'documents':     'User documents',
+             'downloads':     'User downloads',
+             'dropbox':       'User dropbox',
+             'extdrive':      'External volume',
+             'gdrive':        'User Google Drive',
+             'hd':            'System hard drive',
+             'home':          'User home',
+             'movies':        'User movies',
+             'music':         'User music',
+             'pictures':      'User pictures',
+             'public':        'User public or on Windows, general public',
+             'systembin':     'System bin',
+             'userapps':      'User applications',
+             'userbin':       'User bin',
+             'googledrive':   'User Google Drive',
+             'google_drive':  'User Google Drive',
+             'mydocuments':   'User documents',
+             'my_documents':  'User documents',
+             'mymusic':       'User music',
+             'my_music':      'User music',
+             'mypictures':    'User pictures',
+             'my_pictures':   'User pictures',
+             'myvideos':      'User videos',
+             'my_videos':     'User videos',
+             'videos':        'User videos',
+             'extvol':        'External volume',
+             'extvolume':     'External volume'}
 _UtilCode = '''#!/usr/bin/env python
 
 
@@ -56,7 +86,9 @@ def print_help():
 
 
 def print_usage():
-    print("Usage")
+    print("Usage: build_utilities.py"
+          "           --help -> Print help information"
+          "           --skip-util")
     exit()
 
 
@@ -70,16 +102,16 @@ def print_version():
     exit()
 
 
+def print_util_codes():
+    print("Util codes")
+    exit()
+
+
 def main(args):
 
     # Set defaults
-    allowed_utils = ['apps', 'cyghome', 'desktop', 'documents', 'downloads',
-                     'dropbox', 'extdrive', 'gdrive', 'hd', 'home', 'movies',
-                     'music', 'pictures', 'public', 'systembin', 'userapps', 'userbin',
-                     'googledrive', 'google_drive', 'mydocuments', 'my_documents',
-                     'mymusic', 'my_music', 'mypictures', 'my_pictures', 'myvideos',
-                     'my_videos', 'videos']
-    utils_to_build = allowed_utils
+    allowed_utils = _UtilDefs.keys()
+    utils_to_build = _UtilDefs.keys()
     keep_utils = []
     drop_utils = []
     build_dir = '..' + sep + 'bin'
