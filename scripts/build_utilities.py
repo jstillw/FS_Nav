@@ -29,6 +29,7 @@ __SOURCE__='https://github.com/geowurster/FS_Nav'
 PRINT_HELP_INFO() {
     echo "Help info"
     exit
+}
 
 PRINT_HELP() {
     echo "Help"
@@ -104,7 +105,7 @@ __source__ = 'https://github.com/geowurster/FS_Nav'
 _UtilName = '%s'
 
 
-def print_help()
+def print_help():
     print("""
 === Help ===
 Part of the FS_Nav distribution
@@ -249,7 +250,7 @@ def main(args):
             with_aliases = False
         elif '--alias-util-name=' in arg:
             alias_util_name = arg.split('=')[1]
-        elif  '--alias-util-ext=' in arg:
+        elif '--alias-util-ext=' in arg:
             alias_util_ext = arg.split('=')[1]
         elif '--name-prefix=' in arg:
             name_prefix = arg.split('=')[1]
@@ -341,11 +342,19 @@ def main(args):
             else:
                 print("Building " + util_path)
                 with open(util_path, 'w') as f:
-                    f.write(_UtilCode % (util_name, util_name.split('.')[0]))
+                    f.write(_UtilCode % (util_name, util))
                     os.chmod(util_path, permissions)
                 if with_aliases:
                     with open(alias_util_path, 'a') as f:
-                        f.write('alias ' + util + '="%s"\n' % util_name)
+                        f.write('function %s() { cd `../bin/%s` ; }\n' % (util, util_name))
+
+    # Remove the alias utility if necessary
+    if remove_utilities:
+        if os.path.isfile(alias_util_path):
+            print("Removing " + alias_util_path)
+            os.remove(alias_util_path)
+        else:
+            print("%s ERROR: Can't find or remove: %s" % (sys.argv[0], alias_util_path))
 
 
 if __name__ == '__main__':
