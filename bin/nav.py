@@ -115,7 +115,7 @@ def main(args):
     # Look for help arguments first
     for arg in args:
 
-        if arg == ('--help-info' or '-help-info' or '--helpinfo' or '-help-info'):
+        if arg == '--help-info' or arg == '-help-info' or arg == '--helpinfo' or arg == '-help-info':
             print_help_info()
         elif arg == '--help':
             print_help()
@@ -123,7 +123,7 @@ def main(args):
             print_usage()
         elif arg == '--version':
             print_version()
-        elif arg == '--codes' or '--code':
+        elif arg == '--codes' or arg == '--code':
             print_util_codes()
         elif arg == '--license':
             print_license()
