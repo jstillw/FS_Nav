@@ -208,5 +208,12 @@ class TestUtilities(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
-    exit()
+    if len(glob('..' + sep + 'bin' + sep + '*')) is 2:
+        # Check to see if utilities have been built yet
+        # At this time, nav.py and count.py are currently the only utilities that are not built by build_utilities.py
+        print("test_utilities.py ERROR: Run scripts/build_utilities.py before testing")
+        print("  Note that this is hard coded to look for 2 utilities that always exist in bin")
+        exit()
+    else:
+        unittest.main()
+        exit()
