@@ -380,14 +380,14 @@ class UtilFramework(object):
         exit()
 
     @staticmethod
-    def print_license(self):
+    def print_license():
         print(""
               "See LICENSE.txt from original distribution"
               "")
         exit()
 
     @staticmethod
-    def print_version(self):
+    def print_version():
         print(""
               "FS_Nav version %s"
               "By %s - %s"
