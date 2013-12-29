@@ -139,7 +139,7 @@ def main(args):
     elif args[0] == 'desktop':
         framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
                                         util_name=args[0], util_function=fsnav.desktop)
-    elif args[0] == 'documents' or 'mydocuments' or 'my_documents':
+    elif args[0] == 'documents' or args[0] == 'mydocuments' or args[0] == 'my_documents':
         framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
                                         util_name=args[0], util_function=fsnav.documents)
     elif args[0] == 'downloads':
@@ -148,10 +148,10 @@ def main(args):
     elif args[0] == 'dropbox':
         framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
                                         util_name=args[0], util_function=fsnav.dropbox)
-    elif args[0] == 'extdrive' or 'extvol' or 'extvolume':
+    elif args[0] == 'extdrive' or args[0] == 'extvol' or args[0] == 'extvolume':
         framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
                                         util_name=args[0], util_function=fsnav.extdrive)
-    elif args[0] == 'gdrive' or 'googledrive' or 'google_drive':
+    elif args[0] == 'gdrive' or args[0] == 'googledrive' or args[0] == 'google_drive':
         framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
                                         util_name=args[0], util_function=fsnav.gdrive)
     elif args[0] == 'hd':
@@ -160,13 +160,13 @@ def main(args):
     elif args[0] == 'home':
         framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
                                         util_name=args[0], util_function=fsnav.home)
-    elif args[0] == 'movies' or 'videos' or 'myvideos' or 'my_videos':
+    elif args[0] == 'movies' or args[0] == 'videos' or args[0] == 'myvideos' or args[0] == 'my_videos':
         framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
                                         util_name=args[0], util_function=fsnav.movies)
-    elif args[0] == 'music' or 'mymusic' or 'my_music':
+    elif args[0] == 'music' or args[0] == 'mymusic' or args[0] == 'my_music':
         framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
                                         util_name=args[0], util_function=fsnav.music)
-    elif args[0] == 'pictures' or 'mypictures' or 'my_pictures':
+    elif args[0] == 'pictures' or args[0] == 'mypictures' or args[0] ==  'my_pictures':
         framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
                                         util_name=args[0], util_function=fsnav.pictures)
     elif args[0] == 'public':
