@@ -15,6 +15,41 @@ __license__ = 'See LICENSE.txt from original package'
 __source__ = 'https://github.com/geowurster/FS_Nav'
 
 
+# Code for all utilities is based on the same few lines, but with a few small differences
+_PreBuiltUtils = ['nav.py', 'count.py']
+_UtilDefs = {'apps':          'System applications',
+             'cyghome':       'User home directory for Cygwin',
+             'desktop':       'User desktop',
+             'documents':     'User documents',
+             'downloads':     'User downloads',
+             'dropbox':       'User dropbox',
+             'extdrive':      'External volume',
+             'gdrive':        'User Google Drive',
+             'hd':            'System hard drive',
+             'home':          'User home',
+             'movies':        'User movies',
+             'music':         'User music',
+             'pictures':      'User pictures',
+             'public':        'User public or on Windows, general public',
+             'systembin':     'System bin',
+             'userapps':      'User applications',
+             'userbin':       'User bin'}
+
+_AddUDefs = {'googledrive':   'User Google Drive',
+             'google_drive':  'User Google Drive',
+             'mydocuments':   'User documents',
+             'my_documents':  'User documents',
+             'mymusic':       'User music',
+             'my_music':      'User music',
+             'mypictures':    'User pictures',
+             'my_pictures':   'User pictures',
+             'myvideos':      'User videos',
+             'my_videos':     'User videos',
+             'videos':        'User videos',
+             'extvol':        'External volume',
+             'extvolume':     'External volume'}
+
+
 # Header code for the shell script that creates aliases for all built utilities
 _LinuxAliasHeader = """#!/bin/bash
 
@@ -52,38 +87,7 @@ PRINT_LICENSE() {
 """
 
 
-# Code for all utilities is based on the same few lines, but with a few small differences
-_UtilDefs = {'apps':          'System applications',
-             'cyghome':       'User home directory for Cygwin',
-             'desktop':       'User desktop',
-             'documents':     'User documents',
-             'downloads':     'User downloads',
-             'dropbox':       'User dropbox',
-             'extdrive':      'External volume',
-             'gdrive':        'User Google Drive',
-             'hd':            'System hard drive',
-             'home':          'User home',
-             'movies':        'User movies',
-             'music':         'User music',
-             'pictures':      'User pictures',
-             'public':        'User public or on Windows, general public',
-             'systembin':     'System bin',
-             'userapps':      'User applications',
-             'userbin':       'User bin'}
-
-_AddUDefs = {'googledrive':   'User Google Drive',
-             'google_drive':  'User Google Drive',
-             'mydocuments':   'User documents',
-             'my_documents':  'User documents',
-             'mymusic':       'User music',
-             'my_music':      'User music',
-             'mypictures':    'User pictures',
-             'my_pictures':   'User pictures',
-             'myvideos':      'User videos',
-             'my_videos':     'User videos',
-             'videos':        'User videos',
-             'extvol':        'External volume',
-             'extvolume':     'External volume'}
+# Common code for all command line utilities
 _UtilCode = '''#!/usr/bin/env python
 
 
@@ -157,7 +161,6 @@ Usage: build_utilities.py
   --codes            ->  Print a list of all utility codes
   --skip-util=code   ->  Don't build utility with given code - see help for info
   --keep-util=code   ->  Build utility with given code - see help for info
-  --no-extensions    ->  Don't give executables file extension
   --build-dir=path   ->  Where to build the executables
   --permissions=int  ->  Permissions value for executables - defaults to 0777
 
@@ -204,7 +207,7 @@ def print_util_codes():
 def main(args):
 
     # Set defaults
-    name_prefix = 'fs'
+    name_prefix = 'fs_'
     allowed_utils = _UtilDefs.keys()
     utils_to_build = _UtilDefs.keys()
     keep_utils = []
@@ -346,7 +349,7 @@ def main(args):
                     os.chmod(util_path, permissions)
                 if with_aliases:
                     with open(alias_util_path, 'a') as f:
-                        f.write('function %s() { cd `../bin/%s` ; }\n' % (util, util_name))
+                        f.write('function %s() { cd `../bin/%` ; }\n' % (util, util_name))
 
     # Remove the alias utility if necessary
     if remove_utilities:
