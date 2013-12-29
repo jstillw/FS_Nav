@@ -349,7 +349,7 @@ def main(args):
                     os.chmod(util_path, permissions)
                 if with_aliases:
                     with open(alias_util_path, 'a') as f:
-                        f.write('function %s() { cd `../bin/%` ; }\n' % (util, util_name))
+                        f.write('function %s() { cd `../bin/nav.py %s` ; }\n' % (util, util))
 
     # Remove the alias utility if necessary
     if remove_utilities:
