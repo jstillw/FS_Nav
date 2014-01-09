@@ -7,11 +7,10 @@ import getpass
 import unittest
 from os import sep
 from glob import glob
-
-
-# Make sure fsnav.py is being imported from the python package, and not from some site-packages directory
-sys.path.insert(0, '..' + sep)
-from src import fsnav
+try:
+    import fsnav
+except ImportError:
+    fsnav = None
 
 
 # Define platform specific information to improve readability within the tests
@@ -280,5 +279,8 @@ class TestNavigationFunctions(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    if sys.argv[1] == '--test-src':
+        sys.path.insert(0, '..' + sep)
+        from src import fsnav
     unittest.main()
     exit()
