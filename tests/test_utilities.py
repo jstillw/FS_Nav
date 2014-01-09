@@ -5,12 +5,38 @@ import sys
 import unittest
 import subprocess
 from os import sep
-from sys import exit
 from glob import glob
 from os import linesep
+try:
+    import fsnav
+except ImportError:
+    fsnav = None
 
-sys.path.insert(0, '..' + sep)
-from src import fsnav
+
+# Build information
+__version__ = '0.1'
+
+
+# Call this function before running any tests to see if tests should be run or not
+def validate(verbose=True):
+    bail = False
+    # Check and see if these tests are designed for the imported version of fsnav
+    if __version__ != fsnav.__version__:
+        if verbose:
+            print("test_utilities.py WARNING: Running test suite against the incorrect version")
+            print("  fsnav version = %s" % fsnav.__version__)
+            print("  test version  = %s" % __version__)
+        bail = True
+    if fsnav is None:
+        print("test_fsnav.py ERROR: fsnav.py was not successfully imported")
+        bail = True
+    # Check to see if there is anything to test
+    if len(glob('..' + sep + 'bin' + sep + '*')) is 2:
+        if verbose:
+            print("test_utilities.py ERROR: Run scripts/build_utilities.py before testing")
+            print("  Note that this is hard coded to look for 2 utilities that always exist in bin")
+        bail = True
+    return bail
 
 
 class TestUtilities(unittest.TestCase):
@@ -207,13 +233,24 @@ class TestUtilities(unittest.TestCase):
         self.assertEqual(util_output, fsnav.videos(mode='return'))
 
 
+# Allow tests to be run from the command line in a self-contained script
 if __name__ == '__main__':
-    if len(glob('..' + sep + 'bin' + sep + '*')) is 2:
-        # Check to see if utilities have been built yet
-        # At this time, nav.py and count.py are currently the only utilities that are not built by build_utilities.py
-        print("test_utilities.py ERROR: Run scripts/build_utilities.py before testing")
-        print("  Note that this is hard coded to look for 2 utilities that always exist in bin")
-        exit()
-    else:
+
+    # Allow this set of tests to be used for two purposes:
+    # To test a version that is currently installed
+    # To test the src code within a package before it is installed
+    if len(sys.argv) > 1:
+        if sys.argv[1] == '--test-src':
+            del sys.argv[sys.argv.index('--test-src')]
+            sys.path.insert(0, '..' + sep + 'src')
+            if fsnav is not None:
+                r = reload(fsnav)
+            else:
+                import fsnav
+
+    # Print any warning information about tests using internal validate function
+    # This function performs necessary checks
+    if validate():
         unittest.main()
-        exit()
+    else:
+        print("test_utilities.py ERROR: Could not run tests")
