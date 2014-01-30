@@ -62,7 +62,7 @@ elif 'cygwin' in sys.platform:
     _Documents = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Documents'])
     _Downloads = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Downloads'])
     _Dropbox = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Dropbox'])
-    _GDrive = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Google_Drive'])
+    _GDrive = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Google Drive'])
     _GitHub = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'GitHub'])
     _HD = sep.join(['', 'cygdrive', 'c'])
     _Home = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Desktop'])
@@ -81,7 +81,7 @@ elif 'win' in sys.platform:
     _Documents = sep.join(['C:', 'Users', getpass.getuser(), 'My Documents'])
     _Downloads = sep.join(['C:', 'Users', getpass.getuser(), 'Downloads'])
     _Dropbox = sep.join(['C:', 'Users', getpass.getuser(), 'Dropbox'])
-    _GDrive = sep.join(['C:', 'Users', getpass.getuser(), 'Google_Drive'])
+    _GDrive = sep.join(['C:', 'Users', getpass.getuser(), 'Google Drive'])
     _GitHub = os.path.expanduser('~') + sep + 'GitHub'
     _HD = 'C:' + sep
     _Home = sep.join(['C:', 'Users', getpass.getuser()])
@@ -102,7 +102,7 @@ else:
     _Documents = os.path.expanduser('~') + sep + 'Documents'
     _Downloads = os.path.expanduser('~') + sep + 'Downloads'
     _Dropbox = os.path.expanduser('~') + sep + 'Dropbox'
-    _GDrive = os.path.expanduser('~') + sep + 'Google_Drive'
+    _GDrive = os.path.expanduser('~') + sep + 'Google Drive'
     _GitHub = os.path.expanduser('~') + sep + 'GitHub'
     _HD = sep
     _Home = os.path.expanduser('~')
@@ -139,12 +139,12 @@ class TestNavigationFunctions(unittest.TestCase):
 
     def test_count(self):
         # Test with just a path to a directory
-        directory = '..' + sep + 'bin'
+        directory = 'bin'
         expected = len(list(set(glob(directory + sep + '*'))))
         actual = fsnav.count([directory])
         self.assertEqual(expected, actual)
         # Test with just a path to a directory and random files
-        directory = '..' + sep + 'bin'
+        directory = 'bin'
         file_list = glob('*')
         submission_list = [i for i in file_list]
         submission_list.append(directory)
@@ -152,7 +152,7 @@ class TestNavigationFunctions(unittest.TestCase):
         expected = len(list(set(glob(directory + sep + '*') + file_list)))
         self.assertEqual(expected, actual)
         # Test with just a path to a directory, random files, and a string containing a wildcard
-        directory = '..' + sep + 'bin'
+        directory = 'bin'
         file_list = glob('*')
         wildcard_string = '..' + sep + 'src' + sep + '*'
         submission_list = [i for i in file_list]
@@ -308,7 +308,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         if sys.argv[1] == '--test-src':
             del sys.argv[sys.argv.index('--test-src')]
-            sys.path.insert(0, '..' + sep + 'src')
+            sys.path.insert(0, 'src')
             if fsnav is not None:
                 r = reload(fsnav)
             else:
