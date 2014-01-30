@@ -17,7 +17,7 @@ HOMEDIR = os.path.expanduser('~')
 USERNAME = getpass.getuser()
 UTIL_CODES = ['apps', 'desktop', 'documents', 'downloads',
               'hd', 'home', 'movies', 'music', 'pictures', 'public',
-              'systembin', 'extdrive', 'dropbox', 'google_drive',
+              'systembin', 'extdrive', 'dropbox', 'gdrive',
               'github', 'userbin', 'user_apps', 'cyghome']
 if 'darwin' in sys.platform:
     N_PLATFORM = 'mac'
@@ -144,6 +144,7 @@ def platform_warning():
 # Utility functions
 def count(count_items, return_list=False):
     item_list = []
+    count_items = list(set(count_items))
     for item in count_items:
         if os.path.isdir(item):
             item_list += glob(item + sep + '*')
