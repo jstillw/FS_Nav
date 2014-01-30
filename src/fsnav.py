@@ -14,39 +14,41 @@ __source__ = 'https://github.com/geowurster/FS_Nav'
 
 
 # Define platform specific information
+HOMEDIR = os.path.expanduser('~')
+USERNAME = getpass.getuser()
 if ('darwin' or 'nix') in sys.platform:
     _SystemApps = sep + 'Applications'
     _CygwinHome = None
-    _Desktop = os.path.expanduser('~') + sep + 'Desktop'
-    _Documents = os.path.expanduser('~') + sep + 'Documents'
-    _Downloads = os.path.expanduser('~') + sep + 'Downloads'
-    _Dropbox = os.path.expanduser('~') + sep + 'Dropbox'
-    _GDrive = os.path.expanduser('~') + sep + 'Google_Drive'
-    _GitHub = os.path.expanduser('~') + sep + 'GitHub'
+    _Desktop = HOMEDIR + sep + 'Desktop'
+    _Documents = HOMEDIR + sep + 'Documents'
+    _Downloads = HOMEDIR + sep + 'Downloads'
+    _Dropbox = HOMEDIR + sep + 'Dropbox'
+    _GDrive = HOMEDIR + sep + 'Google_Drive'
+    _GitHub = HOMEDIR + sep + 'GitHub'
     _HD = sep
-    _Home = os.path.expanduser('~')
-    _Movies = os.path.expanduser('~') + sep + 'Movies'
-    _Music = os.path.expanduser('~') + sep + 'Music'
-    _Pictures = os.path.expanduser('~') + sep + 'Pictures'
-    _Public = os.path.expanduser('~') + sep + 'Public'
-    _UserApps = os.path.expanduser('~') + sep + 'Applications'
-    _UserBin = os.path.expanduser('~') + sep + 'bin'
+    _Home = HOMEDIR
+    _Movies = HOMEDIR + sep + 'Movies'
+    _Music = HOMEDIR + sep + 'Music'
+    _Pictures = HOMEDIR + sep + 'Pictures'
+    _Public = HOMEDIR + sep + 'Public'
+    _UserApps = HOMEDIR + sep + 'Applications'
+    _UserBin = HOMEDIR + sep + 'bin'
     _SystemBin = sep.join(['', 'usr', 'local', 'bin'])
     _ExtBasePath = sep + 'Volumes'
 elif 'cygwin' in sys.platform:
     _SystemApps = sep.join(['', 'cygdrive', 'c', 'Program Files'])
-    _CygwinHome = sep.join(['', 'cygdrive', 'c', 'home', getpass.getuser()])
-    _Desktop = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Desktop'])
-    _Documents = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Documents'])
-    _Downloads = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Downloads'])
-    _Dropbox = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Dropbox'])
-    _GDrive = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Google_Drive'])
-    _GitHub = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'GitHub'])
+    _CygwinHome = sep.join(['', 'cygdrive', 'c', 'home', USERNAME])
+    _Desktop = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Desktop'])
+    _Documents = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Documents'])
+    _Downloads = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Downloads'])
+    _Dropbox = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Dropbox'])
+    _GDrive = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Google_Drive'])
+    _GitHub = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'GitHub'])
     _HD = sep.join(['', 'cygdrive', 'c'])
-    _Home = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Desktop'])
-    _Movies = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Videos'])
-    _Music = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Music'])
-    _Pictures = sep.join(['', 'cygdrive', 'c', 'Users', getpass.getuser(), 'Pictures'])
+    _Home = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Desktop'])
+    _Movies = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Videos'])
+    _Music = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Music'])
+    _Pictures = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Pictures'])
     _Public = sep.join(['', 'cygdrive', 'c', 'Users', 'Public'])
     _UserApps = sep.join(['', 'cygdrive', 'c', 'Program Files'])
     _UserBin = sep.join(['', 'usr', 'local', 'bin'])
@@ -55,20 +57,20 @@ elif 'cygwin' in sys.platform:
 elif 'win' in sys.platform:
     _SystemApps = sep + 'Applications'
     _CygwinHome = sep.join(['', 'cygdrive', 'home'])
-    _Desktop = sep.join(['C:', 'Users', getpass.getuser(), 'Desktop'])
-    _Documents = sep.join(['C:', 'Users', getpass.getuser(), 'My Documents'])
-    _Downloads = sep.join(['C:', 'Users', getpass.getuser(), 'Downloads'])
-    _Dropbox = sep.join(['C:', 'Users', getpass.getuser(), 'Dropbox'])
-    _GDrive = sep.join(['C:', 'Users', getpass.getuser(), 'Google_Drive'])
-    _GitHub = os.path.expanduser('~') + sep + 'GitHub'
+    _Desktop = sep.join(['C:', 'Users', USERNAME, 'Desktop'])
+    _Documents = sep.join(['C:', 'Users', USERNAME, 'My Documents'])
+    _Downloads = sep.join(['C:', 'Users', USERNAME, 'Downloads'])
+    _Dropbox = sep.join(['C:', 'Users', USERNAME, 'Dropbox'])
+    _GDrive = sep.join(['C:', 'Users', USERNAME, 'Google_Drive'])
+    _GitHub = HOMEDIR + sep + 'GitHub'
     _HD = 'C:' + sep
-    _Home = sep.join(['C:', 'Users', getpass.getuser()])
-    _Movies = sep.join(['C:', 'Users', getpass.getuser(), 'My Videos'])
-    _Music = sep.join(['C:', 'Users', getpass.getuser(), 'My Music'])
-    _Pictures = sep.join(['C:', 'Users', getpass.getuser(), 'My Pictures'])
+    _Home = sep.join(['C:', 'Users', USERNAME])
+    _Movies = sep.join(['C:', 'Users', USERNAME, 'My Videos'])
+    _Music = sep.join(['C:', 'Users', USERNAME, 'My Music'])
+    _Pictures = sep.join(['C:', 'Users', USERNAME, 'My Pictures'])
     _Public = sep.join(['C:', 'Users', 'Public'])
-    _UserApps = sep.join(['C:', 'Users', getpass.getuser(), 'Applications'])
-    _UserBin = sep.join(['C:', 'Users', getpass.getuser(), 'Bin'])
+    _UserApps = sep.join(['C:', 'Users', USERNAME, 'Applications'])
+    _UserBin = sep.join(['C:', 'Users', USERNAME, 'Bin'])
     _SystemBin = sep.join(['C:', 'Program Files'])
     _ExtBasePath = ''
 else:
@@ -76,20 +78,20 @@ else:
     # Assume platform is a linux distribution
     _SystemApps = sep + 'Applications'
     _CygwinHome = None
-    _Desktop = os.path.expanduser('~') + sep + 'Desktop'
-    _Documents = os.path.expanduser('~') + sep + 'Documents'
-    _Downloads = os.path.expanduser('~') + sep + 'Downloads'
-    _Dropbox = os.path.expanduser('~') + sep + 'Dropbox'
-    _GDrive = os.path.expanduser('~') + sep + 'Google_Drive'
-    _GitHub = os.path.expanduser('~') + sep + 'GitHub'
+    _Desktop = HOMEDIR + sep + 'Desktop'
+    _Documents = HOMEDIR + sep + 'Documents'
+    _Downloads = HOMEDIR + sep + 'Downloads'
+    _Dropbox = HOMEDIR + sep + 'Dropbox'
+    _GDrive = HOMEDIR + sep + 'Google_Drive'
+    _GitHub = HOMEDIR + sep + 'GitHub'
     _HD = sep
-    _Home = os.path.expanduser('~')
-    _Movies = os.path.expanduser('~') + sep + 'Movies'
-    _Music = os.path.expanduser('~') + sep + 'Music'
-    _Pictures = os.path.expanduser('~') + sep + 'Pictures'
-    _Public = os.path.expanduser('~') + sep + 'Public'
-    _UserApps = os.path.expanduser('~') + sep + 'Applications'
-    _UserBin = os.path.expanduser('~') + sep + 'bin'
+    _Home = HOMEDIR
+    _Movies = HOMEDIR + sep + 'Movies'
+    _Music = HOMEDIR + sep + 'Music'
+    _Pictures = HOMEDIR + sep + 'Pictures'
+    _Public = HOMEDIR + sep + 'Public'
+    _UserApps = HOMEDIR + sep + 'Applications'
+    _UserBin = HOMEDIR + sep + 'bin'
     _SystemBin = sep.join(['', 'usr', 'local', 'bin'])
     _ExtBasePath = sep + 'Volumes'
 
@@ -120,64 +122,46 @@ def count(count_items, return_list=False):
 
 
 # Functions to navigate around the file system
-def apps(mode='return'):
+def apps(mode=None):
     if mode == 'return':
         return _SystemApps
-    elif mode == 'cd':
-        return _try_chdir(_SystemApps)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
-        return False
+        return _try_chdir(_SystemApps)
 
 
-def cyghome(mode='return'):
+def cyghome(mode=None):
     if mode == 'return':
         return _CygwinHome
-    elif mode == 'cd':
-        return _try_chdir(_CygwinHome)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
-        return False
+        return _try_chdir(_CygwinHome)
 
 
 def desktop(mode='return'):
     if mode == 'return':
         return _Desktop
-    elif mode == 'cd':
-        return _try_chdir(_Desktop)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
-        return False
+        return _try_chdir(_Desktop)
 
 
 def documents(mode='return'):
     if mode == 'return':
         return _Documents
-    elif mode == 'cd':
-        return _try_chdir(_Documents)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
-        return False
+        return _try_chdir(_Documents)
 
 
 def downloads(mode='return'):
     if mode == 'return':
         return _Downloads
-    elif mode == 'cd':
-        return _try_chdir(_Downloads)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
-        return False
+        return _try_chdir(_Downloads)
 
 
 def dropbox(mode='return'):
     if mode == 'return':
         return _Dropbox
-    elif mode == 'cd':
-        return _try_chdir(_Dropbox)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
-        return False
+        return _try_chdir(_Dropbox)
 
 
 def extdrive(drive_name, mode='return'):
@@ -199,48 +183,36 @@ def extdrive(drive_name, mode='return'):
         else:
             return function_return
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
+        print("fsnav.extdrive() ERROR: Invalid mode: %s" % mode)
         return False
 
 
 def gdrive(mode='return'):
     if mode == 'return':
         return _GDrive
-    elif mode == 'cd':
-        return _try_chdir(_GDrive)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
-        return False
+        return _try_chdir(_GDrive)
 
 
 def github(mode='return'):
     if mode == 'return':
         return _GitHub
-    elif mode == 'cd':
-        return _try_chdir(_GitHub)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
-        return False
+        return _try_chdir(_GitHub)
 
 
 def hd(mode='return'):
     if mode == 'return':
         return _HD
-    elif mode == 'cd':
-        return _try_chdir(_HD)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
-        return False
+        return _try_chdir(_HD)
 
 
 def home(mode='return'):
     if mode == 'return':
         return _Home
-    elif mode == 'cd':
-        return _try_chdir(_Home)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
-        return False
+        return _Home
 
 
 def movies(mode='return'):
@@ -249,7 +221,7 @@ def movies(mode='return'):
     elif mode == 'cd':
         return _try_chdir(_Movies)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
+        print("%s.%s ERROR: Invalid mode: %s" % mode)
         return False
 
 
@@ -259,7 +231,7 @@ def music(mode='return'):
     elif mode == 'cd':
         return _try_chdir(_Music)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
+        print("%s.%s ERROR: Invalid mode: %s" % mode)
         return False
 
 
@@ -269,7 +241,7 @@ def pictures(mode='return'):
     elif mode == 'cd':
         return _try_chdir(_Pictures)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
+        print("%s.%s ERROR: Invalid mode: %s" % mode)
         return False
 
 
@@ -279,7 +251,7 @@ def public(mode='return'):
     elif mode == 'cd':
         return _try_chdir(_Public)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
+        print("%s.%s ERROR: Invalid mode: %s" % mode)
         return False
 
 
@@ -289,7 +261,7 @@ def systembin(mode='return'):
     elif mode == 'cd':
         return _try_chdir(_SystemBin)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
+        print("%s.%s ERROR: Invalid mode: %s" % mode)
         return False
 
 
@@ -299,7 +271,7 @@ def userapps(mode='return'):
     elif mode == 'cd':
         return _try_chdir(_UserApps)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
+        print("%s.%s ERROR: Invalid mode: %s" % mode)
         return False
 
 
@@ -309,7 +281,7 @@ def userbin(mode='return'):
     elif mode == 'cd':
         return _try_chdir(_UserBin)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % (__name__, apps.__name__, mode))
+        print("%s.%s ERROR: Invalid mode: %s" % mode)
         return False
 
 
@@ -327,6 +299,7 @@ my_videos = movies
 videos = movies
 extvol = extdrive
 extvolume = extdrive
+applications = apps
 
 
 # Since almost all of the utilities operate in a similar manner, they can all use the framework below
