@@ -3,7 +3,6 @@ import sys
 import getpass
 from os import sep
 from glob import glob
-from os.path import isdir
 
 # Build information
 __author__ = 'Kevin Wurster'
@@ -16,10 +15,10 @@ __source__ = 'https://github.com/geowurster/FS_Nav'
 # Global variables
 HOMEDIR = os.path.expanduser('~')
 USERNAME = getpass.getuser()
-UTIL_CODES = ['applications', 'desktop', 'documents', 'downloads',
+UTIL_CODES = ['apps', 'desktop', 'documents', 'downloads',
               'hd', 'home', 'movies', 'music', 'pictures', 'public',
               'systembin', 'extdrive', 'dropbox', 'google_drive',
-              'github', 'userbin', 'user_applications', 'cyghome']
+              'github', 'userbin', 'user_apps', 'cyghome']
 if 'darwin' in sys.platform:
     N_PLATFORM = 'mac'
     UTIL_CODES.remove('cyghome')
@@ -37,7 +36,7 @@ else:
 
 
 # Define platform specific information
-if N_PLATFORM == 'linux' or N_PLATFORM == 'darwin':
+if N_PLATFORM == 'linux' or N_PLATFORM == 'mac':
     _SystemApps = sep + 'Applications'
     _CygwinHome = None
     _Desktop = HOMEDIR + sep + 'Desktop'
@@ -159,11 +158,12 @@ def count(count_items, return_list=False):
 
 
 # == These functions map to directories that exist on all platforms by default == #
-def applications(mode='return'):
+def apps(mode='return'):
     if mode == 'return':
         return _SystemApps
     else:
         return _try_chdir(_SystemApps)
+applications = apps
 
 
 def desktop(mode='return'):
@@ -200,7 +200,7 @@ def home(mode='return'):
     if mode == 'return':
         return _Home
     else:
-        return _Home
+        return _try_chdir(_Home)
 
 
 def movies(mode='return'):
@@ -242,7 +242,7 @@ def systembin(mode='return'):
     if mode == 'return':
         return _SystemBin
     else:
-        return _SystemBin
+        return _try_chdir(_SystemBin)
 
 
 def extdrive(drive_name, mode='return'):
@@ -269,13 +269,13 @@ def dropbox(mode='return'):
         return _try_chdir(_Dropbox)
 
 
-def google_drive(mode='return'):
+def gdrive(mode='return'):
     if mode == 'return':
         return _GDrive
     else:
         return _try_chdir(_GDrive)
-googledrive = google_drive
-gdrive = google_drive
+google_drive = gdrive
+google_drive = gdrive
 
 
 def github(mode='return'):
@@ -292,11 +292,12 @@ def userbin(mode='return'):
         return _try_chdir(_UserBin)
 
 
-def user_applications(mode='return'):
+def userapps(mode='return'):
     if mode == 'return':
         return _UserApps
     else:
         return _try_chdir(_UserApps)
+user_applications = userapps
 
 
 # == These functions map to directories that are each a special case and require special validation == #
