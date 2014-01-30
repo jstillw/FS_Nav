@@ -16,19 +16,28 @@ __source__ = 'https://github.com/geowurster/FS_Nav'
 # Global variables
 HOMEDIR = os.path.expanduser('~')
 USERNAME = getpass.getuser()
+UTIL_CODES = ['applications', 'desktop', 'documents', 'downloads',
+              'hd', 'home', 'movies', 'music', 'pictures', 'public',
+              'systembin', 'extdrive', 'dropbox', 'google_drive',
+              'github', 'userbin', 'user_applications', 'cyghome']
 if 'darwin' in sys.platform:
     N_PLATFORM = 'mac'
+    UTIL_CODES.remove('cyghome')
 elif 'nix' in sys.platform:
     N_PLATFORM = 'linux'
+    UTIL_CODES.remove('cyghome')
 elif 'win' in sys.platform:
     N_PLATFORM = 'win'
+    UTIL_CODES.remove('cyghome')
+elif 'cygwin' in sys.platform:
+    N_PLATFORM = 'cygwin'
 else:
     N_PLAT_WARN = True
     N_PLATFORM = 'linux'
 
 
 # Define platform specific information
-if N_PLATFORM == 'linux':
+if N_PLATFORM == 'linux' or N_PLATFORM == 'darwin':
     _SystemApps = sep + 'Applications'
     _CygwinHome = None
     _Desktop = HOMEDIR + sep + 'Desktop'
@@ -86,7 +95,6 @@ elif 'win' in sys.platform:
     _SystemBin = sep.join(['C:', 'Program Files'])
     _ExtBasePath = ''
 else:
-    print("FS Nav WARNING: Unsupported platform: %s" % sys.platform)
     # Assume platform is a linux distribution
     _SystemApps = sep + 'Applications'
     _CygwinHome = None
@@ -254,51 +262,49 @@ extvolume = extdrive
 
 
 # == These functions map to directories that only exist if specific software is installed == #
-if isdir(_Dropbox):
-    def dropbox(mode='return'):
-        if mode == 'return':
-            return _Dropbox
-        else:
-            return _try_chdir(_Dropbox)
+def dropbox(mode='return'):
+    if mode == 'return':
+        return _Dropbox
+    else:
+        return _try_chdir(_Dropbox)
 
-if isdir(_GDrive):
-    def google_drive(mode='return'):
-        if mode == 'return':
-            return _GDrive
-        else:
-            return _try_chdir(_GDrive)
-    googledrive = google_drive
-    gdrive = google_drive
 
-if isdir(_GitHub):
-    def github(mode='return'):
-        if mode == 'return':
-            return _GitHub
-        else:
-            return _try_chdir(_GitHub)
+def google_drive(mode='return'):
+    if mode == 'return':
+        return _GDrive
+    else:
+        return _try_chdir(_GDrive)
+googledrive = google_drive
+gdrive = google_drive
 
-if isdir(_UserBin):
-    def userbin(mode='return'):
-        if mode == 'return':
-            return _UserBin
-        else:
-            return _try_chdir(_UserBin)
 
-if isdir(_UserApps):
-    def user_applications(mode='return'):
-        if mode == 'return':
-            return _UserApps
-        else:
-            return _try_chdir(_UserApps)
+def github(mode='return'):
+    if mode == 'return':
+        return _GitHub
+    else:
+        return _try_chdir(_GitHub)
+
+
+def userbin(mode='return'):
+    if mode == 'return':
+        return _UserBin
+    else:
+        return _try_chdir(_UserBin)
+
+
+def user_applications(mode='return'):
+    if mode == 'return':
+        return _UserApps
+    else:
+        return _try_chdir(_UserApps)
 
 
 # == These functions map to directories that are each a special case and require special validation == #
-if N_PLATFORM == 'cygwin':
-    def cyghome(mode='return'):
-        if mode == 'return':
-            return _CygwinHome
-        else:
-            return _try_chdir(_CygwinHome)
+def cyghome(mode='return'):
+    if mode == 'return':
+        return _CygwinHome
+    else:
+        return _try_chdir(_CygwinHome)
 
 
 # Since almost all of the utilities operate in a similar manner, they can all use the framework below
