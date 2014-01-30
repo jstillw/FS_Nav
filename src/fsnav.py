@@ -3,7 +3,7 @@ import sys
 import getpass
 from os import sep
 from glob import glob
-
+from os.path import isdir
 
 # Build information
 __author__ = 'Kevin Wurster'
@@ -13,10 +13,22 @@ __license__ = 'See LICENSE.txt from original package.'
 __source__ = 'https://github.com/geowurster/FS_Nav'
 
 
-# Define platform specific information
+# Global variables
 HOMEDIR = os.path.expanduser('~')
 USERNAME = getpass.getuser()
-if ('darwin' or 'nix') in sys.platform:
+if 'darwin' in sys.platform:
+    N_PLATFORM = 'mac'
+elif 'nix' in sys.platform:
+    N_PLATFORM = 'linux'
+elif 'win' in sys.platform:
+    N_PLATFORM = 'win'
+else:
+    N_PLAT_WARN = True
+    N_PLATFORM = 'linux'
+
+
+# Define platform specific information
+if N_PLATFORM == 'linux':
     _SystemApps = sep + 'Applications'
     _CygwinHome = None
     _Desktop = HOMEDIR + sep + 'Desktop'
@@ -35,7 +47,7 @@ if ('darwin' or 'nix') in sys.platform:
     _UserBin = HOMEDIR + sep + 'bin'
     _SystemBin = sep.join(['', 'usr', 'local', 'bin'])
     _ExtBasePath = sep + 'Volumes'
-elif 'cygwin' in sys.platform:
+elif N_PLATFORM == 'cygwin':
     _SystemApps = sep.join(['', 'cygdrive', 'c', 'Program Files'])
     _CygwinHome = sep.join(['', 'cygdrive', 'c', 'home', USERNAME])
     _Desktop = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Desktop'])
@@ -105,6 +117,23 @@ def _try_chdir(dir_path):
         return False
 
 
+# This function exists to help expand supported platforms
+# Calling the function will print a set of errors if there are issues to work through
+def platform_warning():
+    if N_PLAT_WARN:
+        print(""
+              "sys.platform = %s"
+              "N_PLATFORM   = %s"
+              ""
+              "Your platform is not directly supported and is assumed to be linux based."
+              "Directory structures vary by OS, which can be difficult to detect without user input."
+              "Please send this information to:"
+              "%s at %s" % (sys.platform, N_PLATFORM, __author__, __email__))
+        return False
+    else:
+        return True
+
+
 # Utility functions
 def count(count_items, return_list=False):
     item_list = []
@@ -121,19 +150,12 @@ def count(count_items, return_list=False):
         return len(list(set(item_list)))
 
 
-# Functions to navigate around the file system
-def apps(mode=None):
+# == These functions map to directories that exist on all platforms by default == #
+def applications(mode='return'):
     if mode == 'return':
         return _SystemApps
     else:
         return _try_chdir(_SystemApps)
-
-
-def cyghome(mode=None):
-    if mode == 'return':
-        return _CygwinHome
-    else:
-        return _try_chdir(_CygwinHome)
 
 
 def desktop(mode='return'):
@@ -148,6 +170,8 @@ def documents(mode='return'):
         return _Documents
     else:
         return _try_chdir(_Documents)
+mydocuments = documents
+my_documents = documents
 
 
 def downloads(mode='return'):
@@ -155,50 +179,6 @@ def downloads(mode='return'):
         return _Downloads
     else:
         return _try_chdir(_Downloads)
-
-
-def dropbox(mode='return'):
-    if mode == 'return':
-        return _Dropbox
-    else:
-        return _try_chdir(_Dropbox)
-
-
-def extdrive(drive_name, mode='return'):
-    if mode == 'return':
-        return _SystemApps
-    elif mode == 'cd':
-        if ('darwin' or 'nix') in sys.platform:
-            function_return = _try_chdir(_ExtBasePath + sep + drive_name)
-        elif 'cygwin' in sys.platform:
-            function_return = _try_chdir(_ExtBasePath + sep + drive_name.lower())
-        elif 'Windows' in sys.platform:
-            function_return = _try_chdir(drive_name.upper() + ':' + sep)
-        else:
-            function_return = False
-            print("%s.%s ERROR: Platform not supported." % (__name__, apps.__name__))
-        if function_return is False:
-            print("%s.%s ERROR: Can't change to: %s" % (__name__, apps.__name__, drive_name))
-            return False
-        else:
-            return function_return
-    else:
-        print("fsnav.extdrive() ERROR: Invalid mode: %s" % mode)
-        return False
-
-
-def gdrive(mode='return'):
-    if mode == 'return':
-        return _GDrive
-    else:
-        return _try_chdir(_GDrive)
-
-
-def github(mode='return'):
-    if mode == 'return':
-        return _GitHub
-    else:
-        return _try_chdir(_GitHub)
 
 
 def hd(mode='return'):
@@ -218,88 +198,107 @@ def home(mode='return'):
 def movies(mode='return'):
     if mode == 'return':
         return _Movies
-    elif mode == 'cd':
-        return _try_chdir(_Movies)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % mode)
-        return False
+        return _try_chdir(_Movies)
+myvideos = movies
+my_videos = movies
+videos = movies
 
 
 def music(mode='return'):
     if mode == 'return':
         return _Music
-    elif mode == 'cd':
-        return _try_chdir(_Music)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % mode)
-        return False
+        return _try_chdir(_Music)
+mymusic = music
+my_music = music
 
 
 def pictures(mode='return'):
     if mode == 'return':
         return _Pictures
-    elif mode == 'cd':
-        return _try_chdir(_Pictures)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % mode)
-        return False
+        return _try_chdir(_Pictures)
+mypictures = pictures
+my_pictures = pictures
 
 
 def public(mode='return'):
     if mode == 'return':
         return _Public
-    elif mode == 'cd':
-        return _try_chdir(_Public)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % mode)
-        return False
+        return _try_chdir(_Public)
 
 
 def systembin(mode='return'):
     if mode == 'return':
         return _SystemBin
-    elif mode == 'cd':
-        return _try_chdir(_SystemBin)
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % mode)
-        return False
+        return _SystemBin
 
 
-def userapps(mode='return'):
+def extdrive(drive_name, mode='return'):
     if mode == 'return':
-        return _UserApps
-    elif mode == 'cd':
-        return _try_chdir(_UserApps)
+        return drive_name
     else:
-        print("%s.%s ERROR: Invalid mode: %s" % mode)
-        return False
-
-
-def userbin(mode='return'):
-    if mode == 'return':
-        return _UserBin
-    elif mode == 'cd':
-        return _try_chdir(_UserBin)
-    else:
-        print("%s.%s ERROR: Invalid mode: %s" % mode)
-        return False
-
-
-# Allow for cross platform nomenclature and other increased usability
-googledrive = gdrive
-google_drive = gdrive
-mydocuments = documents
-my_documents = documents
-mymusic = music
-my_music = music
-mypictures = pictures
-my_pictures = pictures
-myvideos = movies
-my_videos = movies
-videos = movies
+        if N_PLATFORM == 'darwin' or N_PLATFORM == 'linux':
+            return _try_chdir(_ExtBasePath + sep + drive_name)
+        elif N_PLATFORM == 'cygwin':
+            return _try_chdir(_ExtBasePath + sep + drive_name.lower())
+        elif N_PLATFORM == 'windows':
+            return _try_chdir(drive_name.upper() + ':' + sep)
+        else:
+            return False
 extvol = extdrive
 extvolume = extdrive
-applications = apps
+
+
+# == These functions map to directories that only exist if specific software is installed == #
+if isdir(_Dropbox):
+    def dropbox(mode='return'):
+        if mode == 'return':
+            return _Dropbox
+        else:
+            return _try_chdir(_Dropbox)
+
+if isdir(_GDrive):
+    def google_drive(mode='return'):
+        if mode == 'return':
+            return _GDrive
+        else:
+            return _try_chdir(_GDrive)
+    googledrive = google_drive
+    gdrive = google_drive
+
+if isdir(_GitHub):
+    def github(mode='return'):
+        if mode == 'return':
+            return _GitHub
+        else:
+            return _try_chdir(_GitHub)
+
+if isdir(_UserBin):
+    def userbin(mode='return'):
+        if mode == 'return':
+            return _UserBin
+        else:
+            return _try_chdir(_UserBin)
+
+if isdir(_UserApps):
+    def user_applications(mode='return'):
+        if mode == 'return':
+            return _UserApps
+        else:
+            return _try_chdir(_UserApps)
+
+
+# == These functions map to directories that are each a special case and require special validation == #
+if N_PLATFORM == 'cygwin':
+    def cyghome(mode='return'):
+        if mode == 'return':
+            return _CygwinHome
+        else:
+            return _try_chdir(_CygwinHome)
 
 
 # Since almost all of the utilities operate in a similar manner, they can all use the framework below
