@@ -317,6 +317,7 @@ if __name__ == '__main__':
     # Print any warning information about tests using internal validate function
     # This function performs necessary checks to ensure that tests can be run
     if validate():
-        unittest.main()
+        sys.exit(unittest.main())
     else:
         print("test_fsnav.py ERROR: Could not run tests.")
+        sys.exit(1)
