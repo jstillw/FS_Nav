@@ -43,7 +43,7 @@ if N_PLATFORM == 'linux' or N_PLATFORM == 'mac':
     _Documents = HOMEDIR + sep + 'Documents'
     _Downloads = HOMEDIR + sep + 'Downloads'
     _Dropbox = HOMEDIR + sep + 'Dropbox'
-    _GDrive = HOMEDIR + sep + 'Google_Drive'
+    _GDrive = HOMEDIR + sep + 'Google Drive'
     _GitHub = HOMEDIR + sep + 'GitHub'
     _HD = sep
     _Home = HOMEDIR
@@ -62,7 +62,7 @@ elif N_PLATFORM == 'cygwin':
     _Documents = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Documents'])
     _Downloads = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Downloads'])
     _Dropbox = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Dropbox'])
-    _GDrive = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Google_Drive'])
+    _GDrive = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Google Drive'])
     _GitHub = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'GitHub'])
     _HD = sep.join(['', 'cygdrive', 'c'])
     _Home = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Desktop'])
@@ -81,7 +81,7 @@ elif 'win' in sys.platform:
     _Documents = sep.join(['C:', 'Users', USERNAME, 'My Documents'])
     _Downloads = sep.join(['C:', 'Users', USERNAME, 'Downloads'])
     _Dropbox = sep.join(['C:', 'Users', USERNAME, 'Dropbox'])
-    _GDrive = sep.join(['C:', 'Users', USERNAME, 'Google_Drive'])
+    _GDrive = sep.join(['C:', 'Users', USERNAME, 'Google Drive'])
     _GitHub = HOMEDIR + sep + 'GitHub'
     _HD = 'C:' + sep
     _Home = sep.join(['C:', 'Users', USERNAME])
@@ -101,7 +101,7 @@ else:
     _Documents = HOMEDIR + sep + 'Documents'
     _Downloads = HOMEDIR + sep + 'Downloads'
     _Dropbox = HOMEDIR + sep + 'Dropbox'
-    _GDrive = HOMEDIR + sep + 'Google_Drive'
+    _GDrive = HOMEDIR + sep + 'Google Drive'
     _GitHub = HOMEDIR + sep + 'GitHub'
     _HD = sep
     _Home = HOMEDIR
