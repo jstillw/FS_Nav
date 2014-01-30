@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7da5b23f-e80f-4d2b-872e-ae548b60e3f3" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dictionaries/kwurster.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dictionaries/wursterk.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fsnav.py" afterPath="$PROJECT_DIR$/src/fsnav.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/travis_setup.py" afterPath="$PROJECT_DIR$/scripts/travis_setup.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="7da5b23f-e80f-4d2b-872e-ae548b60e3f3" name="Default" comment="" />
     <ignored path="FS_Nav.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,7 +50,7 @@
           <file leaf-file-name="travis_setup.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/scripts/travis_setup.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="33" column="43" selection-start="886" selection-end="886" vertical-scroll-proportion="0.77223086" vertical-offset="0" max-vertical-offset="780">
+                <state line="27" column="45" selection-start="649" selection-end="649" vertical-scroll-proportion="0.63182527" vertical-offset="0" max-vertical-offset="780">
                   <folding>
                     <element signature="e#24#33#0" expanded="true" />
                   </folding>
@@ -384,10 +373,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="22" width="1916" height="1058" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28829786" sideWeight="0.50554675" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28829786" sideWeight="0.50554675" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28829786" sideWeight="0.49392498" order="6" side_tool="false" content_ui="combo" />
@@ -504,7 +493,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/travis_setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="43" selection-start="886" selection-end="886" vertical-scroll-proportion="0.77223086" vertical-offset="0" max-vertical-offset="780">
+        <state line="27" column="45" selection-start="649" selection-end="649" vertical-scroll-proportion="0.63182527" vertical-offset="0" max-vertical-offset="780">
           <folding>
             <element signature="e#24#33#0" expanded="true" />
           </folding>
