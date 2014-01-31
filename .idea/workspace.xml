@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7da5b23f-e80f-4d2b-872e-ae548b60e3f3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/FS_Nav.iml" afterPath="$PROJECT_DIR$/.idea/FS_Nav.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/fsnav_linker.sh" afterPath="$PROJECT_DIR$/bin/fsnav_linker.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nav.py" afterPath="$PROJECT_DIR$/bin/nav.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -34,9 +31,10 @@
           <file leaf-file-name="nav.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bin/nav.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="135" column="58" selection-start="4031" selection-end="4031" vertical-scroll-proportion="0.75179" vertical-offset="1710" max-vertical-offset="3150">
+                <state line="136" column="4" selection-start="3969" selection-end="3969" vertical-scroll-proportion="0.42625168" vertical-offset="1725" max-vertical-offset="3090">
                   <folding>
-                    <element signature="e#24#34#0" expanded="true" />
+                    <element signature="e#24#33#0" expanded="true" />
+                    <marker date="1391142895000" expanded="true" signature="3181:4161" placeholder="..." />
                   </folding>
                 </state>
               </provider>
@@ -49,7 +47,7 @@
           <file leaf-file-name="build_utilities.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/scripts/build_utilities.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="288" column="24" selection-start="9113" selection-end="9182" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4575">
+                <state line="288" column="24" selection-start="9113" selection-end="9182" vertical-scroll-proportion="0.0" vertical-offset="4320" max-vertical-offset="4605">
                   <folding />
                 </state>
               </provider>
@@ -58,7 +56,7 @@
           <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/fsnav/__init__.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="7" column="0" selection-start="98" selection-end="286" vertical-scroll-proportion="-4.6897373" vertical-offset="2010" max-vertical-offset="6480">
+                <state line="7" column="0" selection-start="98" selection-end="286" vertical-scroll-proportion="-0.3856563" vertical-offset="330" max-vertical-offset="6480">
                   <folding />
                 </state>
               </provider>
@@ -67,7 +65,7 @@
           <file leaf-file-name="test_fsnav.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/tests/test_fsnav.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="17" column="41" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4035">
+                <state line="17" column="41" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="4140">
                   <folding />
                 </state>
               </provider>
@@ -116,7 +114,7 @@
     <option name="x" value="4" />
     <option name="y" value="22" />
     <option name="width" value="1916" />
-    <option name="height" value="762" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -173,34 +171,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FS_Nav" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FS_Nav" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FS_Nav" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FS_Nav" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="bin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -214,8 +184,8 @@
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -373,14 +343,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="22" width="1916" height="762" extended-state="6" />
+    <frame x="4" y="22" width="1916" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26708075" sideWeight="0.506075" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18317358" sideWeight="0.506075" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26708075" sideWeight="0.49392498" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18317358" sideWeight="0.49392498" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -409,9 +379,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26708075" sideWeight="0.49392498" order="6" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -479,9 +449,28 @@
         <state line="69" column="24" selection-start="2532" selection-end="2532" vertical-scroll-proportion="0.0" vertical-offset="1035" max-vertical-offset="3915" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bin/count.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="9" selection-start="1953" selection-end="1953" vertical-scroll-proportion="0.6959459" vertical-offset="1086" max-vertical-offset="1530" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="24" selection-end="24" vertical-scroll-proportion="0.10135135" vertical-offset="0" max-vertical-offset="444">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/build_utilities.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="288" column="24" selection-start="9113" selection-end="9182" vertical-scroll-proportion="0.0" vertical-offset="4035" max-vertical-offset="4575">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fsnav/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="98" selection-end="286" vertical-scroll-proportion="-0.3856563" vertical-offset="330" max-vertical-offset="6480">
           <folding />
         </state>
       </provider>
@@ -493,41 +482,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/count.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="9" selection-start="1953" selection-end="1953" vertical-scroll-proportion="0.6959459" vertical-offset="1086" max-vertical-offset="1530">
-          <folding>
-            <element signature="e#24#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="24" selection-end="24" vertical-scroll-proportion="0.10135135" vertical-offset="0" max-vertical-offset="444">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fsnav/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="98" selection-end="286" vertical-scroll-proportion="-4.6897373" vertical-offset="2010" max-vertical-offset="6480">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/fsnav_linker.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="24" selection-start="370" selection-end="370" vertical-scroll-proportion="0.5067568" vertical-offset="0" max-vertical-offset="1200">
+        <state line="45" column="0" selection-start="740" selection-end="778" vertical-scroll-proportion="0.4465494" vertical-offset="345" max-vertical-offset="1200">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/nav.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="135" column="58" selection-start="4031" selection-end="4031" vertical-scroll-proportion="0.75179" vertical-offset="1710" max-vertical-offset="3150">
+        <state line="136" column="4" selection-start="3969" selection-end="3969" vertical-scroll-proportion="0.42625168" vertical-offset="1725" max-vertical-offset="3090">
           <folding>
-            <element signature="e#24#34#0" expanded="true" />
+            <element signature="e#24#33#0" expanded="true" />
+            <marker date="1391142895000" expanded="true" signature="3181:4161" placeholder="..." />
           </folding>
         </state>
       </provider>
