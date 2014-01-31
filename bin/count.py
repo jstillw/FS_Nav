@@ -3,7 +3,6 @@
 
 import sys
 import fsnav
-from sys import exit
 
 
 # Build information
