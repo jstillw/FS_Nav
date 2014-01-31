@@ -352,7 +352,7 @@ class UtilFramework(object):
     @staticmethod
     def print_usage(self):
         print("%s.print_usage()" % self.__name__)
-        exit()
+        return 1
 
     @staticmethod
     def print_help(self):
@@ -364,7 +364,7 @@ class UtilFramework(object):
         print(""
               "See LICENSE.txt from original distribution"
               "")
-        exit()
+        return 1
 
     @staticmethod
     def print_version():
@@ -373,7 +373,7 @@ class UtilFramework(object):
               "By %s - %s"
               "Source: %s"
               "" % (__version__, __author__, __email__, __source__))
-        exit()
+        return 1
 
     def run(self):
 
@@ -405,24 +405,26 @@ class UtilFramework(object):
             # Catch errors
             elif arg[0] != '-':
                 print("An arg before %s has invalid parameters" % arg)
-                exit()
+                return 1
             else:
                 print("Invalid arg: %s" % arg)
-                exit()
+                return 1
 
         # Validate
         bail = False
         if mode not in allowed_modes:
             print("ERROR: Invalid mode: %s" % mode)
             print("  Allowed modes: %s" % str(allowed_modes))
+            bail = True
         if bail:
-            exit()
+            return 1
 
         # Call function and handle information appropriately
         if mode == 'cd':
             return self.util_function(mode='cd')
         elif mode == 'print':
             print self.util_function(mode='return')
+            return 0
         elif mode == 'return':
             return self.util_function(mode='return')
         else:

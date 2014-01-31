@@ -57,14 +57,14 @@ Use --codes to view a list
 
 Note that the count utility is not accessible via this package
           """)
-    exit()
+    return 1
 
 
 def print_usage():
     print("""
 Usage: %s --help-info util_code [utility arguments ...]
           """ % sys.argv[0])
-    exit()
+    return 1
 
 
 def print_version():
@@ -72,7 +72,7 @@ def print_version():
 %s version %s
 By %s - %s
           """ % (sys.argv[0], __version__, __author__, __email__))
-    exit()
+    return 1
 
 
 def print_util_codes():
@@ -86,12 +86,12 @@ def print_util_codes():
         spaces = ''.join([' ' for i in range(0, longest - len(key))])
         print('  %s' % key + spaces + '  ->  %s' % val)
     print('\n')
-    exit()
+    return 1
 
 
 def print_license():
     print('\n' + __license__ + '\n')
-    exit()
+    return 1
 
 
 def print_help_info():
@@ -104,7 +104,7 @@ def print_help_info():
   --version
   --license
           """)
-    exit()
+    return 1
 
 
 # Wrap call for testing purposes
@@ -181,13 +181,15 @@ def main(args):
                                         util_name=args[0], util_function=fsnav.userbin)
     else:
         print("%s ERROR: Invalid utility: %s" % (sys.argv[0], args[0]))
-        exit()
+        return 1
 
     # Execute
-    framework.run()
+    return framework.run()
 
 
 # Execute
 if __name__ == '__main__':
-    main(sys.argv[1:])
-    exit()
+    if len(sys.argv) is 1:
+        sys.exit(print_usage())
+    else:
+        sys.exit(main(sys.argv[1:]))
