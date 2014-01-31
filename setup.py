@@ -20,5 +20,6 @@ setup(name='FS_Nav',
       author_email=__email__,
       url='https://github.com/geowurster/FS_Nav',
       packages=['fsnav'],
-      scripts=glob('bin' + sep + '*')
+      scripts=glob('bin' + sep + '*'),
+      tests='tests'
       )
