@@ -144,18 +144,17 @@ def platform_warning():
 # Utility functions
 def count(count_items, return_list=False):
     item_list = []
-    count_items = list(set(count_items))
     for item in count_items:
-        if os.path.isdir(item):
-            item_list += glob(item + sep + '*')
-        elif '*' in item:
+        if '*' in item:
             item_list += glob(item)
         else:
             item_list.append(item)
+    # Force list of items to be unique
+    item_list = list(set(item_list))
     if return_list:
-        return list(set(item_list))
+        return item_list
     else:
-        return len(list(set(item_list)))
+        return len(item_list)
 
 
 # == These functions map to directories that exist on all platforms by default == #
