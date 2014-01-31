@@ -6,6 +6,5 @@ python:
   - "3.3"
   - "pypy"
 before_script: "scripts/before_travis.py"
-script: "tests/test_fsnav.py"
 install:
   - python setup.py install
