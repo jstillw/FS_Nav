@@ -8,31 +8,11 @@ import unittest
 from os import sep
 from glob import glob
 from os.path import expanduser
-try:
-    import fsnav
-except ImportError:
-    fsnav = None
+import fsnav
 
 
 # Build information
 __version__ = '0.1'
-
-
-# Call this function before running any tests to see if tests should be run or not
-def validate(verbose=True):
-    proceed = True
-    # Check and see if the tests are designed for the imported version of
-    if fsnav is not None:
-        if __version__ != fsnav.__version__:
-            if verbose:
-                print("test_fsnav.py ERROR: Running test suite against the incorrect version")
-                print("  fsnav version = %s" % fsnav.__version__)
-                print("  test version  = %s" % __version__)
-                proceed = False
-    else:
-        print("test_fsnav.py ERROR: fsnav.py was not successfully imported")
-        proceed = False
-    return proceed
 
 
 # Define platform specific information to improve readability within the tests
@@ -284,23 +264,4 @@ class TestNavigationFunctions(unittest.TestCase):
 
 # Allow tests to be run from the command line in a self-contained script
 if __name__ == '__main__':
-
-    # Allow this set of tests to be used for two purposes:
-    # To test a version that is currently installed
-    # To test the src code within a package before it is installed
-    if len(sys.argv) > 1:
-        if sys.argv[1] == '--test-src':
-            del sys.argv[sys.argv.index('--test-src')]
-            sys.path.insert(0, 'src')
-            if fsnav is not None:
-                r = reload(fsnav)
-            else:
-                import fsnav
-
-    # Print any warning information about tests using internal validate function
-    # This function performs necessary checks to ensure that tests can be run
-    if validate():
-        sys.exit(unittest.main())
-    else:
-        print("test_fsnav.py ERROR: Could not run tests.")
-        sys.exit(1)
+    sys.exit(unittest.main())
