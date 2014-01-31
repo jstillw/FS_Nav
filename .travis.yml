@@ -1,6 +1,6 @@
 language: python
 python:
   - "2.7"
-before_script: "scripts/before_travis.py"
+before_script: "scripts/travis_setup.py"
 install:
   - python setup.py install
