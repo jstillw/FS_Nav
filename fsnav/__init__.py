@@ -357,7 +357,7 @@ class UtilFramework(object):
     @staticmethod
     def print_help(self):
         print("%s.print_help()" % self.__name__)
-        exit()
+        return 1
 
     @staticmethod
     def print_license():
