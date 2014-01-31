@@ -7,6 +7,7 @@ import getpass
 import unittest
 from os import sep
 from glob import glob
+from os.path import expanduser
 try:
     import fsnav
 except ImportError:
@@ -43,7 +44,7 @@ if ('darwin' or 'nix') in sys.platform:
     _Documents = os.path.expanduser('~') + sep + 'Documents'
     _Downloads = os.path.expanduser('~') + sep + 'Downloads'
     _Dropbox = os.path.expanduser('~') + sep + 'Dropbox'
-    _GDrive = os.path.expanduser('~') + sep + 'Google_Drive'
+    _GDrive = os.path.expanduser('~') + sep + 'Google Drive'
     _GitHub = os.path.expanduser('~') + sep + 'GitHub'
     _HD = sep
     _Home = os.path.expanduser('~')
@@ -138,28 +139,10 @@ class TestNavigationFunctions(unittest.TestCase):
         self.non_extant_dir = '__NON_EXTANT_DIRECTORY__'
 
     def test_count(self):
-        # Test with just a path to a directory
-        directory = 'bin'
-        expected = len(list(set(glob(directory + sep + '*'))))
-        actual = fsnav.count([directory])
-        self.assertEqual(expected, actual)
-        # Test with just a path to a directory and random files
-        directory = 'bin'
-        file_list = glob('*')
-        submission_list = [i for i in file_list]
-        submission_list.append(directory)
-        actual = fsnav.count(submission_list)
-        expected = len(list(set(glob(directory + sep + '*') + file_list)))
-        self.assertEqual(expected, actual)
-        # Test with just a path to a directory, random files, and a string containing a wildcard
-        directory = 'bin'
-        file_list = glob('*')
-        wildcard_string = '..' + sep + 'src' + sep + '*'
-        submission_list = [i for i in file_list]
-        submission_list.append(directory)
-        submission_list.append(wildcard_string)
-        expected = len(list(set(glob(directory + sep + '*') + file_list + glob(wildcard_string))))
-        actual = fsnav.count(submission_list)
+        # Test with input values that are all unique
+        test_string = expanduser('~') + sep + '*'
+        expected = len(list(set(glob(test_string))))
+        actual = fsnav.count([test_string])
         self.assertEqual(expected, actual)
 
     def test_apps(self):
