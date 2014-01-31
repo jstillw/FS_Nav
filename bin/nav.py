@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 
+import os
 import sys
 import fsnav
-import subprocess
 
 
 # Build information
@@ -111,7 +111,7 @@ The following flags print help information:
 def main(args):
 
     # Defaults
-    linker = 'fsnav_linker.sh'
+    linker = '/usr/local/bin/fsnav_linker.sh'
 
     # Look for help arguments first
     for arg in args:
@@ -132,13 +132,12 @@ def main(args):
             linker = arg.split('=')[1]
 
     # Create functions for use in the command line
+    framework = None
     if args[0] == 'link':
-        print("Calling '%s' to link functions..." % linker)
-        subprocess.call([linker])
+        return os.system('source ' + linker)
 
     # Configure framework based on code
-    framework = None
-    if args[0] == 'apps':
+    elif args[0] == 'apps':
         framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
                                         util_name=args[0], util_function=fsnav.apps)
     elif args[0] == 'cyghome':
