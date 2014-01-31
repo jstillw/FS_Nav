@@ -3,9 +3,7 @@
 
 import sys
 from sys import exit
-
-sys.path.insert(0, '../')
-from src import fsnav
+import fsnav
 
 
 # Build information
