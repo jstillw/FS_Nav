@@ -12,7 +12,7 @@ __SOURCE__='https://github.com/geowurster/FS_Nav'
 # Functions to print out helpful information
 PRINT_HELP_INFO() {
     echo ""
-    echo "The following flags contain help information:"
+    echo "The following flags print help information:"
     echo "  --help-info"
     echo "  --version"
     echo "  --license"
