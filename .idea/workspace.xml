@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7da5b23f-e80f-4d2b-872e-ae548b60e3f3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fsnav.py" afterPath="$PROJECT_DIR$/src/fsnav.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_fsnav.py" afterPath="$PROJECT_DIR$/tests/test_fsnav.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/FS_Nav.iml" afterPath="$PROJECT_DIR$/.idea/FS_Nav.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/__init__.py" afterPath="$PROJECT_DIR$/src/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="FS_Nav.iws" />
@@ -26,14 +29,38 @@
     <favorites_list name="FS_Nav" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.49425286">
       <split-first>
         <leaf>
-          <file leaf-file-name="fsnav.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="setup.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/setup.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="21" column="16" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
+                  <folding>
+                    <marker date="1391134023000" expanded="true" signature="24:97" placeholder="import ..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/__init__.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="427" column="110" selection-start="13281" selection-end="13281" vertical-scroll-proportion="10.248" vertical-offset="0" max-vertical-offset="6495">
+                  <folding>
+                    <element signature="e#0#9#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="fsnav.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/fsnav.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="146" column="38" selection-start="5723" selection-end="5723" vertical-scroll-proportion="0.41573033" vertical-offset="1982" max-vertical-offset="6450">
-                  <folding />
+                <state line="19" column="36" selection-start="0" selection-end="13281" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6495">
+                  <folding>
+                    <element signature="e#0#9#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -42,19 +69,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="test_fsnav.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="test_fsnav.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/tests/test_fsnav.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="151" column="74" selection-start="6741" selection-end="6741" vertical-scroll-proportion="0.6692913" vertical-offset="1935" max-vertical-offset="4845">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="travis_setup.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/scripts/travis_setup.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="28" column="13" selection-start="663" selection-end="663" vertical-scroll-proportion="0.0" vertical-offset="320" max-vertical-offset="780">
+                <state line="144" column="42" selection-start="6418" selection-end="6418" vertical-scroll-proportion="0.63479626" vertical-offset="1755" max-vertical-offset="4665">
                   <folding>
                     <element signature="e#24#33#0" expanded="true" />
                   </folding>
@@ -88,24 +106,24 @@
         <option value="$PROJECT_DIR$/bin/apps.sh" />
         <option value="$PROJECT_DIR$/bin/apps.py" />
         <option value="$PROJECT_DIR$/bin/count.py" />
-        <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/scripts/link_utilities.py" />
         <option value="$PROJECT_DIR$/bin/fsnav_alias_utilities.sh" />
         <option value="$PROJECT_DIR$/bin/fsnav_alias_utilities" />
         <option value="$PROJECT_DIR$/scripts/build_utilities.py" />
         <option value="$PROJECT_DIR$/bin/nav.py" />
         <option value="$PROJECT_DIR$/tests/test_utilities.py" />
-        <option value="$PROJECT_DIR$/scripts/travis_setup.py" />
-        <option value="$PROJECT_DIR$/src/fsnav.py" />
         <option value="$PROJECT_DIR$/tests/test_fsnav.py" />
+        <option value="$PROJECT_DIR$/src/fsnav.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/src/__init__.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="4" />
     <option name="y" value="22" />
-    <option name="width" value="1916" />
-    <option name="height" value="762" />
+    <option name="width" value="1676" />
+    <option name="height" value="1028" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -118,7 +136,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="0" />
+    <option name="STATE" value="2" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -214,11 +232,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -376,14 +394,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="22" width="1916" height="762" extended-state="6" />
+    <frame x="4" y="22" width="1676" height="1028" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36490682" sideWeight="0.506075" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26813188" sideWeight="0.67271626" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36490682" sideWeight="0.49392498" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26813188" sideWeight="0.32728374" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -412,6 +430,15 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/tests/test_fsnav.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="11" selection-start="685" selection-end="685" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="4350">
+          <folding>
+            <element signature="e#24#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_utilities.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="24" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="3360" />
@@ -422,19 +449,9 @@
         <state line="10" column="0" selection-start="118" selection-end="276" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="4155" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fsnav.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="55" selection-start="2581" selection-end="2581" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="4605" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_fsnav.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="179" column="38" selection-start="8284" selection-end="8284" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4095" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fsnav.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="301" column="11" selection-start="10109" selection-end="10109" vertical-scroll-proportion="0.0" vertical-offset="4534" max-vertical-offset="5219" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_fsnav.py">
@@ -442,23 +459,9 @@
         <state line="52" column="37" selection-start="2660" selection-end="2660" vertical-scroll-proportion="0.0" vertical-offset="884" max-vertical-offset="4641" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fsnav.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="18" selection-start="4749" selection-end="4749" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="4930" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CHANGES.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="0" selection-start="696" selection-end="696" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="7" selection-start="541" selection-end="541" vertical-scroll-proportion="0.51724136" vertical-offset="0" max-vertical-offset="638">
-          <folding>
-            <element signature="e#24#45#0" expanded="false" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/count.py">
@@ -481,26 +484,39 @@
         <state line="180" column="28" selection-start="7387" selection-end="7387" vertical-scroll-proportion="0.0" vertical-offset="1424" max-vertical-offset="2985" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/travis_setup.py">
+    <entry file="file://$PROJECT_DIR$/tests/test_fsnav.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="13" selection-start="663" selection-end="663" vertical-scroll-proportion="0.0" vertical-offset="320" max-vertical-offset="780">
+        <state line="144" column="42" selection-start="6418" selection-end="6418" vertical-scroll-proportion="0.63479626" vertical-offset="1755" max-vertical-offset="4665">
           <folding>
             <element signature="e#24#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fsnav.py">
+    <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="38" selection-start="5723" selection-end="5723" vertical-scroll-proportion="0.41573033" vertical-offset="1982" max-vertical-offset="6450">
-          <folding />
+        <state line="21" column="16" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
+          <folding>
+            <marker date="1391134023000" expanded="true" signature="24:97" placeholder="import ..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_fsnav.py">
+    <entry file="file://$PROJECT_DIR$/src/fsnav.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="74" selection-start="6741" selection-end="6741" vertical-scroll-proportion="0.6692913" vertical-offset="1935" max-vertical-offset="4845">
-          <folding />
+        <state line="19" column="36" selection-start="0" selection-end="13281" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6495">
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="427" column="110" selection-start="13281" selection-end="13281" vertical-scroll-proportion="10.248" vertical-offset="0" max-vertical-offset="6495">
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
