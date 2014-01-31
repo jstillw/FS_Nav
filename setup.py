@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 
+from os import sep
 from glob import glob
 from distutils.core import setup
 
@@ -18,6 +19,6 @@ setup(name='FS_Nav',
       author=__author__,
       author_email=__email__,
       url='https://github.com/geowurster/FS_Nav',
-      packages='fsnav.py',
-      scripts=glob('scripts' + '*')
+      packages=['fsnav'],
+      scripts=glob('bin' + sep + '*')
       )
