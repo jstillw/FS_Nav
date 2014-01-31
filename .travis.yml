@@ -8,4 +8,4 @@ python:
 before_script: "scripts/before_travis.py"
 script: "tests/test_fsnav.py"
 install:
-  - python -B setup.py install
+  - python setup.py install
