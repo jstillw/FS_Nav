@@ -19,6 +19,7 @@ UTIL_CODES = ['apps', 'desktop', 'documents', 'downloads',
               'hd', 'home', 'movies', 'music', 'pictures', 'public',
               'systembin', 'extdrive', 'dropbox', 'gdrive',
               'github', 'userbin', 'user_apps', 'cyghome']
+N_PLAT_WARN = False
 if 'darwin' in sys.platform:
     N_PLATFORM = 'mac'
     UTIL_CODES.remove('cyghome')
