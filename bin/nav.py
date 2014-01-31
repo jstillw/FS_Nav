@@ -2,8 +2,8 @@
 
 
 import sys
-from sys import exit
 import fsnav
+import subprocess
 
 
 # Build information
@@ -76,7 +76,7 @@ By %s - %s
 
 
 def print_util_codes():
-    print("\n==== Utility Codes ===")
+    print("\n==== Utility Codes ===\n")
     # Get the longest key
     longest = 0
     for key in _UtilDefs.keys():
@@ -96,13 +96,13 @@ def print_license():
 
 def print_help_info():
     print("""
-=== Help Flags ===
-  --help
+The following flags print help information:
   --help-info
-  --codes
-  --usage
   --version
   --license
+  --codes
+  --usage
+  --help
           """)
     return 1
 
@@ -110,23 +110,33 @@ def print_help_info():
 # Wrap call for testing purposes
 def main(args):
 
+    # Defaults
+    linker = 'fsnav_linker.sh'
+
     # Look for help arguments first
     for arg in args:
 
-        if arg == '--help-info' or arg == '-help-info' or arg == '--helpinfo' or arg == '-help-info':
-            print_help_info()
-        elif arg == '--help':
-            print_help()
-        elif arg == '--usage':
-            print_usage()
-        elif arg == '--version':
-            print_version()
-        elif arg == '--codes' or arg == '--code':
-            print_util_codes()
-        elif arg == '--license':
-            print_license()
+        if arg in ['--help-info', '-help-info', '--helpinfo', '-help-info']:
+            return print_help_info()
+        elif arg in ['--help', '-help']:
+            return print_help()
+        elif arg in ['--usage', '-usage']:
+            return print_usage()
+        elif arg in ['--version', '-version']:
+            return print_version()
+        elif arg in ['--codes', '--code']:
+            return print_util_codes()
+        elif arg in ['--license', '-usage']:
+            return print_license()
+        elif '--linker=' in arg or '-linker=' in arg:
+            linker = arg.split('=')[1]
 
-    # Configure framework based on
+    # Create functions for use in the command line
+    if args[0] == 'link':
+        print("Calling '%s' to link functions..." % linker)
+        subprocess.call([linker])
+
+    # Configure framework based on code
     framework = None
     if args[0] == 'apps':
         framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
@@ -164,7 +174,7 @@ def main(args):
     elif args[0] == 'music' or args[0] == 'mymusic' or args[0] == 'my_music':
         framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
                                         util_name=args[0], util_function=fsnav.music)
-    elif args[0] == 'pictures' or args[0] == 'mypictures' or args[0] ==  'my_pictures':
+    elif args[0] == 'pictures' or args[0] == 'mypictures' or args[0] == 'my_pictures':
         framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
                                         util_name=args[0], util_function=fsnav.pictures)
     elif args[0] == 'public':
