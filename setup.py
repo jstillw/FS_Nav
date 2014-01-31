@@ -11,6 +11,7 @@ __author__ = 'Kevin Wurster'
 __version__ = '0.1'
 __email__ = 'wursterk@gmail.com'
 __license__ = 'See LICENSE.txt from original distribution'
+__source__ = 'https://github.com/geowurster/FS_Nav'
 
 
 setup(name='FS_Nav',
