@@ -11,6 +11,7 @@ __author__ = 'Kevin Wurster'
 __version__ = '0.1'
 __email__ = 'wursterk@gmail.com'
 __license__ = 'See LICENSE.txt from original distribution'
+__source__ = 'https://github.com/geowurster/FS_Nav'
 
 
 # Define help functions
@@ -18,7 +19,7 @@ def print_usage():
     print("""
 Usage: %s --help-info dir|file|wildcard
           """)
-    exit()
+    return 1
 
 
 def print_help():
@@ -32,7 +33,7 @@ Directories, files, and wildcards can be mixed and matched
 Example:
 count.py /path/to/directory /path/to/individual/file.ext /path/to/something/*
           """)
-    exit()
+    return 1
 
 
 def print_version():
@@ -41,12 +42,12 @@ def print_version():
 
 By %s - %s
           """ % (sys.argv[0], __version__, __author__, __email__))
-    exit()
+    return 1
 
 
 def print_license():
     print('\n' + __license__ + '\n')
-    exit()
+    return 1
 
 
 def print_help_info():
@@ -58,7 +59,7 @@ def print_help_info():
   --version
   --license
           """)
-    exit()
+    return 1
 
 
 # Actually do stuff
@@ -72,15 +73,15 @@ def main(args):
 
         # Help arguments
         if arg == ('--help-info' or '-helpinfo' or '-help-info' or '--helpinfo'):
-            print_help_info()
+            return print_help_info()
         elif arg == ('--help' or '-help'):
-            print_help()
+            return print_help()
         elif arg == ('--usage' or '-usage'):
-            print_usage()
+            return print_usage()
         elif arg == ('--version' or '-version'):
-            print_version()
+            return print_version()
         elif arg == ('--license' or '-license'):
-            print_license()
+            return print_license()
 
         # Assume all other arguments are items to glob
         else:
@@ -88,9 +89,9 @@ def main(args):
 
     # Call function
     print(fsnav.count(item_list))
+    return 0
 
 
 # Execute
 if __name__ == '__main__':
-    main(sys.argv[1:])
-    exit()
+    sys.exit(main(sys.argv[1:]))
