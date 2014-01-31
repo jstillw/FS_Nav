@@ -131,13 +131,10 @@ def main(args):
         elif '--linker=' in arg or '-linker=' in arg:
             linker = arg.split('=')[1]
 
-    # Create functions for use in the command line
-    framework = None
-    if args[0] == 'link':
-        return os.system('source ' + linker)
 
     # Configure framework based on code
-    elif args[0] == 'apps':
+    framework = None
+    if args[0] == 'apps':
         framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
                                         util_name=args[0], util_function=fsnav.apps)
     elif args[0] == 'cyghome':
