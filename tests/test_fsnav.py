@@ -12,7 +12,11 @@ import fsnav
 
 
 # Build information
+__author__ = 'Kevin Wurster'
 __version__ = '0.1'
+__email__ = 'wursterk@gmail.com'
+__license__ = 'See LICENSE.txt from original package.'
+__source__ = 'https://github.com/geowurster/FS_Nav'
 
 
 # Define platform specific information to improve readability within the tests
