@@ -4,7 +4,6 @@
 import os
 import sys
 from os import sep
-from sys import exit
 
 
 # Build information
@@ -151,7 +150,7 @@ This script builds each from a common bit of code.
 
 By default, all utilities are built, but the user can
           """)
-    exit()
+    return 1
 
 
 def print_usage():
@@ -168,14 +167,14 @@ Advanced options:
   --clean  ->  Removes built utilities - see help for info
   --force  ->  Force a build - see help for info
           """)
-    exit()
+    return 1
 
 
 def print_license():
     print("""
 See LICENSE.txt from original distribution
           """)
-    exit()
+    return 1
 
 
 def print_version():
@@ -186,7 +185,7 @@ By %s - %s
 Used in the setup and install process for FS_Nav
 Source: %s
           """ % (__version__, __author__, __email__, __source__))
-    exit()
+    return 1
 
 
 def print_util_codes():
@@ -201,7 +200,7 @@ def print_util_codes():
         spaces = ''.join([' ' for i in range(0, longest - len(key))])
         print('  %s' % key + spaces + '  ->  %s' % val)
     print('\n')
-    exit()
+    return 1
 
 
 def main(args):
@@ -358,8 +357,8 @@ def main(args):
             os.remove(alias_util_path)
         else:
             print("%s ERROR: Can't find or remove: %s" % (sys.argv[0], alias_util_path))
+    return 0
 
 
 if __name__ == '__main__':
-    main(sys.argv[1:])
-    exit()
+    sys.exit(main(sys.argv[1:]))
