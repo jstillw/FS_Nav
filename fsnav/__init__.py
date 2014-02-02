@@ -15,29 +15,40 @@ __source__ = 'https://github.com/geowurster/FS_Nav'
 # Global variables
 HOMEDIR = os.path.expanduser('~')
 USERNAME = getpass.getuser()
-UTIL_CODES = ['apps', 'desktop', 'documents', 'downloads',
-              'hd', 'home', 'movies', 'music', 'pictures', 'public',
-              'systembin', 'extdrive', 'dropbox', 'gdrive',
-              'github', 'userbin', 'user_apps', 'cyghome']
-N_PLAT_WARN = False
+ALIASES = {'apps':      ['System applications', 'apps', 'applications'],
+           'desktop':   ['User Desktop''desktop'],
+           'documents': ['User documents', 'documents', 'mydocuments', 'my_documents'],
+           'downloads': ['User downloads', 'downloads', 'download'],
+           'hd':        ['Top level of hard drive', 'hd', 'harddrive', 'hard_drive'],
+           'home':      ['User home directory', 'home', 'homedir', 'home_dir'],
+           'movies':    ['User video', 'movies', 'myvideos', 'my_videos', 'videos'],
+           'music':     ['User music', 'music', 'mymusic', 'my_music'],
+           'pictures':  ['User pictures', 'pictures', 'mypictures', 'my_pictures'],
+           'public':    ['User public (system public on Windows)', 'public'],
+           'systembin': ['System bin', 'systembin', 'system_bin'],
+           'dropbox':   ['User dropbox', 'dropbox'],
+           'gdrive':    ['User Google Drive', 'gdrive', 'google_drive', 'googledrive'],
+           'github':    ['User GitHub', 'github', 'ghub'],
+           'userbin':   ['User bin', 'userbin', 'user_bin'],
+           'userapps':  ['User applications', 'userapps', 'user_apps'],
+           'cyghome':   ['Cygwin home directory (Windows only)', 'cyghome', 'cygwin_home']}
+ALIAS_EXPLANATION = {}
+_N_PLAT_WARN = False  # Used in platform_warning() function to determine whether or not current platform is supported
 if 'darwin' in sys.platform:
-    N_PLATFORM = 'mac'
-    UTIL_CODES.remove('cyghome')
+    _N_PLATFORM = 'mac'
 elif 'nix' in sys.platform:
-    N_PLATFORM = 'linux'
-    UTIL_CODES.remove('cyghome')
+    _N_PLATFORM = 'linux'
 elif 'win' in sys.platform:
-    N_PLATFORM = 'win'
-    UTIL_CODES.remove('cyghome')
+    _N_PLATFORM = 'win'
 elif 'cygwin' in sys.platform:
-    N_PLATFORM = 'cygwin'
+    _N_PLATFORM = 'cygwin'
 else:
-    N_PLAT_WARN = True
-    N_PLATFORM = 'linux'
+    _N_PLAT_WARN = True
+    _N_PLATFORM = 'linux'
 
 
 # Define platform specific information
-if N_PLATFORM == 'linux' or N_PLATFORM == 'mac':
+if _N_PLATFORM == 'linux' or _N_PLATFORM == 'mac':
     _SystemApps = sep + 'Applications'
     _CygwinHome = None
     _Desktop = HOMEDIR + sep + 'Desktop'
@@ -56,7 +67,7 @@ if N_PLATFORM == 'linux' or N_PLATFORM == 'mac':
     _UserBin = HOMEDIR + sep + 'bin'
     _SystemBin = sep.join(['', 'usr', 'local', 'bin'])
     _ExtBasePath = sep + 'Volumes'
-elif N_PLATFORM == 'cygwin':
+elif _N_PLATFORM == 'cygwin':
     _SystemApps = sep.join(['', 'cygdrive', 'c', 'Program Files'])
     _CygwinHome = sep.join(['', 'cygdrive', 'c', 'home', USERNAME])
     _Desktop = sep.join(['', 'cygdrive', 'c', 'Users', USERNAME, 'Desktop'])
@@ -128,15 +139,15 @@ def _try_chdir(dir_path):
 # This function exists to help expand supported platforms
 # Calling the function will print a set of errors if there are issues to work through
 def platform_warning():
-    if N_PLAT_WARN:
+    if _N_PLAT_WARN:
         print(""
               "sys.platform = %s"
-              "N_PLATFORM   = %s"
+              "_N_PLATFORM   = %s"
               ""
               "Your platform is not directly supported and is assumed to be linux based."
               "Directory structures vary by OS, which can be difficult to detect without user input."
               "Please send this information to:"
-              "%s at %s" % (sys.platform, N_PLATFORM, __author__, __email__))
+              "%s at %s" % (sys.platform, _N_PLATFORM, __author__, __email__))
         return False
     else:
         return True
@@ -164,7 +175,7 @@ def apps(mode='return'):
         return _SystemApps
     else:
         return _try_chdir(_SystemApps)
-applications = apps
+ALIASES['apps'].insert(0, apps)
 
 
 def desktop(mode='return'):
@@ -172,6 +183,7 @@ def desktop(mode='return'):
         return _Desktop
     else:
         return _try_chdir(_Desktop)
+ALIASES['desktop'].insert(0, desktop)
 
 
 def documents(mode='return'):
@@ -179,8 +191,7 @@ def documents(mode='return'):
         return _Documents
     else:
         return _try_chdir(_Documents)
-mydocuments = documents
-my_documents = documents
+ALIASES['documents'].insert(0, documents)
 
 
 def downloads(mode='return'):
@@ -188,6 +199,7 @@ def downloads(mode='return'):
         return _Downloads
     else:
         return _try_chdir(_Downloads)
+ALIASES['downloads'].insert(0, downloads)
 
 
 def hd(mode='return'):
@@ -195,6 +207,7 @@ def hd(mode='return'):
         return _HD
     else:
         return _try_chdir(_HD)
+ALIASES['hd'].insert(0, hd)
 
 
 def home(mode='return'):
@@ -202,6 +215,7 @@ def home(mode='return'):
         return _Home
     else:
         return _try_chdir(_Home)
+ALIASES['apps'].insert(0, apps)
 
 
 def movies(mode='return'):
@@ -209,9 +223,7 @@ def movies(mode='return'):
         return _Movies
     else:
         return _try_chdir(_Movies)
-myvideos = movies
-my_videos = movies
-videos = movies
+ALIASES['movies'].insert(0, movies)
 
 
 def music(mode='return'):
@@ -219,8 +231,7 @@ def music(mode='return'):
         return _Music
     else:
         return _try_chdir(_Music)
-mymusic = music
-my_music = music
+ALIASES['music'].insert(0, music)
 
 
 def pictures(mode='return'):
@@ -228,8 +239,7 @@ def pictures(mode='return'):
         return _Pictures
     else:
         return _try_chdir(_Pictures)
-mypictures = pictures
-my_pictures = pictures
+ALIASES['pictures'].insert(0, pictures)
 
 
 def public(mode='return'):
@@ -237,6 +247,7 @@ def public(mode='return'):
         return _Public
     else:
         return _try_chdir(_Public)
+ALIASES['public'].insert(0, public)
 
 
 def systembin(mode='return'):
@@ -244,22 +255,7 @@ def systembin(mode='return'):
         return _SystemBin
     else:
         return _try_chdir(_SystemBin)
-
-
-def extdrive(drive_name, mode='return'):
-    if mode == 'return':
-        return drive_name
-    else:
-        if N_PLATFORM == 'darwin' or N_PLATFORM == 'linux':
-            return _try_chdir(_ExtBasePath + sep + drive_name)
-        elif N_PLATFORM == 'cygwin':
-            return _try_chdir(_ExtBasePath + sep + drive_name.lower())
-        elif N_PLATFORM == 'windows':
-            return _try_chdir(drive_name.upper() + ':' + sep)
-        else:
-            return False
-extvol = extdrive
-extvolume = extdrive
+ALIASES['systembin'].insert(0, systembin)
 
 
 # == These functions map to directories that only exist if specific software is installed == #
@@ -268,6 +264,7 @@ def dropbox(mode='return'):
         return _Dropbox
     else:
         return _try_chdir(_Dropbox)
+ALIASES['dropbox'].insert(0, dropbox)
 
 
 def gdrive(mode='return'):
@@ -275,8 +272,7 @@ def gdrive(mode='return'):
         return _GDrive
     else:
         return _try_chdir(_GDrive)
-google_drive = gdrive
-google_drive = gdrive
+ALIASES['gdrive'].insert(0, gdrive)
 
 
 def github(mode='return'):
@@ -284,6 +280,7 @@ def github(mode='return'):
         return _GitHub
     else:
         return _try_chdir(_GitHub)
+ALIASES['github'].insert(0, github)
 
 
 def userbin(mode='return'):
@@ -291,6 +288,7 @@ def userbin(mode='return'):
         return _UserBin
     else:
         return _try_chdir(_UserBin)
+ALIASES['userbin'].insert(0, userbin)
 
 
 def userapps(mode='return'):
@@ -298,134 +296,27 @@ def userapps(mode='return'):
         return _UserApps
     else:
         return _try_chdir(_UserApps)
-user_applications = userapps
+ALIASES['userapps'].insert(0, userapps)
 
 
-# == These functions map to directories that are each a special case and require special validation == #
+# == These functions map to directories that are each a special case == #
 def cyghome(mode='return'):
     if mode == 'return':
         return _CygwinHome
     else:
         return _try_chdir(_CygwinHome)
+ALIASES['cyghome'].insert(0, cyghome)
 
 
-# Since almost all of the utilities operate in a similar manner, they can all use the framework below
-class UtilFramework(object):
-
-    def __init__(self, util_args=None, util_name=None, util_version=None, util_function=None):
-
-        # Validate required arguments
-        bail = False
-        if util_args is None:
-            print("fsnav.UtilFramework() ERROR: Need util_args")
-            bail = True
-        if not isinstance(util_args, list):
-            print("fsnav.UtilFramework() ERROR: util_args value is invalid - need a list: %s" % str(util_args))
-            bail = True
-        if util_name is None:
-            print("fsnav.UtilFramework() ERROR: Need a util_name")
-            bail = True
-        if not isinstance(util_name, str):
-            print("fsnav.UtilFramework() ERROR: util_name value is invalid - need a str: %s" % str(util_name))
-            bail = True
-        if util_version is None:
-            print("fsnav.UtilFramework() ERROR: Need util_version")
-            bail = True
-        if not isinstance(util_version,  str):
-            print("fsnav.UtilFramework() ERROR: util_version is invalid - need a str: %s" % str(util_version))
-            bail = True
-        if util_function is None:
-            print("fsnav.UtilFramework() ERROR: Need a util_function")
-            bail = True
-        if not hasattr(util_function, '__call__'):
-            print("fsnav.UtilFramework() ERROR: util_function is invalid - need a function: %s" % util_function)
-            bail = True
-        if bail:
-            raise ValueError("Did not get required arguments")
-
-        # Push information class-wide
-        self.util_args = util_args
-        self.util_name = util_name
-        self.util_version = util_version
-        self.util_function = util_function
-
-    @staticmethod
-    def print_usage(self):
-        print("%s.print_usage()" % self.__name__)
-        return 1
-
-    @staticmethod
-    def print_help(self):
-        print("%s.print_help()" % self.__name__)
-        return 1
-
-    @staticmethod
-    def print_license():
-        print(""
-              "See LICENSE.txt from original distribution"
-              "")
-        return 1
-
-    @staticmethod
-    def print_version():
-        print(""
-              "FS_Nav version %s"
-              "By %s - %s"
-              "Source: %s"
-              "" % (__version__, __author__, __email__, __source__))
-        return 1
-
-    def run(self):
-
-        # Set constraints
-        allowed_modes = ['cd', 'print', 'return']
-
-        # Set defaults
-        mode = 'print'
-
-        # Loop through arguments and configure
-        for arg in self.util_args:
-
-            # Help arguments
-            if arg == ('--help' or '-help'):
-                self.print_help()
-            elif arg == ('--usage' or '-usage'):
-                self.print_usage()
-            elif arg == ('--version' or '-version'):
-                self.print_version()
-            elif arg == ('--license' or '-license'):
-                self.print_license()
-
-            # Additional parameters
-            elif arg == ('--utility=' or '-utility'):
-                self.util_name = arg.split('=')[0]
-            elif arg == ('--script' or '-script'):
-                mode = 'print'
-
-            # Catch errors
-            elif arg[0] != '-':
-                print("An arg before %s has invalid parameters" % arg)
-                return 1
-            else:
-                print("Invalid arg: %s" % arg)
-                return 1
-
-        # Validate
-        bail = False
-        if mode not in allowed_modes:
-            print("ERROR: Invalid mode: %s" % mode)
-            print("  Allowed modes: %s" % str(allowed_modes))
-            bail = True
-        if bail:
-            return 1
-
-        # Call function and handle information appropriately
-        if mode == 'cd':
-            return self.util_function(mode='cd')
-        elif mode == 'print':
-            print self.util_function(mode='return')
-            return 0
-        elif mode == 'return':
-            return self.util_function(mode='return')
+def extdrive(drive_name, mode='return'):
+    if mode == 'return':
+        return drive_name
+    else:
+        if _N_PLATFORM == 'darwin' or _N_PLATFORM == 'linux':
+            return _try_chdir(_ExtBasePath + sep + drive_name)
+        elif _N_PLATFORM == 'cygwin':
+            return _try_chdir(_ExtBasePath + sep + drive_name.lower())
+        elif _N_PLATFORM == 'windows':
+            return _try_chdir(drive_name.upper() + ':' + sep)
         else:
-            raise ValueError("Mode '%s' is invalid but should have been caught by the validation step" % mode)
+            return False
