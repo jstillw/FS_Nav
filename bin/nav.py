@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 
-import os
 import sys
 import fsnav
 
@@ -14,78 +13,40 @@ __license__ = 'See LICENSE.txt from original distribution'
 __source__ = 'https://github.com/geowurster/FS_Nav'
 
 
-# Code for all utilities is based on the same few lines, but with a few small differences
-_UtilDefs = {'apps':          'System applications',
-             'cyghome':       'User home directory for Cygwin',
-             'desktop':       'User desktop',
-             'documents':     'User documents',
-             'downloads':     'User downloads',
-             'dropbox':       'User dropbox',
-             'extdrive':      'External volume',
-             'gdrive':        'User Google Drive',
-             'hd':            'System hard drive',
-             'home':          'User home',
-             'movies':        'User movies',
-             'music':         'User music',
-             'pictures':      'User pictures',
-             'public':        'User public or on Windows, general public',
-             'systembin':     'System bin',
-             'userapps':      'User applications',
-             'userbin':       'User bin',
-             'googledrive':   'User Google Drive',
-             'google_drive':  'User Google Drive',
-             'mydocuments':   'User documents',
-             'my_documents':  'User documents',
-             'mymusic':       'User music',
-             'my_music':      'User music',
-             'mypictures':    'User pictures',
-             'my_pictures':   'User pictures',
-             'myvideos':      'User videos',
-             'my_videos':     'User videos',
-             'videos':        'User videos',
-             'extvol':        'External volume',
-             'extvolume':     'External volume'}
-
-
 def print_help():
     print("""
 === Help ===
 Packages functionality from all command line utilities into one single tool
 First argument must be the utility code assigned to the requested function
-All subsequent arguments are funneled into the chosen utility
-Use --codes to view a list
 
-Note that the count utility is not accessible via this package
+Use --codes to view a list
           """)
     return 1
 
 
 def print_usage():
     print("""
-Usage: %s --help-info util_code [utility arguments ...]
-          """ % sys.argv[0])
+Usage: nav.py --help-info code
+          """)
     return 1
 
 
 def print_version():
     print("""
-%s version %s
+FS_Nav version %s
+nav.py version %s
 By %s - %s
-          """ % (sys.argv[0], __version__, __author__, __email__))
+          """ % (fsnav.__version__, __version__, __author__, __email__))
     return 1
 
 
 def print_util_codes():
-    print("\n==== Utility Codes ===\n")
-    # Get the longest key
-    longest = 0
-    for key in _UtilDefs.keys():
-        if len(key) > longest:
-            longest = len(key)
-    for key, val in _UtilDefs.iteritems():
-        spaces = ''.join([' ' for i in range(0, longest - len(key))])
-        print('  %s' % key + spaces + '  ->  %s' % val)
-    print('\n')
+    # Get keys listed in alphabetical order
+    codes = sorted(fsnav.ALIASES.iteritems())
+    for code in codes:
+        help_text = fsnav.ALIASES[code][1]
+        aliases = fsnav.ALIASES[code][2:].replace('[', '').replace(']', '')
+        print("  %s: %s" % (help_text, str()))
     return 1
 
 
@@ -112,6 +73,7 @@ def main(args):
 
     # Defaults
     linker = '/usr/local/bin/fsnav_linker.sh'
+    code = None
 
     # Look for help arguments first
     for arg in args:
@@ -130,67 +92,29 @@ def main(args):
             return print_license()
         elif '--linker=' in arg or '-linker=' in arg:
             linker = arg.split('=')[1]
+        else:
+            code = arg
 
-
-    # Configure framework based on code
-    framework = None
-    if args[0] == 'apps':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.apps)
-    elif args[0] == 'cyghome':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.cyghome)
-    elif args[0] == 'desktop':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.desktop)
-    elif args[0] == 'documents' or args[0] == 'mydocuments' or args[0] == 'my_documents':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.documents)
-    elif args[0] == 'downloads':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.downloads)
-    elif args[0] == 'dropbox':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.dropbox)
-    elif args[0] == 'extdrive' or args[0] == 'extvol' or args[0] == 'extvolume':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.extdrive)
-    elif args[0] == 'gdrive' or args[0] == 'googledrive' or args[0] == 'google_drive':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.gdrive)
-    elif args[0] == 'hd':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.hd)
-    elif args[0] == 'home':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.home)
-    elif args[0] == 'movies' or args[0] == 'videos' or args[0] == 'myvideos' or args[0] == 'my_videos':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.movies)
-    elif args[0] == 'music' or args[0] == 'mymusic' or args[0] == 'my_music':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.music)
-    elif args[0] == 'pictures' or args[0] == 'mypictures' or args[0] == 'my_pictures':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.pictures)
-    elif args[0] == 'public':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.public)
-    elif args[0] == 'systembin':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.systembin)
-    elif args[0] == 'userapps':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.userapps)
-    elif args[0] == 'userbin':
-        framework = fsnav.UtilFramework(util_args=args[1:], util_version=__version__,
-                                        util_name=args[0], util_function=fsnav.userbin)
-    else:
-        print("%s ERROR: Invalid utility: %s" % (sys.argv[0], args[0]))
+    # Validate
+    if code is None:
+        print("ERROR: No code supplied")
         return 1
 
-    # Execute
-    return framework.run()
+    # Print linking command
+    elif code == 'linker':
+        print(linker)
+        return 0
+    elif code == 'link':
+        print("source %s" % linker)
+        return 0
+
+    # Print directory path based on code
+    elif code in fsnav.ALIASES[code][2:]:
+        print(fsnav.ALIASES[code][0]())
+        return 0
+    else:
+        print("ERROR: Invalid code: %s" % code)
+        return 1
 
 
 # Execute
