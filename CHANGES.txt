@@ -1,15 +1,2 @@
-13/12/25 - Added _fsnav_cmdline_controller.py to communicate between the front end utilities and fsnav.UtilFramework()
-13/12/24 - Added fsnav.UtilFramework() as a platform for command line utilities
-13/12/23 - Fixed a problem where dirs in fsnav.count() could offset final count
-13/12/22 - Improved TestNavigationFunctions.test_count()
-13/12/21 - Added fsnav.count() for use in count.py and appropriate tests
-13/12/20 - Added fsnav.mymusic() for cross-platform nomenclature
-13/12/20 - Added fsnav.mypictures() for cross-platform nomenclature
-13/12/20 - Added fsnav.mydocuments() for cross-platform nomenclature
-13/12/20 - Added fsnav.myvideos() for cross-platform nomenclature
-13/12/20 - Added fsnav.videos() for cross-platform nomenclature
-13/12/20 - Windows tests are semi-passing.  Anything using os.chdir() is failing
-13/12/20 - All Mac and Cygwin tests are passing
-13/12/19 - Tests to accompany basic features
-13/12/19 - Basic features in place
+14/2/??  - Release: 0.1
 13/12/19 - Project setup
