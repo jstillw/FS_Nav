@@ -16,7 +16,7 @@ __source__ = 'https://github.com/geowurster/FS_Nav'
 HOMEDIR = os.path.expanduser('~')
 USERNAME = getpass.getuser()
 ALIASES = {'apps':      ['System applications', 'apps', 'applications'],
-           'desktop':   ['User Desktop''desktop'],
+           'desktop':   ['User Desktop', 'desktop'],
            'documents': ['User documents', 'documents', 'mydocuments', 'my_documents'],
            'downloads': ['User downloads', 'downloads', 'download'],
            'hd':        ['Top level of hard drive', 'hd', 'harddrive', 'hard_drive'],
@@ -32,7 +32,6 @@ ALIASES = {'apps':      ['System applications', 'apps', 'applications'],
            'userbin':   ['User bin', 'userbin', 'user_bin'],
            'userapps':  ['User applications', 'userapps', 'user_apps'],
            'cyghome':   ['Cygwin home directory (Windows only)', 'cyghome', 'cygwin_home']}
-ALIAS_EXPLANATION = {}
 _N_PLAT_WARN = False  # Used in platform_warning() function to determine whether or not current platform is supported
 if 'darwin' in sys.platform:
     _N_PLATFORM = 'mac'
@@ -215,7 +214,7 @@ def home(mode='return'):
         return _Home
     else:
         return _try_chdir(_Home)
-ALIASES['apps'].insert(0, apps)
+ALIASES['home'].insert(0, home)
 
 
 def movies(mode='return'):
