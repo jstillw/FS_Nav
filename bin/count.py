@@ -2,7 +2,10 @@
 
 
 import sys
-import fsnav
+try:
+    import fsnav
+except ImportError:
+    fsnav = None
 
 
 # Build information
@@ -93,4 +96,20 @@ def main(args):
 
 # Execute
 if __name__ == '__main__':
-    sys.exit(main(sys.argv[1:]))
+
+    # If --test-src was given as the first argument, adjust sys.path, reload(fsnav) to test against source code
+    if len(sys.argv) > 1 and sys.argv[1] == '--test-src':
+        sys.argv.remove('--test-src')
+        sys.path.insert(0, '.')
+        reload(fsnav)
+        print("TESTING: count.py: Imported fsnav from: %s" % fsnav.__file__)
+        sys.exit(main(sys.argv[1:]))
+
+    # fnsav was imported - act normally
+    elif fsnav is not None:
+        sys.exit(main(sys.argv[1:]))
+
+    # fsnav couldn't be imported - exit
+    else:
+        print("ERROR: Couldn't import fsnav")
+        sys.exit(1)

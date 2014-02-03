@@ -12,6 +12,8 @@ except ImportError:
     fsnav = None
 
 # Define globals
+TEST_SOURCE = False
+UTIL_PATH = 'nav.py'
 if 'darwin' in sys.platform:
     _N_PLATFORM = 'mac'
 elif 'nix' in sys.platform:
@@ -29,7 +31,10 @@ class TestNav(unittest.TestCase):
     def test_nav(self):
         for code in fsnav.ALIASES.keys():
             # Build a command to test against
-            command = ['python', '-B', 'bin' + sep + 'nav.py', code]
+            if TEST_SOURCE:
+                command = ['python', '-B', UTIL_PATH, '--test-src', code]
+            else:
+                command = ['python', '-B', UTIL_PATH, code]
             nav_output = subprocess.Popen(command, stdout=subprocess.PIPE)
             actual = nav_output.stdout.readlines()[0].replace(linesep, '')
             # Call fsnav.py function accompanies code
@@ -42,12 +47,9 @@ class TestNav(unittest.TestCase):
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == '--test-src':
         sys.argv.remove('--test-src')
-        sys.path.insert(0, '.')
-        reload(fsnav)
-        print("TESTING: Imported fnsav from: %s" % fsnav.__file__)
-        sys.exit(unittest.main())
-    elif fsnav is not None:
+        TEST_SOURCE = True
+        UTIL_PATH = 'bin' + sep + 'nav.py'
+        print("TESTING: %s" % UTIL_PATH)
         sys.exit(unittest.main())
     else:
-        print("ERROR: Couldn't import fsnav")
-        sys.exit(1)
+        sys.exit(unittest.main())

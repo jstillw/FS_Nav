@@ -16,10 +16,22 @@ __source__ = 'https://github.com/geowurster/FS_Nav'
 def print_help():
     print("""
 === Help ===
-Packages functionality from all command line utilities into one single tool
-First argument must be the utility code assigned to the requested function
+A utility for exposing FS_Nav's navigation functions via the command line
+for scripting purposes.  FS_Nav also comes with fsnav_linker.sh, which
+when called as "source fsnav_linker.sh", will generate a set of functions
+to make command line navigation easier.  Calling "nav.py link" will
+print the command necessary to generate the functions.  Incorporate this
+call into your bash profile to generate functions on startup.
 
-Use --codes to view a list
+Example:
+Calling "nav.py desktop" will print the path to the user's desktop
+Calling "cd `nav.py desktop`" will cd to the user's desktop
+
+Generating functions via "source fsnav_linker.sh"
+and then calling "desktop" will cd to the user's desktop without
+having to call "cd `nav.py desktop`"
+
+A list of codes and their explanation can be viewed with the --codes argument.
           """)
     return 1
 
@@ -46,7 +58,7 @@ def print_util_codes():
     for code in codes:
         help_text = fsnav.ALIASES[code][1]
         aliases = fsnav.ALIASES[code][2:].replace('[', '').replace(']', '')
-        print("  %s: %s" % (help_text, str()))
+        print("  %s: %s" % (help_text, aliases))
     return 1
 
 
@@ -72,7 +84,7 @@ The following flags print help information:
 def main(args):
 
     # Defaults
-    linker = '/usr/local/bin/fsnav_linker.sh'
+    linker = 'fsnav_linker.sh'
     code = None
 
     # Look for help arguments first
@@ -119,7 +131,25 @@ def main(args):
 
 # Execute
 if __name__ == '__main__':
+    print sys.argv
+    exit()
+    # If no arguments, print usage and exit
     if len(sys.argv) is 1:
         sys.exit(print_usage())
-    else:
+
+    # If --test-src was given as the first argument, adjust sys.path, reload(fsnav) to test against source code
+    if sys.argv > 1 and sys.argv[1] == '--test-src':
+        sys.argv.remove('--test-src')
+        sys.path.insert(0, '.')
+        reload(fsnav)
+        print("TESTING: count.py: Imported fsnav from: %s" % fsnav.__file__)
         sys.exit(main(sys.argv[1:]))
+
+    # fsnav was imported - act normally
+    elif fsnav is not None:
+        sys.exit(main(sys.argv[1:]))
+
+    # fsnav couldn't be imported - exit
+    else:
+        print("ERROR: Couldn't import fsnav")
+        sys.exit(1)
