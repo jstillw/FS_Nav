@@ -42,6 +42,32 @@ PRINT_LICENSE() {
     exit 1
 }
 
+
+# Loop through any arguments
+for ARG in $@; do
+    case ${ARG} in
+
+        # Help options
+        "--help" | "-help")
+            PRINT_HELP()
+            exit 1
+            ;;
+        "--help-info" | "-help-info")
+            PRINT_HELP_INFO()
+            exit 1
+            ;;
+        "--version" | "-version")
+            PRINT_VERSION()
+            exit 1
+            ;;
+        "--license" | "-license")
+            PRINT_LICENSE()
+            exit 1
+            ;;
+    esac
+done
+
+
 # Create functions that map to specific nav.py calls
 function apps() { cd `nav.py apps` ; }
 function cyghome() { cd `nav.py cyghome` ; }
@@ -73,3 +99,5 @@ function my_videos() { cd `nav.py movies` ; }
 function videos() { cd `nav.py movies` ; }
 function extvol() { cd `nav.py extdrive` ; }
 function extvolume() { cd `nav.py extdrive` ; }
+
+exit 0
