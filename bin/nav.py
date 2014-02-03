@@ -17,8 +17,8 @@ def print_help():
     print("""
 === Help ===
 A utility for exposing FS_Nav's navigation functions via the command line
-for scripting purposes.  FS_Nav also comes with fsnav_linker.sh, which
-when called as "source fsnav_linker.sh", will generate a set of functions
+for scripting purposes.  FS_Nav also comes with fsnav_generator.sh, which
+when called as "source fsnav_generator.sh", will generate a set of functions
 to make command line navigation easier.  Calling "nav.py link" will
 print the command necessary to generate the functions.  Incorporate this
 call into your bash profile to generate functions on startup.
@@ -27,7 +27,7 @@ Example:
 Calling "nav.py desktop" will print the path to the user's desktop
 Calling "cd `nav.py desktop`" will cd to the user's desktop
 
-Generating functions via "source fsnav_linker.sh"
+Generating functions via "source fsnav_generator.sh"
 and then calling "desktop" will cd to the user's desktop without
 having to call "cd `nav.py desktop`"
 
@@ -84,7 +84,8 @@ The following flags print help information:
 def main(args):
 
     # Defaults
-    linker = 'fsnav_linker.sh'
+    generator = 'fsnav_generator.sh'
+    sourcer = 'source'
     code = None
 
     # Look for help arguments first
@@ -102,8 +103,10 @@ def main(args):
             return print_util_codes()
         elif arg in ['--license', '-usage']:
             return print_license()
-        elif '--linker=' in arg or '-linker=' in arg:
-            linker = arg.split('=')[1]
+        elif '--generator=' in arg or '-generator=' in arg:
+            generator = arg.split('=')[1]
+        elif '--sourcer=' in arg or '-sourcer=' in arg:
+            sourcer = arg.split('=')[1]
         else:
             code = arg
 
@@ -113,16 +116,13 @@ def main(args):
         return 1
 
     # Print linking command
-    elif code == 'linker':
-        print(linker)
-        return 0
-    elif code == 'link':
-        print("source %s" % linker)
+    elif code in ['generator', 'generate']:
+        print(sourcer + ' ' + generator)
         return 0
     elif code == 'profile':
         print("# Add FS_Nav function generation on startup")
-        print("if [ '`which nav.py`' != '' ] && [ '`which fsnav_linker.sh`' != '' ]; then")
-        print("    source %s" % linker)
+        print("if [ '`which nav.py`' != '' ] && [ '`which %s`' != '' ]; then" % generator)
+        print("    %s %s" % (sourcer, generator))
         print("fi")
         return 0
 
