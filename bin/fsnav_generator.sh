@@ -66,9 +66,7 @@ PRINT_VERSION() {
 }
 
 PRINT_LICENSE() {
-    echo ""
-    echo ${__LICENSE__}
-    echo ""
+    python -c "import fsnav; print(fsnav.__license__)"
 }
 
 
@@ -103,7 +101,7 @@ done
 
 
 # Create functions that map to specific nav.py calls
-if [ ${LINK} == "TRUE" ]; then
+if [ "${LINK}" == "TRUE" ]; then
     function apps() { cd `nav.py apps` ; }
     function cyghome() { cd `nav.py cyghome` ; }
     function desktop() { cd `nav.py desktop` ; }
