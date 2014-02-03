@@ -88,6 +88,7 @@ if [ ${LINK} == "TRUE" ]; then
     function systembin() { cd `nav.py systembin` ; }
     function userapps() { cd `nav.py userapps` ; }
     function userbin() { cd `nav.py userbin` ; }
+    function ghub() { cd `nav.py github` ; }
     function googledrive() { cd `nav.py gdrive` ; }
     function google_drive() { cd `nav.py gdrive` ; }
     function mydocuments() { cd `nav.py documents` ; }
