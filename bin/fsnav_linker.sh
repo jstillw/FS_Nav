@@ -18,52 +18,52 @@ PRINT_HELP_INFO() {
     echo "  --license"
     echo "  --help"
     echo ""
-    exit 1
 }
 
 PRINT_HELP() {
     echo ""
     echo "Help"
     echo ""
-    exit 1
 }
 
 PRINT_VERSION() {
     echo ""
     echo "Version"
     echo ""
-    exit 1
 }
 
 PRINT_LICENSE() {
     echo ""
     echo ${__LICENSE__}
     echo ""
-    exit 1
 }
 
 
 # Loop through any arguments
 for ARG in $@; do
+
     case ${ARG} in
 
         # Help options
         "--help" | "-help")
-            PRINT_HELP()
+            PRINT_HELP
             exit 1
             ;;
         "--help-info" | "-help-info")
-            PRINT_HELP_INFO()
+            PRINT_HELP_INFO
             exit 1
             ;;
         "--version" | "-version")
-            PRINT_VERSION()
+            PRINT_VERSION
             exit 1
             ;;
         "--license" | "-license")
-            PRINT_LICENSE()
+            PRINT_LICENSE
             exit 1
             ;;
+        *)
+            echo "ERROR: Invalid argument: ${ARG}"
+            exit 1
     esac
 done
 
