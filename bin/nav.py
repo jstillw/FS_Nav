@@ -131,8 +131,6 @@ def main(args):
 
 # Execute
 if __name__ == '__main__':
-    print sys.argv
-    exit()
     # If no arguments, print usage and exit
     if len(sys.argv) is 1:
         sys.exit(print_usage())
