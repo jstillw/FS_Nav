@@ -142,11 +142,11 @@ if __name__ == '__main__':
         sys.exit(print_usage())
 
     # If --test-src was given as the first argument, adjust sys.path, reload(fsnav) to test against source code
-    if sys.argv > 1 and sys.argv[1] == '--test-src':
+    elif sys.argv > 1 and sys.argv[1] == '--test-src':
         sys.argv.remove('--test-src')
         sys.path.insert(0, '.')
         reload(fsnav)
-        print("TESTING: count.py: Imported fsnav from: %s" % fsnav.__file__)
+        print("TESTING: nav.py: Imported fsnav from: %s" % fsnav.__file__)
         sys.exit(main(sys.argv[1:]))
 
     # fsnav was imported - act normally
