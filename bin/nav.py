@@ -119,6 +119,12 @@ def main(args):
     elif code == 'link':
         print("source %s" % linker)
         return 0
+    elif code == 'profile':
+        print("# Add FS_Nav function generation on startup")
+        print("if [ '`which nav.py`' != '' ] && [ '`which fsnav_linker.sh`' != '' ]; then")
+        print("    source %s" % linker)
+        print("fi")
+        return 0
 
     # Print directory path based on code
     elif code in fsnav.ALIASES[code][2:]:
