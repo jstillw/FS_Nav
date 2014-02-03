@@ -8,7 +8,10 @@ import unittest
 from os import sep
 from glob import glob
 from os.path import expanduser
-import fsnav
+try:
+    import fsnav
+except ImportError:
+    fsnav = None
 
 
 # Build information
@@ -268,4 +271,14 @@ class TestNavigationFunctions(unittest.TestCase):
 
 # Allow tests to be run from the command line in a self-contained script
 if __name__ == '__main__':
-    sys.exit(unittest.main())
+    if len(sys.argv) > 1 and sys.argv[1] == '--test-src':
+        sys.argv.remove('--test-src')
+        sys.path.insert(0, '.')
+        reload(fsnav)
+        print("TESTING: Imported fnsav from: %s" % fsnav.__file__)
+        sys.exit(unittest.main())
+    elif fsnav is not None:
+        sys.exit(unittest.main())
+    else:
+        print("ERROR: Couldn't import fsnav")
+        sys.exit(1)
