@@ -87,6 +87,7 @@ By %s - %s
 
 def print_codes():
     # Print header
+    print("")
     print("== Codes/Functions ==")
     # Get keys listed in alphabetical order
     codes = sorted(fsnav.ALIASES.keys())
@@ -94,6 +95,7 @@ def print_codes():
         help_text = fsnav.ALIASES[code][1]
         aliases = str(fsnav.ALIASES[code][2:]).replace('[', '').replace(']', '')
         print("  %s: %s" % (help_text, aliases))
+    print("")
     return 1
 
 
@@ -134,7 +136,7 @@ def main(args):
             return print_usage()
         elif arg in ['--version', '-version']:
             return print_version()
-        elif arg in ['--codes', '--code']:
+        elif arg in ['--codes', '--code', '--functions', '--function']:
             return print_codes()
         elif arg in ['--license', '-usage']:
             return print_license()
