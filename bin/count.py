@@ -140,6 +140,8 @@ if __name__ == '__main__':
 
     # fnsav was imported - act normally
     elif fsnav is not None:
+        if len(sys.argv) is 1:
+            sys.argv.append('*')
         sys.exit(main(sys.argv[1:]))
 
     # fsnav couldn't be imported - exit
