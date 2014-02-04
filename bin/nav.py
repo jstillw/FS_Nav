@@ -118,7 +118,7 @@ def main(args):
 
     # Defaults
     generator = 'fsnav_generator.sh'
-    sourcer = 'source'
+    source = 'source'
     code = None
 
     # Look for help arguments first
@@ -138,8 +138,8 @@ def main(args):
             return print_license()
         elif '--generator=' in arg or '-generator=' in arg:
             generator = arg.split('=')[1]
-        elif '--sourcer=' in arg or '-sourcer=' in arg:
-            sourcer = arg.split('=')[1]
+        elif '--source=' in arg or '-source=' in arg:
+            source = arg.split('=')[1]
         else:
             code = arg
 
@@ -150,12 +150,12 @@ def main(args):
 
     # Print linking command
     elif code in ['generator', 'generate']:
-        print(sourcer + ' ' + generator)
+        print(source + ' ' + generator)
         return 0
     elif code == 'profile':
         print("# Add FS_Nav function generation on startup")
         print("if [ '`which nav.py`' != '' ] && [ '`which %s`' != '' ]; then" % generator)
-        print("    %s %s" % (sourcer, generator))
+        print("    %s %s" % (source, generator))
         print("fi")
         return 0
 
