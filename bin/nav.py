@@ -85,12 +85,14 @@ By %s - %s
     return 1
 
 
-def print_util_codes():
+def print_codes():
+    # Print header
+    print("== Codes/Functions ==")
     # Get keys listed in alphabetical order
-    codes = sorted(fsnav.ALIASES.iteritems())
+    codes = sorted(fsnav.ALIASES.keys())
     for code in codes:
         help_text = fsnav.ALIASES[code][1]
-        aliases = fsnav.ALIASES[code][2:].replace('[', '').replace(']', '')
+        aliases = str(fsnav.ALIASES[code][2:]).replace('[', '').replace(']', '')
         print("  %s: %s" % (help_text, aliases))
     return 1
 
@@ -133,7 +135,7 @@ def main(args):
         elif arg in ['--version', '-version']:
             return print_version()
         elif arg in ['--codes', '--code']:
-            return print_util_codes()
+            return print_codes()
         elif arg in ['--license', '-usage']:
             return print_license()
         elif '--generator=' in arg or '-generator=' in arg:
