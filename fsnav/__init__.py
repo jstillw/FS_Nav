@@ -58,7 +58,7 @@ ALIASES = {'apps':      ['System applications', 'apps', 'applications'],
            'systembin': ['System bin', 'systembin', 'system_bin'],
            'dropbox':   ['User dropbox', 'dropbox'],
            'gdrive':    ['User Google Drive', 'gdrive', 'google_drive', 'googledrive'],
-           'github':    ['User GitHub', 'github', 'ghub'],
+           'github':    ['User GitHub', 'github (nav.py ONLY)', 'ghub'],
            'userbin':   ['User bin', 'userbin', 'user_bin'],
            'userapps':  ['User applications', 'userapps', 'user_apps'],
            'cyghome':   ['Cygwin home directory (Windows only)', 'cyghome', 'cygwin_home']}
