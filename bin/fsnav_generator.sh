@@ -71,14 +71,7 @@ PRINT_LICENSE() {
 
 
 PRINT_FUNCTIONS() {
-    echo ""
-    echo "== Functions =="
-    echo "apps cyghome desktop documents downloads dropbox"
-    echo "extdrive gdrive hd home movies music pictures public"
-    echo "systembin userapps userbin ghub googledrive google_drive"
-    echo "mydocuments my_documents mymusic my_music mypictures"
-    echo "my_pictures myvideos my_videos videos extvol extvolume"
-    echo ""
+    nav.py --functions
 }
 
 # Loop through any arguments
@@ -104,7 +97,7 @@ for ARG in $@; do
             PRINT_LICENSE
             LINK=FALSE
             ;;
-        "--function" | "--functions" | "-function" | "-functions")
+        "--function" | "--functions" | "-function" | "-functions" | "--codes" | "-codes" | "--code" | "-code")
             PRINT_FUNCTIONS
             LINK=FALSE
             ;;
