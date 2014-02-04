@@ -70,6 +70,17 @@ PRINT_LICENSE() {
 }
 
 
+PRINT_FUNCTIONS() {
+    echo ""
+    echo "== Functions =="
+    echo "apps cyghome desktop documents downloads dropbox"
+    echo "extdrive gdrive hd home movies music pictures public"
+    echo "systembin userapps userbin ghub googledrive google_drive"
+    echo "mydocuments my_documents mymusic my_music mypictures"
+    echo "my_pictures myvideos my_videos videos extvol extvolume"
+    echo ""
+}
+
 # Loop through any arguments
 LINK=TRUE
 for ARG in $@; do
@@ -91,6 +102,10 @@ for ARG in $@; do
             ;;
         "--license" | "-license")
             PRINT_LICENSE
+            LINK=FALSE
+            ;;
+        "--function" | "--functions" | "-function" | "-functions")
+            PRINT_FUNCTIONS
             LINK=FALSE
             ;;
         *)
@@ -133,6 +148,4 @@ if [ "${LINK}" == "TRUE" ]; then
     function videos() { cd `nav.py movies` ; }
     function extvol() { cd `nav.py extdrive` ; }
     function extvolume() { cd `nav.py extdrive` ; }
-else
-    echo "ERROR: Could not link functions"
 fi
