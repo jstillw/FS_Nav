@@ -8,7 +8,6 @@ File System Navigation for Python 2.6+ and 3+
 
 A set of command line utilities built on a python library designed to make navigating
 the command line easier and more user friendly for beginners.
-
 Want to get to your desktop?  Just type "desktop" on the command line and press return.
 Want to get to your home directory?  Just type "home" on the command line and press return.
 Want to get to your Dropbox directory?  Just type "home" on the command line and press return.
@@ -23,15 +22,15 @@ If installing on Windows or Cygwin, read the "Notes about Windows Support" secti
 If you are extremely familiar with the command line, read the "Technical Notes and Advanced Users"
 section first.
 
-With `pip http://www.pip-installer.org/en/latest/installing.html`_ (recommended):
-    pip install ``fsnav`` –install-option="-install-scripts=/usr/local/bin"
+With `pip <http://www.pip-installer.org/en/latest/installing.html>` (recommended):
+     pip install ``fsnav`` –install-option="-install-scripts=/usr/local/bin"
 
 From source:
-    Download the latest release from: https://github.com/geowurster/FS_Nav/releases
-    Unzip the download
-    cd into the unzipped directory
-    python run_tests.py --test-src
-    python setup.py install --install-scripts=/usr/local/bin
+     Download the latest `release <https://github.com/geowurster/FS_Nav/releases>`_
+     Unzip the download
+     cd into the unzipped directory
+     python run_tests.py --test-src
+     python setup.py install --install-scripts=/usr/local/bin
 
 Some of the examples in this document assume the user has downloaded the source code from GitHub,
 regardless of the actual installation method.
@@ -185,7 +184,7 @@ Notes about Windows Support
 ---------------------------
 
 Here's the short story:
-Windows is not fully supported, although everything should work fine on `Cygwin http://www.cygwin.com`_.
+Windows is not fully supported, although everything should work fine on `Cygwin <http://www.cygwin.com>`_.
 If there is enough demand, I'm happy to figure out how to support the Windows command line.
 
 The Windows command line is currently not completely supported as I do not have consistent access to a
