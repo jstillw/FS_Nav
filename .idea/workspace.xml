@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7da5b23f-e80f-4d2b-872e-ae548b60e3f3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.rst" afterPath="$PROJECT_DIR$/README.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/wursterk.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/wursterk.xml" />
     </list>
     <ignored path="FS_Nav.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,7 +30,7 @@
           <file leaf-file-name="README.rst" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/README.rst">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="23" column="14" selection-start="756" selection-end="756" vertical-scroll-proportion="0.5609756" vertical-offset="0" max-vertical-offset="3150">
+                <state line="31" column="35" selection-start="1110" selection-end="1110" vertical-scroll-proportion="0.4074703" vertical-offset="225" max-vertical-offset="3135">
                   <folding />
                 </state>
               </provider>
@@ -535,7 +533,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="14" selection-start="756" selection-end="756" vertical-scroll-proportion="0.5609756" vertical-offset="0" max-vertical-offset="3150">
+        <state line="31" column="35" selection-start="1110" selection-end="1110" vertical-scroll-proportion="0.4074703" vertical-offset="225" max-vertical-offset="3135">
           <folding />
         </state>
       </provider>
